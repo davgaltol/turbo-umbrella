@@ -1,6 +1,7 @@
 package com.emergencias.model;
 
 import java.util.Scanner;
+import com.emergencias.controller.ValidaEntrada;
 
 //CREA LA EMERGENCIA
 public class EmergencyEvent {
@@ -14,15 +15,31 @@ public class EmergencyEvent {
         Scanner sc = new Scanner(System.in);
 
         if (gravedad.contains("leve")){
+            //herida leve y cierro programa
             System.out.println(gravedad);
             System.out.println("Cerrando aplicación");
         }
         else {
-
+            //Paso a obtener ubicación
             ubi = getLocation();
 
+            //Paso a recuperar o tomar datos de usuario
+            System.out.println("¿Es usted el herido?S/N");
+            input=sc.nextLine();
+            if (validaEntSN(input)) {
+                System.out.println("Escriba su DNI con número y letra");
+                input=sc.nextLine();
+                if (validaEntDNI(input)){
 
-            System.out.println("Datos de usuario:");
+                }
+
+                //datosHerido = user.getUserData(datosUsuario);
+            } else {
+                //datosHerido = user.getUserData();
+            }
+
+
+/*            System.out.println("Datos de usuario:");
             System.out.println("Introduzca su nombre");
             datosUsuario[0] = sc.nextLine();
             System.out.println("Introduzca sus apellidos");
@@ -52,7 +69,7 @@ public class EmergencyEvent {
             System.out.println("Teléfono de contacto de emergencia: " + datosHerido[5]);
             System.out.println("Información médica: " + datosHerido[6]);
 
-
+*/
         }
     }
 

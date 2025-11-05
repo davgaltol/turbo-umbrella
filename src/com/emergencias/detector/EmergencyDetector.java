@@ -66,9 +66,14 @@ public class EmergencyDetector {
         if (ValidaEntrada.validaEntSN(input)) {
             System.out.println("Indique gravedad de 1 a 5");
             input = sc.nextLine();
-            if (Integer.parseInt(input) > 3) {
-                pGolp = true;
-                gravedad = gravedad + "Golpe grave de intensidad " + input + "\n";
+            try {
+                if (Integer.parseInt(input) > 3) {
+                    pGolp = true;
+                    gravedad = gravedad + "Golpe grave de intensidad " + input + "\n";
+                }
+            }catch (NumberFormatException e) {
+                System.out.println("Error: número no válido. Entrada por defecto a 1");
+                input = "1";
             }
         }
         if (!pCons && !pResp && !pSang && !pGolp) {
