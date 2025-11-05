@@ -57,7 +57,7 @@ public class EmergencyEvent {
                         } else {
 
                             System.out.println("¿Generar alerta por defecto sin DNI?S/N");
-                            sc.nextLine();
+                            input=sc.nextLine();
                             if (ValidaEntrada.validaEntSN(input)) {
                                 System.out.println("Le pedimos datos básicos:");
                                 datosUsuario= user.getUserData();
