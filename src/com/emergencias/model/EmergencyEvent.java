@@ -11,7 +11,7 @@ public class EmergencyEvent {
         String input, ubi;
         String[] datosHerido, datosUsuario;
         datosUsuario=new String[3]; //nombre, apellidos, telefono
-        datosHerido=new String[7];  //nombre, apellidos, teléfono, edad, nom contacto, tlf contacto, info_médica
+        datosHerido=new String[8];  //nombre, apellidos, teléfono, dni, edad, nom contacto, tlf contacto, info_médica
         Scanner sc = new Scanner(System.in);
 
 
@@ -23,22 +23,79 @@ public class EmergencyEvent {
             } else {
                 //Paso a obtener ubicación
                 ubi = getLocation();
-
-                //Paso a recuperar o tomar datos de usuario
-                System.out.println("¿Es usted el herido?S/N");
+                System.out.println("Sus datos pueden ser importantes para los servicios médicos. ");
+                System.out.println("Desea que recopilemos unos datos antes del envío de la alerta?S/N");
                 input = sc.nextLine();
-                if (ValidaEntrada.validaEntSN(input)) {
-                    System.out.println("Escriba su DNI con número y letra. Pulse cualquier otra tecla si no lo conoce.");
+                if (ValidaEntrada.validaEntSN(input)) {                             //si es no urgencia extrema se pasa a formularios. Si no se manda ubicación y herido genérico
+                    //Paso a recuperar o tomar datos de usuario
+                    System.out.println("¿Es usted el herido?S/N");
                     input = sc.nextLine();
-                    if (ValidaEntrada.validaEntDNI(input)) {
-                        System.out.println("DNI con formato correcto.");
-                        input = input.toUpperCase();                            //guardamos el DNI en mayusculas
-                        if (user.validateUserData(input)) {                     //verificamos si el dni está en el Json
-                            datosHerido = user.retrieveUserData(input);         // si está en el json se recuperan datos del Json
+                    if (ValidaEntrada.validaEntSN(input)) {
+                        System.out.println("Escriba su DNI con número y letra. Pulse cualquier otra tecla si no lo conoce.");
+                        input = sc.nextLine();
+                        if (ValidaEntrada.validaEntDNI(input)) {                    //se valida DNI
+                            input = input.toUpperCase();                            //guardamos el DNI en mayusculas
+                            if (user.validateInjuredData(input)) {                     //verificamos si el dni está en el Json
+                                System.out.println("DNI encontrado en BBDD. Recuperando datos...");
+                                datosHerido = user.retrieveInjuredData(input);         // si está en el json se recuperan datos del Json
+                                datosUsuario[0]=datosHerido[0];                        //se recuperan los datos de usuario de los de herido. son el mismo
+                                datosUsuario[1]=datosHerido[1];
+                                datosUsuario[2]=datosHerido[3];
+                                /************GENERAR ALERTSENDER*********/
+
+                            } else {
+                                System.out.println("DNI no encontrado en la base de + " +   //si no está el DNIen el Json se genera alerta por defecto
+                                        "datos. Se genera alerta por defecto.");             //con los datos parciales de herido (que es usuario)
+                                System.out.println("Le pedimos datos básicos:");
+                                datosUsuario= user.getUserData();
+                                datosHerido = user.unknownInjuredData(datosUsuario);         //Se genera herido por defecto pasando el usuario
+                                datosHerido[2] = input;                                      //Se añade DNI facilitado
+
+                                /************GENERAR ALERTSENDER*********/
+
+                            }
+                        } else {
+
+                            System.out.println("¿Generar alerta por defecto sin DNI?S/N");
+                            sc.nextLine();
+                            if (ValidaEntrada.validaEntSN(input)) {
+                                System.out.println("Le pedimos datos básicos:");
+                                datosUsuario= user.getUserData();
+                                datosHerido = user.unknownInjuredData(datosUsuario);
+
+                                /************GENERAR ALERTSENDER*********/
+
+
+                            } else {
+                                System.out.println("Se cancela aletra. Saliendo...");
+                            }
+
                         }
-                        else{
-                            System.out.println("DNI no encontrado en la base de + " +   //si no está el DNIen el Json se genera alerta por defecto
-                                    "datos. Se genera alerta por defecto");             //con los datos parciales de herido (que es usuario)
+
+                    } else {
+
+
+                        System.out.println("Escriba el DNI del herido con número y letra. Pulse cualquier otra tecla si no lo conoce.");
+                        input = sc.nextLine();
+                        if (ValidaEntrada.validaEntDNI(input)) {
+                            System.out.println("DNI con formato correcto.");
+                            input = input.toUpperCase();   //guardamos el DNI en mayusculas
+                            if (user.validateInjuredData(input)){
+                                System.out.println("DNI encontrado en BBDD. Recuperando datos...");
+                                datosHerido = user.retrieveInjuredData(input);
+                                datosUsuario= user.getUserData();
+                            }
+                            else{
+                                System.out.println("DNI no encontrado en la base de + " +   //si no está el DNIen el Json se genera alerta por defecto
+                                        "datos. Se genera alerta por defecto.");             //con los datos parciales de herido (que es usuario)
+                                System.out.println("Le pedimos datos básicos:");
+                                datosUsuario= user.getUserData();
+                                datosHerido = user.unknownInjuredData();
+                            }
+
+                            datosHerido = user.retrieveInjuredData(input);// Se recuperan datos del herido del json
+                            //sacar si se recuperan o no los datos
+
                             //recopilacion de datos del usuario: nombre, apellidos y tlf
                             System.out.println("Datos de usuario");
                             System.out.println("Introduzca sus datos para poder contactarle si es necesario:");
@@ -48,69 +105,33 @@ public class EmergencyEvent {
                             datosUsuario[1] = sc.nextLine();
                             System.out.println("Introduzca su teléfono");
                             datosUsuario[2] = sc.nextLine();
-                            datosHerido= user.unknownUserData(datosUsuario);
-                        }
-                    } else {
-                        //***revisar entrada rara aqui***///
 
-                        System.out.println("DNI con formato incorrecto o desconocido. ¿Generar alerta por defecto?S/N");
-                        if (ValidaEntrada.validaEntSN(input)) {
-                            input = "Desconocido";
-                            datosHerido = user.unknownUserData();
-                        } else {
-                            System.out.println("Se cancela aletra. Saliendo...");
-                        }
-
-                    }
-                    /********************************************************************************************************
-                     *              Si es el herido y no sabe su DNI se genera alerta por defecto
-                     */
-
-
-                    //datosHerido = user.getUserData(datosUsuario);
-                } else {
-
-
-                    System.out.println("Escriba el DNI del herido con número y letra. Pulse cualquier otra tecla si no lo conoce.");
-                    input = sc.nextLine();
-                    if (ValidaEntrada.validaEntDNI(input)) {
-                        System.out.println("DNI con formato correcto.");
-                        input = input.toUpperCase();   //guardamos el DNI en mayusculas
-                        datosHerido = user.retrieveUserData(input);// Se recuperan datos del herido del json
-                        //sacar si se recuperan o no los datos
-
-                        //recopilacion de datos del usuario: nombre, apellidos y tlf
-                        System.out.println("Datos de usuario");
-                        System.out.println("Introduzca sus datos para poder contactarle si es necesario:");
-                        System.out.println("Introduzca su nombre");
-                        datosUsuario[0] = sc.nextLine();
-                        System.out.println("Introduzca sus apellidos");
-                        datosUsuario[1] = sc.nextLine();
-                        System.out.println("Introduzca su teléfono");
-                        datosUsuario[2] = sc.nextLine();
-
-                        //crear método para mandar alerta
-
-                    }
-                    else{
-                        System.out.println("DNI con formato incorrecto o desconocido. ¿Generar alerta por defecto?S/N");
-                        if (ValidaEntrada.validaEntSN(input)) {
-                            input = "Desconocido";
-                            datosHerido = user.unknownUserData();
-                            System.out.println("Datos de usuario");
-                            System.out.println("Introduzca sus datos para poder contactarle si es necesario:");
-                            System.out.println("Introduzca su nombre");
-                            datosUsuario[0] = sc.nextLine();
-                            System.out.println("Introduzca sus apellidos");
-                            datosUsuario[1] = sc.nextLine();
-                            System.out.println("Introduzca su teléfono");
-                            datosUsuario[2] = sc.nextLine();
+                            //crear método para mandar alerta
 
                         } else {
-                            System.out.println("Se cancela aletra. Saliendo...");
-                        }
+                            System.out.println("DNI con formato incorrecto o desconocido. ¿Generar alerta por defecto?S/N");
+                            if (ValidaEntrada.validaEntSN(input)) {
+                                input = "Desconocido";
+                                datosHerido = user.unknownUserData();
+                                System.out.println("Datos de usuario");
+                                System.out.println("Introduzca sus datos para poder contactarle si es necesario:");
+                                System.out.println("Introduzca su nombre");
+                                datosUsuario[0] = sc.nextLine();
+                                System.out.println("Introduzca sus apellidos");
+                                datosUsuario[1] = sc.nextLine();
+                                System.out.println("Introduzca su teléfono");
+                                datosUsuario[2] = sc.nextLine();
 
+                            } else {
+                                System.out.println("Se cancela aletra. Saliendo...");
+                            }
+
+                        }
                     }
+                }
+                else{
+                    user.unknownUserData();
+
                 }
 
 

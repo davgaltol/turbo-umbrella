@@ -21,11 +21,11 @@ public class ValidaEntrada {
         boolean ent;
         String dni= "^\\d{8}[A-Z]$";
         if (entrada != null && entrada.toUpperCase().matches(dni)) {
-            System.out.println("Formato de DNI correcto");
+            System.out.println("Formato de DNI correcto.");
             ent = true;
         }
         else{
-            System.out.println("Formato de DNI incorrecto");
+            System.out.println("Formato de DNI incorrecto.");
             ent=false;
         }
         return ent;

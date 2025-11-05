@@ -5,8 +5,8 @@ import java.util.Scanner;
 //CLASE PARA OBTENER LOS DATOS DEL USUARIO Y PACIENTE
 
 public class UserData {
-    public String[] getUserData(){
-        String[] datosHerido=new String[7]; //nombre, apellidos, teléfono, edad, nom contacto, tlf contacto, info_médica
+    public String[] getInjuredData(){
+        String[] datosHerido=new String[8]; //nombre, apellidos, dni, teléfono, edad, nom contacto, tlf contacto, info_médica
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Ingrese el nombre del herido");
@@ -26,13 +26,13 @@ public class UserData {
 
         return datosHerido;
     }
-    public String[] getUserData(String[] datosUsuario){
-        String[] datosHerido=new String[7]; //nombre, apellidos, teléfono, edad, nom contacto, tlf contacto, info_médica
+    public String[] getInjuredData(String[] datosUsuario){
+        String[] datosHerido=new String[8]; //nombre, apellidos, dni, teléfono, edad, nom contacto, tlf contacto, info_médica
         Scanner sc = new Scanner(System.in);
 
         datosHerido[0]=datosUsuario[0];
         datosHerido[1]=datosUsuario[1];
-        datosHerido[2]=datosUsuario[2];
+        datosHerido[2]=datosUsuario[3];
 
         System.out.println("Introduzca edad");
         datosHerido[3]=sc.nextLine();
@@ -46,16 +46,29 @@ public class UserData {
         return datosHerido;
     }
 
+    public String[] getUserData() {
+        String[] datosUsuario = new String[3]; //nombre, apellidos, teléfono
+        Scanner sc = new Scanner(System.in);
 
-    //Recuperar del json los datos del herido sabiendo su DNI
-    public String[] retrieveUserData(String dni) {
-        String[] datosHerido=new String[7];
+        System.out.println("Introduzca sus datos para poder contactarle si es necesario:");
+        System.out.println("Introduzca su nombre");
+        datosUsuario[0] = sc.nextLine();
+        System.out.println("Introduzca sus apellidos");
+        datosUsuario[1] = sc.nextLine();
+        System.out.println("Introduzca su teléfono");
+        datosUsuario[2] = sc.nextLine();
+        return datosUsuario;
+    }
+
+    public String[] retrieveInjuredData(String dni) {
+        String[] datosHerido=new String[8];
 
         System.out.println("Recupera datos del herido del Json. COMPLETAR ESTE METODO");
+
         return datosHerido;
     }
 
-    public boolean validateUserData(String dni) {
+    public boolean validateInjuredData(String dni) {
         boolean isUserDataInJson=false;
 
         System.out.println("Verificar si el dni aparece en el json. COMPLETAR ESTE METODO");
@@ -64,19 +77,27 @@ public class UserData {
 
     //Crea una alerta genérica con herido desconocido
 
-    public String[] unknownUserData(){
-        String[] datosHerido=new String[7];
+    public String[] unknownInjuredData(){
+        String[] datosHerido=new String[8];
 
-        System.out.println("Genera alerta por defecto. COMPLETAR ESTE METODO");
+        System.out.println("Genera alerta por defecto sin paso de DNI. COMPLETAR ESTE METODO");
 
         return datosHerido;
     }
 
-    public String[] unknownUserData(String[] datosUsuario){
-        String[] datosHerido=new String[7];
+    public String[] unknownInjuredData(String[] datosRecibidos){
+        String[] datosHerido=new String[8];
 
-        System.out.println("Genera alerta por defecto. COMPLETAR ESTE METODO");
+        System.out.println("Genera alerta por defecto con paso de datos de usuario. COMPLETAR ESTE METODO");
 
         return datosHerido;
+    }
+
+    public String[] unknownUserData(){
+        String[] datosUsuario=new String[3];
+
+        System.out.println("Genera alerta por defecto sin paso de USUARIO. COMPLETAR ESTE METODO");
+
+        return datosUsuario;
     }
 }
