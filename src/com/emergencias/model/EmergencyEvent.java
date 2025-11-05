@@ -11,7 +11,7 @@ public class EmergencyEvent {
         String input, ubi;
         String[] datosHerido, datosUsuario;
         datosUsuario=new String[3]; //nombre, apellidos, telefono
-        datosHerido=new String[8];  //nombre, apellidos, teléfono, dni, edad, nom contacto, tlf contacto, info_médica
+        datosHerido=new String[8];  //nombre, apellidos, dni,  teléfono, edad, nom contacto, tlf contacto, info_médica
         Scanner sc = new Scanner(System.in);
 
 
@@ -82,45 +82,31 @@ public class EmergencyEvent {
                             input = input.toUpperCase();   //guardamos el DNI en mayusculas
                             if (user.validateInjuredData(input)){
                                 System.out.println("DNI encontrado en BBDD. Recuperando datos...");
-                                datosHerido = user.retrieveInjuredData(input);
-                                datosUsuario= user.getUserData();
+                                datosHerido = user.retrieveInjuredData(input);  // Se recuperan datos del herido del json
+                                datosUsuario= user.getUserData();   //Se toman los datos del usuario
+
+                                /************GENERAR ALERTSENDER*********/
+
                             }
                             else{
                                 System.out.println("DNI no encontrado en la base de + " +   //si no está el DNIen el Json se genera alerta por defecto
                                         "datos. Se genera alerta por defecto.");             //con los datos parciales de herido (que es usuario)
                                 System.out.println("Le pedimos datos básicos:");
-                                datosUsuario= user.getUserData();
-                                datosHerido = user.unknownInjuredData();
+                                datosUsuario= user.getUserData();   //Se toman los datos del usuario
+                                datosHerido = user.unknownInjuredData();    // Se generan datos del herido por defecto
+
+                                /************GENERAR ALERTSENDER*********/
+
                             }
-
-                            datosHerido = user.retrieveInjuredData(input);// Se recuperan datos del herido del json
-                            //sacar si se recuperan o no los datos
-
-                            //recopilacion de datos del usuario: nombre, apellidos y tlf
-                            System.out.println("Datos de usuario");
-                            System.out.println("Introduzca sus datos para poder contactarle si es necesario:");
-                            System.out.println("Introduzca su nombre");
-                            datosUsuario[0] = sc.nextLine();
-                            System.out.println("Introduzca sus apellidos");
-                            datosUsuario[1] = sc.nextLine();
-                            System.out.println("Introduzca su teléfono");
-                            datosUsuario[2] = sc.nextLine();
-
-                            //crear método para mandar alerta
-
                         } else {
                             System.out.println("DNI con formato incorrecto o desconocido. ¿Generar alerta por defecto?S/N");
                             if (ValidaEntrada.validaEntSN(input)) {
                                 input = "Desconocido";
-                                datosHerido = user.unknownUserData();
-                                System.out.println("Datos de usuario");
-                                System.out.println("Introduzca sus datos para poder contactarle si es necesario:");
-                                System.out.println("Introduzca su nombre");
-                                datosUsuario[0] = sc.nextLine();
-                                System.out.println("Introduzca sus apellidos");
-                                datosUsuario[1] = sc.nextLine();
-                                System.out.println("Introduzca su teléfono");
-                                datosUsuario[2] = sc.nextLine();
+                                datosUsuario= user.getUserData();   //Se toman los datos del usuario
+                                datosHerido = user.unknownInjuredData();    // Se generan datos del herido por defecto
+
+                                /************GENERAR ALERTSENDER*********/
+
 
                             } else {
                                 System.out.println("Se cancela aletra. Saliendo...");
@@ -130,26 +116,17 @@ public class EmergencyEvent {
                     }
                 }
                 else{
-                    user.unknownUserData();
+                    datosUsuario= user.unknownUserData();   // Se generan datos del usuario por defecto
+                    datosHerido = user.unknownInjuredData();    // Se generan datos del herido por defecto
+
+                    /************GENERAR ALERTSENDER*********/
+
+
 
                 }
 
 
-/*            System.out.println("Datos de usuario:");
-            System.out.println("Introduzca su nombre");
-            datosUsuario[0] = sc.nextLine();
-            System.out.println("Introduzca sus apellidos");
-            datosUsuario[1] = sc.nextLine();
-            System.out.println("Introduzca su teléfono");
-            datosUsuario[2] = sc.nextLine();
-            System.out.println("Es usted el herido?S/N");
-            input = sc.nextLine();
-            if (validaEntSN(input)) {
-                datosHerido = user.getUserData(datosUsuario);
-            } else {
-                datosHerido = user.getUserData();
-            }
-
+/*
 
             System.out.println("****************************************");
             System.out.println("Emergencia en " + ubi);
@@ -181,21 +158,5 @@ public class EmergencyEvent {
         System.out.println("Usted se encuentra en " + ubi);
         return ubi;
     }
-/*
-    private boolean validaEntSN(String entrada) { //Se valida entrada para evitar otro caracter
-        boolean ent;
-        while (!entrada.equalsIgnoreCase("S") && (!entrada.equalsIgnoreCase("N"))) {
-            System.out.println("Entrada incorrecta. Escriba S/N");
-            Scanner sc = new Scanner(System.in);
-            entrada = sc.nextLine();
-        }
-        if (entrada.equalsIgnoreCase("S")) {
-            ent = true;
-        } else {
-            ent = false;
-        }
-        return ent;
-    }
- */
 
 }

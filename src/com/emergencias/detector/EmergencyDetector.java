@@ -22,7 +22,7 @@ public class EmergencyDetector {
                 System.out.println("Hay una emergencia. Paso a toma de datos");
                 gravedad=validateSeverity();
 
-                return new EmergencyEvent(gravedad);
+                return new EmergencyEvent(gravedad); //valorar si da tiempo que no pregunte si no hay consciencia si es o no el herido
 
             }
 
