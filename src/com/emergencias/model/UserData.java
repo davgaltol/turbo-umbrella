@@ -46,4 +46,22 @@ public class UserData {
         return datosHerido;
     }
 
+
+    //Recuperar del json los datos del herido sabiendo su DNI
+    public String[] retrieveUserData(String dni) {
+        String[] datosHerido=new String[7];
+
+        System.out.println("COMPLETAR ESTE METODO");
+        return datosHerido;
+    }
+
+    //Crea una alerta genérica con herido desconocido
+
+    public String[] unknownUserData(){
+        String[] datosHerido=new String[7];
+
+        System.out.println("COMPLETAR ESTE METODO");
+
+        return datosHerido;
+    }
 }

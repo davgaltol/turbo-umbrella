@@ -14,29 +14,54 @@ public class EmergencyEvent {
         datosHerido=new String[7];  //nombre, apellidos, teléfono, edad, nom contacto, tlf contacto, info_médica
         Scanner sc = new Scanner(System.in);
 
-        if (gravedad.contains("leve")){
-            //herida leve y cierro programa
-            System.out.println(gravedad);
-            System.out.println("Cerrando aplicación");
-        }
-        else {
-            //Paso a obtener ubicación
-            ubi = getLocation();
 
-            //Paso a recuperar o tomar datos de usuario
-            System.out.println("¿Es usted el herido?S/N");
-            input=sc.nextLine();
-            if (validaEntSN(input)) {
-                System.out.println("Escriba su DNI con número y letra");
-                input=sc.nextLine();
-                if (validaEntDNI(input)){
-
-                }
-
-                //datosHerido = user.getUserData(datosUsuario);
+        try {
+            if (gravedad.contains("leve")) {
+                //herida leve y cierro programa
+                System.out.println(gravedad);
+                System.out.println("Cerrando aplicación");
             } else {
-                //datosHerido = user.getUserData();
-            }
+                //Paso a obtener ubicación
+                ubi = getLocation();
+
+                //Paso a recuperar o tomar datos de usuario
+                System.out.println("¿Es usted el herido?S/N");
+                input = sc.nextLine();
+                if (validaEntSN(input)) {
+                    System.out.println("Escriba su DNI con número y letra. Pulse cualquier otra tecla si no lo conoce.");
+                    input = sc.nextLine();
+                    if (ValidaEntrada.validaEntDNI(input)) {
+                        System.out.println("DNI con formato correcto.");
+                        input = input.toUpperCase();   //guardamos el DNI en mayusculas
+                        datosHerido = user.retrieveUserData(input);// Si es el herido y sabe su DNI se recuperan datos del Json
+                    } else {
+                        System.out.println("DNI con formato incorrecto o desconocido. ¿Generar alerta por defecto?S/N");
+                        if (ValidaEntrada.validaEntSN(input)) {
+                            input = "Desconocido";
+                            datosHerido = user.unknownUserData();
+                        } else {
+                            System.out.println("Se cancela aletra. Saliendo...");
+                        }
+
+                    }
+                    /********************************************************************************************************
+                     *              Si es el herido y no sabe su DNI se genera alerta por defecto
+                     */
+
+
+                    //datosHerido = user.getUserData(datosUsuario);
+                } else {
+                    //recopilacion de datos del usuario: nombre, apellidos y tlf
+
+                    System.out.println("Escriba el DNI del herido con número y letra. Pulse cualquier otra tecla si no lo conoce.");
+                    input = sc.nextLine();
+                    if (ValidaEntrada.validaEntDNI(input)) {
+                        System.out.println("DNI con formato correcto.");
+                        input = input.toUpperCase();   //guardamos el DNI en mayusculas
+                    }
+
+                    //datosHerido = user.getUserData();
+                }
 
 
 /*            System.out.println("Datos de usuario:");
@@ -70,6 +95,9 @@ public class EmergencyEvent {
             System.out.println("Información médica: " + datosHerido[6]);
 
 */
+            }
+        } catch (IllegalArgumentException e){
+            System.out.println("Error: parámetro Gravedad inválido. " + e.getMessage());
         }
     }
 
