@@ -35,6 +35,8 @@ public class EmergencyEvent {
                         input = input.toUpperCase();   //guardamos el DNI en mayusculas
                         datosHerido = user.retrieveUserData(input);// Si es el herido y sabe su DNI se recuperan datos del Json
                     } else {
+                        //***revisar entrada rara aqui***///
+
                         System.out.println("DNI con formato incorrecto o desconocido. ¿Generar alerta por defecto?S/N");
                         if (ValidaEntrada.validaEntSN(input)) {
                             input = "Desconocido";

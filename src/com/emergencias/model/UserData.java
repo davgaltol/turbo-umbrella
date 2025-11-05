@@ -51,7 +51,7 @@ public class UserData {
     public String[] retrieveUserData(String dni) {
         String[] datosHerido=new String[7];
 
-        System.out.println("COMPLETAR ESTE METODO");
+        System.out.println("Recupera del Json. COMPLETAR ESTE METODO");
         return datosHerido;
     }
 
@@ -60,7 +60,7 @@ public class UserData {
     public String[] unknownUserData(){
         String[] datosHerido=new String[7];
 
-        System.out.println("COMPLETAR ESTE METODO");
+        System.out.println("Genera alerta por defecto. COMPLETAR ESTE METODO");
 
         return datosHerido;
     }
