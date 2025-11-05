@@ -51,13 +51,28 @@ public class UserData {
     public String[] retrieveUserData(String dni) {
         String[] datosHerido=new String[7];
 
-        System.out.println("Recupera del Json. COMPLETAR ESTE METODO");
+        System.out.println("Recupera datos del herido del Json. COMPLETAR ESTE METODO");
         return datosHerido;
+    }
+
+    public boolean validateUserData(String dni) {
+        boolean isUserDataInJson=false;
+
+        System.out.println("Verificar si el dni aparece en el json. COMPLETAR ESTE METODO");
+        return isUserDataInJson;
     }
 
     //Crea una alerta genérica con herido desconocido
 
     public String[] unknownUserData(){
+        String[] datosHerido=new String[7];
+
+        System.out.println("Genera alerta por defecto. COMPLETAR ESTE METODO");
+
+        return datosHerido;
+    }
+
+    public String[] unknownUserData(String[] datosUsuario){
         String[] datosHerido=new String[7];
 
         System.out.println("Genera alerta por defecto. COMPLETAR ESTE METODO");

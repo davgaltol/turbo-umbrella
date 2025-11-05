@@ -27,13 +27,29 @@ public class EmergencyEvent {
                 //Paso a recuperar o tomar datos de usuario
                 System.out.println("¿Es usted el herido?S/N");
                 input = sc.nextLine();
-                if (validaEntSN(input)) {
+                if (ValidaEntrada.validaEntSN(input)) {
                     System.out.println("Escriba su DNI con número y letra. Pulse cualquier otra tecla si no lo conoce.");
                     input = sc.nextLine();
                     if (ValidaEntrada.validaEntDNI(input)) {
                         System.out.println("DNI con formato correcto.");
-                        input = input.toUpperCase();   //guardamos el DNI en mayusculas
-                        datosHerido = user.retrieveUserData(input);// Si es el herido y sabe su DNI se recuperan datos del Json
+                        input = input.toUpperCase();                            //guardamos el DNI en mayusculas
+                        if (user.validateUserData(input)) {                     //verificamos si el dni está en el Json
+                            datosHerido = user.retrieveUserData(input);         // si está en el json se recuperan datos del Json
+                        }
+                        else{
+                            System.out.println("DNI no encontrado en la base de + " +   //si no está el DNIen el Json se genera alerta por defecto
+                                    "datos. Se genera alerta por defecto");             //con los datos parciales de herido (que es usuario)
+                            //recopilacion de datos del usuario: nombre, apellidos y tlf
+                            System.out.println("Datos de usuario");
+                            System.out.println("Introduzca sus datos para poder contactarle si es necesario:");
+                            System.out.println("Introduzca su nombre");
+                            datosUsuario[0] = sc.nextLine();
+                            System.out.println("Introduzca sus apellidos");
+                            datosUsuario[1] = sc.nextLine();
+                            System.out.println("Introduzca su teléfono");
+                            datosUsuario[2] = sc.nextLine();
+                            datosHerido= user.unknownUserData(datosUsuario);
+                        }
                     } else {
                         //***revisar entrada rara aqui***///
 
@@ -53,16 +69,48 @@ public class EmergencyEvent {
 
                     //datosHerido = user.getUserData(datosUsuario);
                 } else {
-                    //recopilacion de datos del usuario: nombre, apellidos y tlf
+
 
                     System.out.println("Escriba el DNI del herido con número y letra. Pulse cualquier otra tecla si no lo conoce.");
                     input = sc.nextLine();
                     if (ValidaEntrada.validaEntDNI(input)) {
                         System.out.println("DNI con formato correcto.");
                         input = input.toUpperCase();   //guardamos el DNI en mayusculas
-                    }
+                        datosHerido = user.retrieveUserData(input);// Se recuperan datos del herido del json
+                        //sacar si se recuperan o no los datos
 
-                    //datosHerido = user.getUserData();
+                        //recopilacion de datos del usuario: nombre, apellidos y tlf
+                        System.out.println("Datos de usuario");
+                        System.out.println("Introduzca sus datos para poder contactarle si es necesario:");
+                        System.out.println("Introduzca su nombre");
+                        datosUsuario[0] = sc.nextLine();
+                        System.out.println("Introduzca sus apellidos");
+                        datosUsuario[1] = sc.nextLine();
+                        System.out.println("Introduzca su teléfono");
+                        datosUsuario[2] = sc.nextLine();
+
+                        //crear método para mandar alerta
+
+                    }
+                    else{
+                        System.out.println("DNI con formato incorrecto o desconocido. ¿Generar alerta por defecto?S/N");
+                        if (ValidaEntrada.validaEntSN(input)) {
+                            input = "Desconocido";
+                            datosHerido = user.unknownUserData();
+                            System.out.println("Datos de usuario");
+                            System.out.println("Introduzca sus datos para poder contactarle si es necesario:");
+                            System.out.println("Introduzca su nombre");
+                            datosUsuario[0] = sc.nextLine();
+                            System.out.println("Introduzca sus apellidos");
+                            datosUsuario[1] = sc.nextLine();
+                            System.out.println("Introduzca su teléfono");
+                            datosUsuario[2] = sc.nextLine();
+
+                        } else {
+                            System.out.println("Se cancela aletra. Saliendo...");
+                        }
+
+                    }
                 }
 
 
@@ -112,7 +160,7 @@ public class EmergencyEvent {
         System.out.println("Usted se encuentra en " + ubi);
         return ubi;
     }
-
+/*
     private boolean validaEntSN(String entrada) { //Se valida entrada para evitar otro caracter
         boolean ent;
         while (!entrada.equalsIgnoreCase("S") && (!entrada.equalsIgnoreCase("N"))) {
@@ -127,5 +175,6 @@ public class EmergencyEvent {
         }
         return ent;
     }
+ */
 
 }
