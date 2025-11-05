@@ -20,7 +20,7 @@ public class ValidaEntrada {
     public static boolean validaEntDNI(String entrada) { //Se valida entrada para verificar formato de DNI
         boolean ent;
         String dni= "^\\d{8}[A-Z]$";
-        if (dni != null && dni.toUpperCase().matches(dni)) {
+        if (entrada != null && entrada.toUpperCase().matches(dni)) {
             System.out.println("Formato de DNI correcto");
             ent = true;
         }
