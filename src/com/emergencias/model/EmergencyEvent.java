@@ -6,6 +6,10 @@ import com.emergencias.controller.ValidaEntrada;
 //CREA LA EMERGENCIA
 public class EmergencyEvent {
 
+    private String[] datosHerido;
+    private String[] datosUsuario;
+    private String ubicacion;
+
     public EmergencyEvent(String gravedad) {
         UserData user = new UserData();
         String input, ubi;
@@ -143,6 +147,9 @@ public class EmergencyEvent {
             System.out.println("Información médica: " + datosHerido[6]);
 
 */
+                this.datosHerido = datosHerido;
+                this.datosUsuario = datosUsuario;
+                this.ubicacion=ubi;
             }
         } catch (IllegalArgumentException e){
             System.out.println("Error: parámetro Gravedad inválido. " + e.getMessage());
@@ -157,6 +164,17 @@ public class EmergencyEvent {
         ubi = sc.nextLine();
         System.out.println("Usted se encuentra en " + ubi);
         return ubi;
+    }
+    public String[] getInjuredData() {
+        return this.datosHerido;
+    }
+
+    public String[] getUserData() {
+        return this.datosUsuario;
+    }
+    
+    public String ubicacion(){
+        return this.ubicacion;
     }
 
 }

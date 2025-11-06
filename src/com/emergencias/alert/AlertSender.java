@@ -4,20 +4,20 @@ import com.emergencias.model.EmergencyEvent;
 //ENVIO DE ALERTA Y ALMACENAMIENTO DE DATOS
 public class AlertSender {
 
-    private final String[] datosHerido;
-    private final String[] datosUsuario;
-    private final String gravedad;
+    public void sendAlert(EmergencyEvent event) {
 
-    public AlertSender(String[] datosHerido, String[] datosUsuario, String gravedad) {
-        this.datosHerido = datosHerido;
-        this.datosUsuario = datosUsuario;
-        this.gravedad=gravedad;
-    }
-    
-    public void sendAlert(EmergencyEvent event){
+        System.out.println("Enviar evento a 112. COMPLETAR ESTE MÉTODO");
+        // --- Recuperas los datos usando los getters del objeto 'event' ---
 
-            System.out.println("Enviar evento a 112. COMPLETAR ESTE MÉTODO");
-        
+        // 1. Recuperar la gravedad
+        String gravedad = event.getSeverity();
+        System.out.println("\n--- Datos de la Emergencia ---");
+        System.out.println(gravedad);
+
+        // 2. Recuperar los datos del HERIDO
+        String[] datosHerido = event.getInjuredData();
+
+        // 3. Recuperar los datos del USUARIO que alerta
+        String[] datosUsuario = event.getUserData();
     }
-    
 }
