@@ -6,32 +6,40 @@ public class AlertSender {
 
     public void sendAlert(EmergencyEvent event) {
 
-        System.out.println("Enviar evento a 112. COMPLETAR ESTE MÉTODO");
-        // --- Recuperas los datos usando los getters del objeto 'event' ---
+        try {
+            // Recuperar la gravedad
+            String gravedad = event.getSeverity();
 
-        // 1. Recuperar la gravedad
-        String gravedad = event.getSeverity();
-        System.out.println("\n--- Datos de la Emergencia ---");
-        System.out.println(gravedad);
+            // Recuperar los datos del HERIDO
+            String[] datosHerido = event.getInjuredData();
 
-        // 2. Recuperar los datos del HERIDO
-        String[] datosHerido = event.getInjuredData();
+            // Recuperar los datos del USUARIO que alerta
+            String[] datosUsuario = event.getUserData();
 
-        // 3. Recuperar los datos del USUARIO que alerta
-        String[] datosUsuario = event.getUserData();
+            // Recuperar ubicación
+            String ubicacion = event.getLocation();
 
-        if (datosUsuario != null) {
-            System.out.println("\n--- Datos del Usuario que alerta ---");
-            System.out.println("Nombre: " + datosUsuario[0]);
-            System.out.println("Teléfono: " + datosUsuario[1]);
-        }
-        if (datosHerido != null) {
-            System.out.println("\n--- Datos del Herido ---");
-            System.out.println("Nombre: " + datosHerido[0]);
-            System.out.println("Teléfono: " + datosHerido[1]);
-            if (datosHerido[2] != null && !datosHerido[2].isEmpty()) {
-                System.out.println("DNI: " + datosHerido[2]);
+            if (datosUsuario != null) {
+                System.out.println("\n--- Datos del Usuario que alerta ---");
+                System.out.println("Nombre: " + datosUsuario[0]);
+                System.out.println("Teléfono: " + datosUsuario[1]);
             }
+            if (datosHerido != null) {
+                System.out.println("\n--- Datos del Herido ---");
+                System.out.println("Nombre: " + datosHerido[0]);
+                System.out.println("Teléfono: " + datosHerido[1]);
+                if (datosHerido[2] != null && !datosHerido[2].isEmpty()) {
+                    System.out.println("DNI: " + datosHerido[2]);
+                }
+            }
+            if (ubicacion != null) {
+                System.out.println("\n--- Ubicación ---");
+                System.out.println("Ubicación: " + ubicacion);
+
+            }
+            System.out.println("Datos almacenados correctamente.");
+        }catch(NullPointerException e){
+            System.out.println("Error:no se asignan datos.");
         }
     }
 }

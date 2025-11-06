@@ -27,7 +27,7 @@ public class EmergencyEvent {
                 System.out.println("Cerrando aplicación");
             } else {
                 //Paso a obtener ubicación
-                ubi = getLocation();
+                ubi = getLocationFromAPI();
 
                 //Paso a recopilar datos
                 System.out.println("Sus datos pueden ser importantes para los servicios médicos. ");
@@ -96,7 +96,7 @@ public class EmergencyEvent {
 
                             }
                             else{
-                                System.out.println("DNI no encontrado en la base de + " +   //si no está el DNIen el Json se genera alerta por defecto
+                                System.out.println("DNI no encontrado en la base de " +   //si no está el DNIen el Json se genera alerta por defecto
                                         "datos. Se genera alerta por defecto.");             //con los datos parciales de herido (que es usuario)
                                 System.out.println("Le pedimos datos básicos:");
                                 datosUsuario= user.getUserData();   //Se toman los datos del usuario
@@ -107,6 +107,7 @@ public class EmergencyEvent {
                             }
                         } else {
                             System.out.println("DNI con formato incorrecto o desconocido. ¿Generar alerta por defecto?S/N");
+                            input=sc.nextLine();
                             if (ValidaEntrada.validaEntSN(input)) {
                                 input = "Desconocido";
                                 datosUsuario= user.getUserData();   //Se toman los datos del usuario
@@ -141,7 +142,7 @@ public class EmergencyEvent {
         }
     }
 
-    private String getLocation() {
+    private String getLocationFromAPI() {
         Scanner sc = new Scanner(System.in);
         String ubi;
         System.out.println("Obtención de ubicación");
@@ -158,8 +159,12 @@ public class EmergencyEvent {
         return this.datosUsuario;
     }
     
-    public String ubicacion(){
+    public String getLocation(){
         return this.ubicacion;
+    }
+
+    public String getSeverity(){
+        return this.gravedad;
     }
 
 }
