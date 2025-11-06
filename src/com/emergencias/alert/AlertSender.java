@@ -19,5 +19,19 @@ public class AlertSender {
 
         // 3. Recuperar los datos del USUARIO que alerta
         String[] datosUsuario = event.getUserData();
+
+        if (datosUsuario != null) {
+            System.out.println("\n--- Datos del Usuario que alerta ---");
+            System.out.println("Nombre: " + datosUsuario[0]);
+            System.out.println("Teléfono: " + datosUsuario[1]);
+        }
+        if (datosHerido != null) {
+            System.out.println("\n--- Datos del Herido ---");
+            System.out.println("Nombre: " + datosHerido[0]);
+            System.out.println("Teléfono: " + datosHerido[1]);
+            if (datosHerido[2] != null && !datosHerido[2].isEmpty()) {
+                System.out.println("DNI: " + datosHerido[2]);
+            }
+        }
     }
 }

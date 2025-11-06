@@ -9,6 +9,7 @@ public class EmergencyEvent {
     private String[] datosHerido;
     private String[] datosUsuario;
     private String ubicacion;
+    private String gravedad;
 
     public EmergencyEvent(String gravedad) {
         UserData user = new UserData();
@@ -27,6 +28,8 @@ public class EmergencyEvent {
             } else {
                 //Paso a obtener ubicación
                 ubi = getLocation();
+
+                //Paso a recopilar datos
                 System.out.println("Sus datos pueden ser importantes para los servicios médicos. ");
                 System.out.println("Desea que recopilemos unos datos antes del envío de la alerta?S/N");
                 input = sc.nextLine();
@@ -128,28 +131,10 @@ public class EmergencyEvent {
 
 
                 }
-
-
-/*
-
-            System.out.println("****************************************");
-            System.out.println("Emergencia en " + ubi);
-            System.out.println("****************************************");
-            System.out.println("Gravedad: " + gravedad);
-            System.out.println("Herido reportado por " + datosUsuario[0] + " " + datosUsuario[1] + " " + datosUsuario[2]);
-            System.out.println("Datos del herido:");
-            System.out.println("Nombre: " + datosHerido[0]);
-            System.out.println("Apellidos: " + datosHerido[1]);
-            System.out.println("Teléfono: " + datosHerido[2]);
-            System.out.println("Edad: " + datosHerido[3]);
-            System.out.println("Nombre de contacto de emergencia: " + datosHerido[4]);
-            System.out.println("Teléfono de contacto de emergencia: " + datosHerido[5]);
-            System.out.println("Información médica: " + datosHerido[6]);
-
-*/
                 this.datosHerido = datosHerido;
                 this.datosUsuario = datosUsuario;
                 this.ubicacion=ubi;
+                this.gravedad=gravedad;
             }
         } catch (IllegalArgumentException e){
             System.out.println("Error: parámetro Gravedad inválido. " + e.getMessage());
