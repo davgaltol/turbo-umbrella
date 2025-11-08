@@ -10,9 +10,12 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-//CLASE PARA OBTENER LOS DATOS DEL HERIDO CUANDO NO ES EL USUARIO A MANO
+
 
 public class UserData {
+
+    //CLASE PARA OBTENER LOS DATOS DEL HERIDO CUANDO NO ES EL USUARIO A MANO
+    // CREADA INICIALMENTE ANTES DE IMPLEMENTAR PASO DESDE JSON. EN DESUSO
     public String[] getInjuredData(){
         String[] datosHerido=new String[8]; //nombre, apellidos, dni, teléfono, edad, nom contacto, tlf contacto, info_médica
         Scanner sc = new Scanner(System.in);
@@ -35,8 +38,8 @@ public class UserData {
         return datosHerido;
     }
 
-    //CLASE PARA OBTENER LOS DATOS DEL HERIDO CUANDO ES USUARIO A MANO (SOBRECARGADA)
-
+    //CLASE PARA OBTENER LOS DATOS DEL HERIDO CUANDO ES USUARIO A MANO (SOBRECARGADA). EN DESUSO
+    // CREADA INICIALMENTE ANTES DE IMPLEMENTAR PASO DESDE JSON. EN DESUSO
     public String[] getInjuredData(String[] datosUsuario){
         String[] datosHerido=new String[8]; //nombre, apellidos, dni, teléfono, edad, nom contacto, tlf contacto, info_médica
         Scanner sc = new Scanner(System.in);

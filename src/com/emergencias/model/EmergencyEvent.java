@@ -56,8 +56,6 @@ public class EmergencyEvent {
                                 datosUsuario[1] = datosHerido[1];
                                 datosUsuario[2] = datosHerido[3];
 
-                                /************GENERAR ALERTSENDER*********/
-
                             } else {
                                 System.out.println("DNI no encontrado en la base de " +   //si no está el DNIen el Json se genera alerta por defecto
                                         "datos. Se genera alerta por defecto.");             //con los datos parciales de herido (que es usuario)
@@ -65,8 +63,6 @@ public class EmergencyEvent {
                                 datosUsuario= user.getUserData();
                                 datosHerido = user.unknownInjuredData(datosUsuario);         //Se genera herido por defecto pasando el usuario
                                 datosHerido[2] = input;                                      //Se añade DNI facilitado
-
-                                /************GENERAR ALERTSENDER*********/
 
                             }
                         } else {
@@ -77,9 +73,6 @@ public class EmergencyEvent {
                                 System.out.println("Le pedimos datos básicos:");
                                 datosUsuario= user.getUserData();
                                 datosHerido = user.unknownInjuredData(datosUsuario);
-
-                                /************GENERAR ALERTSENDER*********/
-
 
                             } else {
                                 System.out.println("Se cancela aletra. Saliendo...");
@@ -100,8 +93,6 @@ public class EmergencyEvent {
                                 System.out.println("DNI encontrado en BBDD. Recuperando datos...");
                                 datosUsuario= user.getUserData();   //Se toman los datos del usuario
 
-                                /************GENERAR ALERTSENDER*********/
-
                             }
                             else{
                                 System.out.println("Se genera alerta por defecto.");    //si no está el DNIen el Json se genera alerta por defecto
@@ -109,8 +100,6 @@ public class EmergencyEvent {
                                 System.out.println("Le pedimos datos básicos:");
                                 datosUsuario= user.getUserData();   //Se toman los datos del usuario
                                 datosHerido = user.unknownInjuredData();    // Se generan datos del herido por defecto
-
-                                /************GENERAR ALERTSENDER*********/
 
                             }
                         } else {
@@ -120,9 +109,6 @@ public class EmergencyEvent {
                                 input = "Desconocido";
                                 datosUsuario= user.getUserData();   //Se toman los datos del usuario
                                 datosHerido = user.unknownInjuredData();    // Se generan datos del herido por defecto
-
-                                /************GENERAR ALERTSENDER*********/
-
 
                             } else {
                                 System.out.println("Se cancela aletra. Saliendo...");
@@ -134,10 +120,6 @@ public class EmergencyEvent {
                 else{
                     datosUsuario= user.unknownUserData();   // Se generan datos del usuario por defecto
                     datosHerido = user.unknownInjuredData();    // Se generan datos del herido por defecto
-
-                    /************GENERAR ALERTSENDER*********/
-
-
 
                 }
 
@@ -154,6 +136,8 @@ public class EmergencyEvent {
             System.out.println("Error: parámetro Gravedad inválido. " + e.getMessage());
         }
     }
+
+    //GETTERS. Hay métodos sin uso pero pueden usarse a futuro. Se dejan implementados.
 
     public String getTimestamp() {
         return timestamp; }

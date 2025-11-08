@@ -62,9 +62,9 @@ public class AlertSender {
             try (FileWriter writer = new FileWriter(ALERTS_FILE_PATH)) {
                 // Convertimos la lista completa (con el nuevo evento) a un String JSON
                 gson.toJson(alertList, writer);
-                System.out.println("***************************************************");
-                System.out.println("¡Alerta guardada correctamente en 'alertas.json'!");
-                System.out.println("***************************************************");
+                System.out.println("******************************************************");
+                System.out.println("***¡Alerta guardada correctamente en 'alertas.json'***");
+                System.out.println("******************************************************");
 
             } catch (IOException e) {
                 System.err.println("Error: No se pudo escribir en el fichero 'alertas.json'.");
