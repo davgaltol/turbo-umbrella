@@ -18,5 +18,45 @@
     ],
     "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
     "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
+  },
+  {
+    "timestamp": "2025-11-08 19:21:34",
+    "datosHerido": [
+      "Desconocido",
+      "Desconocido",
+      "Desconocido",
+      "Desconocido",
+      "Desconocido",
+      "Desconocido",
+      "Desconocido",
+      "Desconocido"
+    ],
+    "datosUsuario": [
+      "Desconocido",
+      "Desconocido",
+      "Desconocido"
+    ],
+    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
+  },
+  {
+    "timestamp": "2025-11-08 19:46:25",
+    "datosHerido": [
+      "Desconocido",
+      "Desconocido",
+      "Desconocido",
+      "Desconocido",
+      "Desconocido",
+      "Desconocido",
+      "Desconocido",
+      "Desconocido"
+    ],
+    "datosUsuario": [
+      "david",
+      "galante",
+      "6231254"
+    ],
+    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nCod01. Nivel de consciencia baja/inestable/inconsciente\n"
   }
 ]

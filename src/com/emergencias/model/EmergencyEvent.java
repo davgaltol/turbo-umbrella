@@ -20,13 +20,13 @@ public class EmergencyEvent {
         Location location= new Location();
         String[] datosHerido, datosUsuario;
         datosUsuario=new String[3]; //nombre, apellidos, telefono
-        datosHerido=new String[8];  //nombre, apellidos, dni,  teléfono, edad, nom contacto, tlf contacto, info_médica
+        datosHerido=new String[8];  //nombre, apellidos, dni, teléfono, edad, nom contacto, tlf contacto, info médica
         Scanner sc = new Scanner(System.in);
 
 
         try {
             if (gravedad.contains("leve")) {
-                //herida leve y no sigo programa
+                //herida leve y no se sigue ejecutando método.
                 System.out.println(gravedad);
             } else {
                 //Paso a obtener ubicación
@@ -38,8 +38,12 @@ public class EmergencyEvent {
                 input = sc.nextLine();
                 if (ValidaEntrada.validaEntSN(input)) {                             //si es no urgencia extrema se pasa a formularios. Si no se manda ubicación y herido genérico
                     //Paso a recuperar o tomar datos de usuario
-                    System.out.println("¿Es usted el herido?S/N");
-                    input = sc.nextLine();
+                    if (gravedad.contains("Cod01")){
+                        input="n";                                      //si está inconsciente no tiene sentido preguntar si es el herido
+                    }else {
+                        System.out.println("¿Es usted el herido?S/N");
+                        input = sc.nextLine();
+                    }
                     if (ValidaEntrada.validaEntSN(input)) {
                         System.out.println("Escriba su DNI con número y letra. Pulse cualquier otra tecla si no lo conoce.");
                         input = sc.nextLine();

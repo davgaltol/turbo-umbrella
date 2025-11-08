@@ -13,14 +13,17 @@ public class EmergencyDetector {
         String input, gravedad;
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.println("Escribe 'E' si hay una emergencia o 'Q' para salir");
+            System.out.println("***************************************************");
+            System.out.println("***BIENVENIDO AL SISTEMA DE ALERTA DE EMERGENCIA***");
+            System.out.println("***************************************************");
+            System.out.println("Escriba la letra 'E' si hay una emergencia o 'Q' para salir");
             input = sc.nextLine();
             if (input.equalsIgnoreCase("Q")) {
-                System.out.println("No hay una emergencia. Saliendo...");
+                System.out.println("Nos indica que no hay una emergencia. Saliendo...");
                 return null;
             }
             if (input.equalsIgnoreCase("E")) {
-                System.out.println("Hay una emergencia. Paso a toma de datos");
+                System.out.println("Nos indica que hay una emergencia. Pasando a toma de datos...");
                 gravedad=validateSeverity();
 
                 return new EmergencyEvent(gravedad); //valorar si da tiempo que no pregunte si no hay consciencia si es o no el herido
@@ -42,25 +45,26 @@ public class EmergencyDetector {
         String input;
         String gravedad = "Problema:\n";
 
-        System.out.println("Obtención de validación de gravedad ");
-
+        System.out.println("***************************************************");
+        System.out.println("********SISTEMA DE VERIFICACIÓN DE GRAVEDAD********");
+        System.out.println("***************************************************");
         System.out.println("¿Está inconsciente el herido? S/N");
         input = sc.nextLine();
         if (ValidaEntrada.validaEntSN(input)) {
             pCons = true;
-            gravedad=gravedad + "Nivel de consciencia baja/inestable/inconsciente\n";
+            gravedad=gravedad + "Cod01. Nivel de consciencia baja/inestable/inconsciente\n";
         }
         System.out.println("¿Tiene problemas para respirar o vías obstruidas? S/N");
         input = sc.nextLine();
         if (ValidaEntrada.validaEntSN(input)) {
             pResp = true;
-            gravedad= gravedad + "Fallo respiratorio/ Vías obstruidas\n";
+            gravedad= gravedad + "Cod02. Fallo respiratorio/ Vías obstruidas\n";
         }
         System.out.println("¿Sangra abundantemente? S/N");
         input = sc.nextLine();
         if (ValidaEntrada.validaEntSN(input)) {
             pSang = true;
-            gravedad= gravedad + "Sangrado abundante\n";
+            gravedad= gravedad + "Cod03. Sangrado abundante\n";
         }
         System.out.println("¿Ha sufrido un golpe? S/N");
         input = sc.nextLine();
@@ -70,7 +74,7 @@ public class EmergencyDetector {
             try {
                 if (Integer.parseInt(input) > 3) {
                     pGolp = true;
-                    gravedad = gravedad + "Golpe grave de intensidad " + input + "\n";
+                    gravedad = gravedad + "Cod04. Golpe grave de intensidad " + input + "\n";
                 }
             }catch (NumberFormatException e) {
                 System.out.println("Error: número no válido. Entrada por defecto a 1");
