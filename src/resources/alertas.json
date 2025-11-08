@@ -1,42 +1,22 @@
 [
   {
-    "timestamp": "2025-11-08 17:06:19",
+    "timestamp": "2025-11-08 17:10:59",
     "datosHerido": [
-      "Desconocido",
-      "Desconocido",
-      "Desconocido",
-      "Desconocido",
-      "Desconocido",
-      "Desconocido",
-      "Desconocido",
-      "Desconocido"
+      "Miguel",
+      "Sánchez López",
+      "55555555E",
+      "688999000",
+      "62",
+      "Elena Gómez (Hermana)",
+      "699000111",
+      "Hipercolesterolemia"
     ],
     "datosUsuario": [
-      "dav",
-      "gal",
-      "213"
+      "David",
+      "Galante",
+      "669876543"
     ],
     "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
-    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\nFallo respiratorio/ Vías obstruidas\nSangrado abundante\n"
-  },
-  {
-    "timestamp": "2025-11-08 17:07:02",
-    "datosHerido": [
-      "",
-      "",
-      null,
-      "",
-      null,
-      null,
-      null,
-      null
-    ],
-    "datosUsuario": [
-      "",
-      "",
-      ""
-    ],
-    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
-    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\nFallo respiratorio/ Vías obstruidas\n"
+    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
   }
 ]
