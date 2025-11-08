@@ -127,7 +127,10 @@ public class UserData {
     public String[] unknownInjuredData(){
         String[] datosHerido=new String[8];
 
-        System.out.println("Genera alerta por defecto sin paso de DNI. COMPLETAR ESTE METODO");
+        for (int i=0;i<8;i++){
+            datosHerido[i]="Desconocido";
+        }
+        System.out.println("Generada alerta por defecto sin paso de DNI.");
 
         return datosHerido;
     }
@@ -137,14 +140,21 @@ public class UserData {
         datosHerido[0]=datosRecibidos[0];
         datosHerido[1]=datosRecibidos[1];
         datosHerido[3]=datosRecibidos[2];
+        datosHerido[2]="Desconocido";
+        for (int i=4;i<8;i++){
+            datosHerido[i]="Desconocido";
+        }
+
 
         return datosHerido;
     }
 
     public String[] unknownUserData(){
         String[] datosUsuario=new String[3];
-
-        System.out.println("Genera alerta por defecto sin paso de USUARIO. COMPLETAR ESTE METODO");
+        for (int i=0;i<3;i++){
+            datosUsuario[i]="Desconocido";
+        }
+        System.out.println("Generada alerta por defecto sin datos de usuario.");
 
         return datosUsuario;
     }

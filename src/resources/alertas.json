@@ -1,181 +1,42 @@
 [
   {
+    "timestamp": "2025-11-08 17:06:19",
     "datosHerido": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "datosUsuario": [
-      "dggt",
-      "fdd",
-      "123"
-    ],
-    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
-    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
-  },
-  {
-    "timestamp": "2025-11-08 15:12:07",
-    "datosHerido": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "datosUsuario": [
-      null,
-      null,
-      null
-    ],
-    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
-    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
-  },
-  {
-    "timestamp": "2025-11-08 15:59:11",
-    "datosHerido": [
-      "Juan",
-      "Pérez Gómez",
-      "11111111A",
-      "600111222",
-      "45",
-      "María López (Esposa)",
-      "611222333",
-      "Alergia al polen, Hipertensión"
-    ],
-    "datosUsuario": [
-      "Juan",
-      "Pérez Gómez",
-      "600111222"
-    ],
-    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
-    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\nFallo respiratorio/ Vías obstruidas\nSangrado abundante\nGolpe grave de intensidad 4\n"
-  },
-  {
-    "timestamp": "2025-11-08 16:06:12",
-    "datosHerido": [
-      null,
-      null,
-      "11111112A",
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "datosUsuario": [
-      "david",
-      "galante",
-      "123456"
-    ],
-    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
-    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
-  },
-  {
-    "timestamp": "2025-11-08 16:13:01",
-    "datosHerido": [
-      "david",
-      "galante",
-      "12111111S",
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "datosUsuario": [
-      "david",
-      "galante",
-      "123456789"
-    ],
-    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
-    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
-  },
-  {
-    "timestamp": "2025-11-08 16:14:38",
-    "datosHerido": [
-      "david",
-      "galante",
-      "12345678A",
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "datosUsuario": [
-      "david",
-      "galante",
-      "12345678"
-    ],
-    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
-    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
-  },
-  {
-    "timestamp": "2025-11-08 16:16:02",
-    "datosHerido": [
-      "a",
-      "a",
-      "12345678A",
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "datosUsuario": [
-      "a",
-      "a",
-      "123"
-    ],
-    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
-    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
-  },
-  {
-    "timestamp": "2025-11-08 16:16:55",
-    "datosHerido": [
-      "a",
-      "s",
-      "12345678A",
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "datosUsuario": [
-      "a",
-      "s",
-      "d"
-    ],
-    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
-    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
-  },
-  {
-    "timestamp": "2025-11-08 16:24:32",
-    "datosHerido": [
-      "dav",
-      "gal",
-      "11111112A",
-      "12345678",
-      null,
-      null,
-      null,
-      null
+      "Desconocido",
+      "Desconocido",
+      "Desconocido",
+      "Desconocido",
+      "Desconocido",
+      "Desconocido",
+      "Desconocido",
+      "Desconocido"
     ],
     "datosUsuario": [
       "dav",
       "gal",
-      "12345678"
+      "213"
     ],
     "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
-    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
+    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\nFallo respiratorio/ Vías obstruidas\nSangrado abundante\n"
+  },
+  {
+    "timestamp": "2025-11-08 17:07:02",
+    "datosHerido": [
+      "",
+      "",
+      null,
+      "",
+      null,
+      null,
+      null,
+      null
+    ],
+    "datosUsuario": [
+      "",
+      "",
+      ""
+    ],
+    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\nFallo respiratorio/ Vías obstruidas\n"
   }
 ]

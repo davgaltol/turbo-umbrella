@@ -26,9 +26,8 @@ public class EmergencyEvent {
 
         try {
             if (gravedad.contains("leve")) {
-                //herida leve y cierro programa
+                //herida leve y no sigo programa
                 System.out.println(gravedad);
-                System.out.println("Cerrando aplicación");
             } else {
                 //Paso a obtener ubicación
                 ubi = location.getLocationFromAPI();
@@ -93,7 +92,7 @@ public class EmergencyEvent {
                             System.out.println("DNI con formato correcto.");
                             input = input.toUpperCase();   //guardamos el DNI en mayusculas
                                 datosHerido = user.retrieveInjuredData(input);  // Se recuperan datos del herido del json
-                            if (datosHerido[2] != null) {
+                            if (datosHerido != null) {
                                 System.out.println("DNI encontrado en BBDD. Recuperando datos...");
                                 datosUsuario= user.getUserData();   //Se toman los datos del usuario
 
@@ -101,8 +100,8 @@ public class EmergencyEvent {
 
                             }
                             else{
-                                System.out.println("DNI no encontrado en la base de " +   //si no está el DNIen el Json se genera alerta por defecto
-                                        "datos. Se genera alerta por defecto.");             //con los datos parciales de herido (que es usuario)
+                                System.out.println("Se genera alerta por defecto.");    //si no está el DNIen el Json se genera alerta por defecto
+                                                                                        //con los datos parciales de herido (que es usuario)
                                 System.out.println("Le pedimos datos básicos:");
                                 datosUsuario= user.getUserData();   //Se toman los datos del usuario
                                 datosHerido = user.unknownInjuredData();    // Se generan datos del herido por defecto

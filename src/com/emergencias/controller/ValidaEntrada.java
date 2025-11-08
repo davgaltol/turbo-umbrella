@@ -30,5 +30,4 @@ public class ValidaEntrada {
         }
         return ent;
     }
-
 }
