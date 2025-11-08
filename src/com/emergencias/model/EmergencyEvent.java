@@ -1,7 +1,9 @@
 package com.emergencias.model;
 
 import java.util.Scanner;
-import com.emergencias.controller.ValidaEntrada;
+import com.emergencias.controller.*;
+
+import com.emergencias.controller.Location;
 
 //CREA LA EMERGENCIA
 public class EmergencyEvent {
@@ -144,11 +146,16 @@ public class EmergencyEvent {
 
     private String getLocationFromAPI() {
         Scanner sc = new Scanner(System.in);
-        String ubi;
-        System.out.println("Obtención de ubicación");
-        System.out.println("Introduzca su ubicación");           //Crear método para obtener ubicación el lugar de insertar manualmente
-        ubi = sc.nextLine();
-        System.out.println("Usted se encuentra en " + ubi);
+        String ubi="Desconocida";
+        Location location = new Location();
+
+        //System.out.println("Obtención de ubicación");
+        //System.out.println("Introduzca su ubicación");           //Crear método para obtener ubicación el lugar de insertar manualmente
+        //ubi = sc.nextLine();
+        //System.out.println("Usted se encuentra en " + ubi);
+        ubi=location.findLocation();
+
+        System.out.println("Ubicación: " + ubi);
         return ubi;
     }
     public String[] getInjuredData() {
