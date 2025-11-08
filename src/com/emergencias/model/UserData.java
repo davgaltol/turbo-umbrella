@@ -2,7 +2,7 @@ package com.emergencias.model;
 
 import java.util.Scanner;
 
-//CLASE PARA OBTENER LOS DATOS DEL USUARIO Y PACIENTE
+//CLASE PARA OBTENER LOS DATOS DEL HERIDO CUANDO NO ES EL USUARIO A MANO
 
 public class UserData {
     public String[] getInjuredData(){
@@ -26,6 +26,9 @@ public class UserData {
 
         return datosHerido;
     }
+
+    //CLASE PARA OBTENER LOS DATOS DEL HERIDO CUANDO ES USUARIO A MANO (SOBRECARGADA)
+
     public String[] getInjuredData(String[] datosUsuario){
         String[] datosHerido=new String[8]; //nombre, apellidos, dni, teléfono, edad, nom contacto, tlf contacto, info_médica
         Scanner sc = new Scanner(System.in);
@@ -45,6 +48,8 @@ public class UserData {
 
         return datosHerido;
     }
+
+    //CLASE PARA OBTENER LOS DATOS DEL USUARIO
 
     public String[] getUserData() {
         String[] datosUsuario = new String[3]; //nombre, apellidos, teléfono
