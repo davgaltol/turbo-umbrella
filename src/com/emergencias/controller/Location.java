@@ -8,7 +8,6 @@ import java.time.Duration;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.emergencias.model.LocationData;
-import com.emergencias.controller.Location;
 
 
 public class Location {
@@ -94,7 +93,6 @@ public class Location {
             return "Ubicación desconocida (error general)";
         }
 
-        //   System.out.println("Ubicación: " + ubi);
-        //return ubi;
+
     }
 }

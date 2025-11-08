@@ -162,5 +162,9 @@ public class EmergencyEvent {
     public String getSeverity(){
         return this.gravedad;
     }
-
+    public String getLocation(){
+        Location location=new Location();
+        this.ubicacion=location.getLocationFromAPI();
+        return this.ubicacion;
+    }
 }

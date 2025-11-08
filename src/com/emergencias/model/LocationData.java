@@ -2,18 +2,18 @@ package com.emergencias.model;
 
 public class LocationData {
     // Los nombres de las variables DEBEN ser idénticos a las claves del JSON
-    private double latitude;
-    private double longitude;
+    private double lat;
+    private double lon;
     private String city;
     private String country;
 
     // --- Getters para poder acceder a los valores ---
     public double getLatitude() {
-        return latitude;
+        return lat;
     }
 
     public double getLongitude() {
-        return longitude;
+        return lon;
     }
 
     public String getCity() {
@@ -26,17 +26,17 @@ public class LocationData {
 
     // --- Un método útil para mostrar la información de forma legible ---
     public String getFormattedLocation() {
-        if (city != null && !city.isEmpty()) {
-            return city + ", " + country;
+        if (city != null && !city.isEmpty() && lat != 0 && lon != 0) {
+            return city + ", " + country + ". Coordenadas: " + lat + ", " + lon;
         }
-        return "Coordenadas: " + latitude + ", " + longitude;
+        return "Coordenadas: " + lat + ", " + lon;
     }
 
     @Override
     public String toString() {
         return "LocationData{" +
-                "latitude=" + latitude +
-                ", longitude=" + longitude +
+                "latitude=" + lat +
+                ", longitude=" + lon +
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
                 '}';
