@@ -16,6 +16,7 @@ public class EmergencyEvent {
     public EmergencyEvent(String gravedad) {
         UserData user = new UserData();
         String input, ubi;
+        Location location= new Location();
         String[] datosHerido, datosUsuario;
         datosUsuario=new String[3]; //nombre, apellidos, telefono
         datosHerido=new String[8];  //nombre, apellidos, dni,  teléfono, edad, nom contacto, tlf contacto, info_médica
@@ -29,7 +30,7 @@ public class EmergencyEvent {
                 System.out.println("Cerrando aplicación");
             } else {
                 //Paso a obtener ubicación
-                ubi = getLocationFromAPI();
+                ubi = location.getLocationFromAPI();
 
                 //Paso a recopilar datos
                 System.out.println("Sus datos pueden ser importantes para los servicios médicos. ");
@@ -144,20 +145,7 @@ public class EmergencyEvent {
         }
     }
 
-    private String getLocationFromAPI() {
-        Scanner sc = new Scanner(System.in);
-        String ubi="Desconocida";
-        Location location = new Location();
 
-        //System.out.println("Obtención de ubicación");
-        //System.out.println("Introduzca su ubicación");           //Crear método para obtener ubicación el lugar de insertar manualmente
-        //ubi = sc.nextLine();
-        //System.out.println("Usted se encuentra en " + ubi);
-        ubi=location.findLocation();
-
-        System.out.println("Ubicación: " + ubi);
-        return ubi;
-    }
     public String[] getInjuredData() {
         return this.datosHerido;
     }
@@ -166,9 +154,10 @@ public class EmergencyEvent {
         return this.datosUsuario;
     }
     
-    public String getLocation(){
+    /*public String getLocation(){
         return this.ubicacion;
     }
+    */
 
     public String getSeverity(){
         return this.gravedad;

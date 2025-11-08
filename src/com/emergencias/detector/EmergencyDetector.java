@@ -1,5 +1,6 @@
 package com.emergencias.detector;
 
+import com.emergencias.controller.Location;
 import com.emergencias.controller.ValidaEntrada;
 import com.emergencias.model.EmergencyEvent;
 
@@ -84,4 +85,5 @@ public class EmergencyDetector {
         return gravedad;
 
     }
+
 }
