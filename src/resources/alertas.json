@@ -17,5 +17,45 @@
     ],
     "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
     "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
+  },
+  {
+    "timestamp": "2025-11-08 15:12:07",
+    "datosHerido": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "datosUsuario": [
+      null,
+      null,
+      null
+    ],
+    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
+  },
+  {
+    "timestamp": "2025-11-08 15:59:11",
+    "datosHerido": [
+      "Juan",
+      "Pérez Gómez",
+      "11111111A",
+      "600111222",
+      "45",
+      "María López (Esposa)",
+      "611222333",
+      "Alergia al polen, Hipertensión"
+    ],
+    "datosUsuario": [
+      "Juan",
+      "Pérez Gómez",
+      "600111222"
+    ],
+    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\nFallo respiratorio/ Vías obstruidas\nSangrado abundante\nGolpe grave de intensidad 4\n"
   }
 ]

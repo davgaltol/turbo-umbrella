@@ -81,7 +81,6 @@ public class EmergencyDetector {
             gravedad="Lesion leve que no requiere asistencia inmediata. Acuda a su centro de salud.";
         }
 
-        //System.out.println(gravedad);
         return gravedad;
 
     }

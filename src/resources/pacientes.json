@@ -1,13 +1,13 @@
-[
+﻿[
   {
     "nombre": "Juan",
     "apellidos": "Pérez Gómez",
-    "DNI": "11111111A",
+    "dni": "11111111A",
     "telefono": "600111222",
     "edad": 45,
-    "persona_de_contacto": "María López (Esposa)",
-    "telefono_del_contacto": "611222333",
-    "alergias_o_condiciones": [
+    "personaContacto": "María López (Esposa)",
+    "telefonoContacto": "611222333",
+    "datosMedicos": [
       "Alergia al polen",
       "Hipertensión"
     ]
@@ -15,12 +15,12 @@
   {
     "nombre": "Ana",
     "apellidos": "Martínez Sánchez",
-    "DNI": "22222222B",
+    "dni": "22222222B",
     "telefono": "622333444",
     "edad": 29,
-    "persona_de_contacto": "Carlos Martínez (Padre)",
-    "telefono_del_contacto": "633444555",
-    "alergias_o_condiciones": [
+    "personaContacto": "Carlos Martínez (Padre)",
+    "telefonoContacto": "633444555",
+    "datosMedicos": [
       "Alergia a la penicilina",
       "Asma"
     ]
@@ -28,22 +28,22 @@
   {
     "nombre": "Carlos",
     "apellidos": "García Fernández",
-    "DNI": "33333333C",
+    "dni": "33333333C",
     "telefono": "644555666",
     "edad": 53,
-    "persona_de_contacto": "Laura Ruiz (Hija)",
-    "telefono_del_contacto": "655666777",
-    "alergias_o_condiciones": []
+    "personaContacto": "Laura Ruiz (Hija)",
+    "telefonoContacto": "655666777",
+    "datosMedicos": []
   },
   {
     "nombre": "Lucía",
     "apellidos": "Rodríguez Jiménez",
-    "DNI": "44444444D",
+    "dni": "44444444D",
     "telefono": "666777888",
     "edad": 34,
-    "persona_de_contacto": "David Alonso (Marido)",
-    "telefono_del_contacto": "677888999",
-    "alergias_o_condiciones": [
+    "personaContacto": "David Alonso (Marido)",
+    "telefonoContacto": "677888999",
+    "datosMedicos": [
       "Alergia a los frutos secos",
       "Diabetes Tipo 1"
     ]
@@ -51,58 +51,58 @@
   {
     "nombre": "Miguel",
     "apellidos": "Sánchez López",
-    "DNI": "55555555E",
+    "dni": "55555555E",
     "telefono": "688999000",
     "edad": 62,
-    "persona_de_contacto": "Elena Gómez (Hermana)",
-    "telefono_del_contacto": "699000111",
-    "alergias_o_condiciones": [
+    "personaContacto": "Elena Gómez (Hermana)",
+    "telefonoContacto": "699000111",
+    "datosMedicos": [
       "Hipercolesterolemia"
     ]
   },
   {
     "nombre": "Sara",
     "apellidos": "Gómez Ruiz",
-    "DNI": "66666666F",
+    "dni": "66666666F",
     "telefono": "711222333",
     "edad": 22,
-    "persona_de_contacto": "Juan Pérez (Padre)",
-    "telefono_del_contacto": "722333444",
-    "alergias_o_condiciones": [
+    "personaContacto": "Juan Pérez (Padre)",
+    "telefonoContacto": "722333444",
+    "datosMedicos": [
       "Alergia al marisco"
     ]
   },
   {
     "nombre": "David",
     "apellidos": "Fernández Moreno",
-    "DNI": "77777777G",
+    "dni": "77777777G",
     "telefono": "733444555",
     "edad": 41,
-    "persona_de_contacto": "Sofía Vázquez (Compañera de piso)",
-    "telefono_del_contacto": "744555666",
-    "alergias_o_condiciones": [
+    "personaContacto": "Sofía Vázquez (Compañera de piso)",
+    "telefonoContacto": "744555666",
+    "datosMedicos": [
       "Miopía"
     ]
   },
   {
     "nombre": "Laura",
     "apellidos": "Díaz Alonso",
-    "DNI": "88888888H",
+    "dni": "88888888H",
     "telefono": "755666777",
     "edad": 19,
-    "persona_de_contacto": "Pedro Díaz (Padre)",
-    "telefono_del_contacto": "766777888",
-    "alergias_o_condiciones": []
+    "personaContacto": "Pedro Díaz (Padre)",
+    "telefonoContacto": "766777888",
+    "datosMedicos": []
   },
   {
     "nombre": "Javier",
     "apellidos": "Moreno Vázquez",
-    "DNI": "99999999I",
+    "dni": "99999999I",
     "telefono": "777888999",
     "edad": 75,
-    "persona_de_contacto": "Lucía Moreno (Hija)",
-    "telefono_del_contacto": "788999000",
-    "alergias_o_condiciones": [
+    "personaContacto": "Lucía Moreno (Hija)",
+    "telefonoContacto": "788999000",
+    "datosMedicos": [
       "Artrosis",
       "Problemas auditivos"
     ]
@@ -110,12 +110,12 @@
   {
     "nombre": "Elena",
     "apellidos": "Jiménez Romero",
-    "DNI": "00000000J",
+    "dni": "00000000J",
     "telefono": "799000111",
     "edad": 30,
-    "persona_de_contacto": "Marcos Blázquez (Novio)",
-    "telefono_del_contacto": "700111222",
-    "alergias_o_condiciones": [
+    "personaContacto": "Marcos Blázquez (Novio)",
+    "telefonoContacto": "700111222",
+    "datosMedicos": [
       "Alergia al látex"
     ]
   }

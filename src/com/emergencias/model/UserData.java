@@ -1,6 +1,14 @@
 package com.emergencias.model;
 
 import java.util.Scanner;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 //CLASE PARA OBTENER LOS DATOS DEL HERIDO CUANDO NO ES EL USUARIO A MANO
 
@@ -66,19 +74,53 @@ public class UserData {
     }
 
     public String[] retrieveInjuredData(String dni) {
-        String[] datosHerido=new String[8];
+        final String PATIENTS_FILE_PATH = "./src/resources/pacientes.json";
+        Gson gson = new Gson();
+        List<PacienteData> listaPacientes;
 
-        System.out.println("Recupera datos del herido del Json. COMPLETAR ESTE METODO");
+        // 1. LEER Y PARSEAR EL FICHERO JSON
+        try (FileReader reader = new FileReader(PATIENTS_FILE_PATH)) {
+            // Definimos el tipo: una Lista de PacienteData. Es crucial para que Gson entienda el array JSON.
+            Type listType = new TypeToken<ArrayList<PacienteData>>(){}.getType();
+            listaPacientes = gson.fromJson(reader, listType);
+        } catch (IOException e) {
+            System.err.println("Error: No se pudo encontrar o leer el fichero 'pacientes.json'.");
+            return null; // Devuelve null si el fichero no existe
+        } catch (JsonSyntaxException e) {
+            System.err.println("Error: El formato del fichero 'pacientes.json' es incorrecto.");
+            return null; // Devuelve null si el JSON está mal formado
+        }
 
-        return datosHerido;
+        // Si el fichero está vacío o mal formado, la lista podría ser nula
+        if (listaPacientes == null) {
+            return null;
+        }
+
+        // 2. BUSCAR AL PACIENTE POR DNI
+        for (PacienteData paciente : listaPacientes) {
+            // Comparamos el DNI del paciente actual con el DNI buscado (ignorando mayúsculas/minúsculas)
+            if (paciente.getDni() != null && paciente.getDni().equalsIgnoreCase(dni)) {
+
+                // 3. SI SE ENCUENTRA, CONSTRUIR Y DEVOLVER EL ARRAY DE STRINGS
+                String[] datosHerido = new String[8];
+                datosHerido[0] = paciente.getNombre();
+                datosHerido[1] = paciente.getApellidos();
+                datosHerido[2] = paciente.getDni();
+                datosHerido[3] = paciente.getTelefono();
+                datosHerido[4] = String.valueOf(paciente.getEdad()); // Convertimos el int a String
+                datosHerido[5] = paciente.getNombreContacto();
+                datosHerido[6] = paciente.getTelefonoContacto();
+                datosHerido[7] = paciente.getInfoMedicaAsString();
+
+                return datosHerido; // Devolvemos los datos del paciente encontrado
+            }
+        }
+
+        // 4. SI NO SE ENCUENTRA, DEVOLVER NULL
+        System.out.println("DNI no encontrado en la base de datos de pacientes.");
+        return null; // Devuelve null si el DNI no está en la lista
     }
 
-    public boolean validateInjuredData(String dni) {
-        boolean isUserDataInJson=false;
-
-        System.out.println("Verificar si el dni aparece en el json. COMPLETAR ESTE METODO");
-        return isUserDataInJson;
-    }
 
     //Crea una alerta genérica con herido desconocido
 
@@ -105,4 +147,36 @@ public class UserData {
 
         return datosUsuario;
     }
+
+    // CLASE MOLDE PARA GSON
+    // Representa la estructura de UN objeto paciente en el JSON.
+    private static class PacienteData {
+        private String nombre;
+        private String apellidos;
+        private String dni;
+        private String telefono;
+        private int edad;
+        private String personaContacto;
+        private String telefonoContacto;
+        private List<String> datosMedicos;
+
+
+        // Getters para acceder a los datos
+        public String getDni() { return dni; }
+        public String getNombre() { return nombre; }
+        public String getApellidos() { return apellidos; }
+        public String getTelefono() { return telefono; }
+        public int getEdad() { return edad; }
+        public String getNombreContacto() { return personaContacto; }
+        public String getTelefonoContacto() { return telefonoContacto; }
+        //public String getInfoMedica() { return datosMedicos; }
+        // Método para convertir la lista de datos médicos a un solo String
+        public String getInfoMedicaAsString() {
+            if (datosMedicos == null || datosMedicos.isEmpty()) {
+                return "Sin datos médicos de interés.";
+            }
+            return String.join(", ", datosMedicos);
+        }
+    }
+
 }

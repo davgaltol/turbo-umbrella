@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 //CREA LA EMERGENCIA
 public class EmergencyEvent {
 
-    private final String timestamp;
+    private String timestamp;
     private String[] datosHerido;
     private String[] datosUsuario;
     private String ubicacion;
@@ -46,18 +46,19 @@ public class EmergencyEvent {
                         input = sc.nextLine();
                         if (ValidaEntrada.validaEntDNI(input)) {                    //se valida DNI
                             input = input.toUpperCase();                            //guardamos el DNI en mayusculas
-                            if (user.validateInjuredData(input)) {                     //verificamos si el dni está en el Json
+                            datosHerido = user.retrieveInjuredData(input);         // si está en el json se recuperan datos del Json
+                            if (datosHerido[2] != null) {                     //verificamos si el dni está en el Json
                                 System.out.println("DNI encontrado en BBDD. Recuperando datos...");
-                                datosHerido = user.retrieveInjuredData(input);         // si está en el json se recuperan datos del Json
-                                datosUsuario[0]=datosHerido[0];                        //se recuperan los datos de usuario de los de herido. son el mismo
-                                datosUsuario[1]=datosHerido[1];
-                                datosUsuario[2]=datosHerido[3];
+                                datosUsuario[0] = datosHerido[0];                        //se recuperan los datos de usuario de los de herido. son el mismo
+                                datosUsuario[1] = datosHerido[1];
+                                datosUsuario[2] = datosHerido[3];
+
                                 /************GENERAR ALERTSENDER*********/
 
                             } else {
                                 System.out.println("DNI no encontrado en la base de + " +   //si no está el DNIen el Json se genera alerta por defecto
                                         "datos. Se genera alerta por defecto.");             //con los datos parciales de herido (que es usuario)
-                                System.out.println("Le pedimos datos básicos:");
+                                System.out.println("Le pedimos datos básicos de contacto:");
                                 datosUsuario= user.getUserData();
                                 datosHerido = user.unknownInjuredData(datosUsuario);         //Se genera herido por defecto pasando el usuario
                                 datosHerido[2] = input;                                      //Se añade DNI facilitado
@@ -91,9 +92,9 @@ public class EmergencyEvent {
                         if (ValidaEntrada.validaEntDNI(input)) {
                             System.out.println("DNI con formato correcto.");
                             input = input.toUpperCase();   //guardamos el DNI en mayusculas
-                            if (user.validateInjuredData(input)){
-                                System.out.println("DNI encontrado en BBDD. Recuperando datos...");
                                 datosHerido = user.retrieveInjuredData(input);  // Se recuperan datos del herido del json
+                            if (datosHerido[2] != null) {
+                                System.out.println("DNI encontrado en BBDD. Recuperando datos...");
                                 datosUsuario= user.getUserData();   //Se toman los datos del usuario
 
                                 /************GENERAR ALERTSENDER*********/
