@@ -48,10 +48,7 @@ public class Location {
                 location=response.body();
 
                 // Nota: response.body() es un String en formato JSON.
-                // Para usar los datos, deberías "parsear" este JSON
-                // usando una librería como Jackson o Gson.
-                // Por ejemplo: {"status":"success","country":"Spain",
-                // "city":"Valencia","lat":39.4699,"lon":-0.3763,...}
+
 
             } else {
                 System.out.println("Error: No se pudo obtener la ubicación. Código de estado: "

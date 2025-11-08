@@ -2,12 +2,13 @@ package com.emergencias.model;
 
 import java.util.Scanner;
 import com.emergencias.controller.*;
-
-import com.emergencias.controller.Location;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 //CREA LA EMERGENCIA
 public class EmergencyEvent {
 
+    private final String timestamp;
     private String[] datosHerido;
     private String[] datosUsuario;
     private String ubicacion;
@@ -135,6 +136,11 @@ public class EmergencyEvent {
 
 
                 }
+
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                this.timestamp = now.format(formatter);
+
                 this.datosHerido = datosHerido;
                 this.datosUsuario = datosUsuario;
                 this.ubicacion=ubi;
@@ -145,26 +151,19 @@ public class EmergencyEvent {
         }
     }
 
+    public String getTimestamp() {
+        return timestamp; }
 
     public String[] getInjuredData() {
         return this.datosHerido;
     }
-
     public String[] getUserData() {
         return this.datosUsuario;
     }
-    
-    /*public String getLocation(){
-        return this.ubicacion;
-    }
-    */
-
     public String getSeverity(){
         return this.gravedad;
     }
     public String getLocation(){
-        Location location=new Location();
-        this.ubicacion=location.getLocationFromAPI();
         return this.ubicacion;
     }
 }

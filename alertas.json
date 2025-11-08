@@ -1,0 +1,21 @@
+[
+  {
+    "datosHerido": [
+      null,
+      null,
+      "12345678L",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "datosUsuario": [
+      "hh",
+      "hh",
+      "hh"
+    ],
+    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\nFallo respiratorio/ Vías obstruidas\nSangrado abundante\n"
+  }
+]

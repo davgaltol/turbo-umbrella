@@ -27,7 +27,7 @@ public class LocationData {
     // --- Un método útil para mostrar la información de forma legible ---
     public String getFormattedLocation() {
         if (city != null && !city.isEmpty() && lat != 0 && lon != 0) {
-            return city + ", " + country + ". Coordenadas: " + lat + ", " + lon;
+            return city + ", " + country + " Coordenadas: " + lat + ", " + lon;
         }
         return "Coordenadas: " + lat + ", " + lon;
     }

@@ -1,0 +1,21 @@
+[
+  {
+    "datosHerido": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "datosUsuario": [
+      "dggt",
+      "fdd",
+      "123"
+    ],
+    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
+  }
+]
