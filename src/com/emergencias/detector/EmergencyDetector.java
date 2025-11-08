@@ -1,6 +1,5 @@
 package com.emergencias.detector;
 
-import com.emergencias.controller.Location;
 import com.emergencias.controller.ValidaEntrada;
 import com.emergencias.model.EmergencyEvent;
 
@@ -72,17 +71,21 @@ public class EmergencyDetector {
             System.out.println("Indique gravedad de 1 a 5");
             input = sc.nextLine();
             try {
-                if (Integer.parseInt(input) > 3) {
+                boolean numValido=ValidaEntrada.validaEntDolor(input);
+                if ((Integer.parseInt(input) > 3)&&numValido) {
                     pGolp = true;
                     gravedad = gravedad + "Cod04. Golpe grave de intensidad " + input + "\n";
                 }
+                else{
+                    System.out.println("Número fuera de rango. El daño se considera leve");
+                }
             }catch (NumberFormatException e) {
-                System.out.println("Error: número no válido. Entrada por defecto a 1");
-                input = "1";
+                System.out.println("Error: Formato número erróneo. El daño se considera leve");
+
             }
         }
         if (!pCons && !pResp && !pSang && !pGolp) {
-            gravedad="Lesion leve que no requiere asistencia inmediata. Acuda a su centro de salud.";
+            gravedad="DIAGNÓSTICO: Lesión leve que no requiere asistencia inmediata. Acuda a su centro de salud.";
         }
 
         return gravedad;

@@ -30,4 +30,13 @@ public class ValidaEntrada {
         }
         return ent;
     }
+    public static boolean validaEntDolor(String entrada) { //Se valida entrada para verificar formato de DNI
+        boolean ent;
+        if ((Integer.parseInt(entrada)>=1)&&((Integer.parseInt(entrada)<=5))) {  //si se pone un número válido
+            ent = true;
+        } else {
+            ent = false;
+        }
+        return ent;
+    }
 }
