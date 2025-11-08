@@ -134,8 +134,9 @@ public class UserData {
 
     public String[] unknownInjuredData(String[] datosRecibidos){
         String[] datosHerido=new String[8];
-
-        System.out.println("Genera alerta por defecto con paso de datos de usuario. COMPLETAR ESTE METODO");
+        datosHerido[0]=datosRecibidos[0];
+        datosHerido[1]=datosRecibidos[1];
+        datosHerido[3]=datosRecibidos[2];
 
         return datosHerido;
     }

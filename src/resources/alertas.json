@@ -57,5 +57,125 @@
     ],
     "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
     "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\nFallo respiratorio/ Vías obstruidas\nSangrado abundante\nGolpe grave de intensidad 4\n"
+  },
+  {
+    "timestamp": "2025-11-08 16:06:12",
+    "datosHerido": [
+      null,
+      null,
+      "11111112A",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "datosUsuario": [
+      "david",
+      "galante",
+      "123456"
+    ],
+    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
+  },
+  {
+    "timestamp": "2025-11-08 16:13:01",
+    "datosHerido": [
+      "david",
+      "galante",
+      "12111111S",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "datosUsuario": [
+      "david",
+      "galante",
+      "123456789"
+    ],
+    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
+  },
+  {
+    "timestamp": "2025-11-08 16:14:38",
+    "datosHerido": [
+      "david",
+      "galante",
+      "12345678A",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "datosUsuario": [
+      "david",
+      "galante",
+      "12345678"
+    ],
+    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
+  },
+  {
+    "timestamp": "2025-11-08 16:16:02",
+    "datosHerido": [
+      "a",
+      "a",
+      "12345678A",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "datosUsuario": [
+      "a",
+      "a",
+      "123"
+    ],
+    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
+  },
+  {
+    "timestamp": "2025-11-08 16:16:55",
+    "datosHerido": [
+      "a",
+      "s",
+      "12345678A",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "datosUsuario": [
+      "a",
+      "s",
+      "d"
+    ],
+    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
+  },
+  {
+    "timestamp": "2025-11-08 16:24:32",
+    "datosHerido": [
+      "dav",
+      "gal",
+      "11111112A",
+      "12345678",
+      null,
+      null,
+      null,
+      null
+    ],
+    "datosUsuario": [
+      "dav",
+      "gal",
+      "12345678"
+    ],
+    "ubicacion": "Elche, Spain Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nNivel de consciencia baja/inestable/inconsciente\n"
   }
 ]
