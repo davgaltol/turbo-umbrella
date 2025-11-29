@@ -1,0 +1,22 @@
+[
+  {
+    "timestamp": "2025-11-09 11:19:03",
+    "datosHerido": [
+      "Miguel",
+      "Sánchez López",
+      "55555555E",
+      "688999000",
+      "62",
+      "Elena Gómez (Hermana)",
+      "699000111",
+      "Hipercolesterolemia"
+    ],
+    "datosUsuario": [
+      "David",
+      "Galante",
+      "666456789"
+    ],
+    "ubicacion": "Elche, Spain. Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nCod01. Nivel de consciencia baja/inestable/inconsciente\nCod02. Fallo respiratorio/ Vías obstruidas\nCod03. Sangrado abundante\n"
+  }
+]

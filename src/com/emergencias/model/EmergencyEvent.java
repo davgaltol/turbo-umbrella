@@ -22,8 +22,6 @@ public class EmergencyEvent {
         datosUsuario=new String[3]; //nombre, apellidos, telefono
         datosHerido=new String[8];  //nombre, apellidos, dni, teléfono, edad, nom contacto, tlf contacto, info médica
         Scanner sc = new Scanner(System.in);
-
-
         try {
             if (gravedad.contains("leve")) {
                 //herida leve y no se sigue ejecutando método.
@@ -54,7 +52,7 @@ public class EmergencyEvent {
                                 System.out.println("DNI encontrado en BBDD. Recuperando datos...");
                                 datosUsuario[0] = datosHerido[0];                        //se recuperan los datos de usuario de los de herido. son el mismo
                                 datosUsuario[1] = datosHerido[1];
-                                datosUsuario[2] = datosHerido[3];
+                                datosUsuario[2] = datosHerido[3];                        //ojo que no va en la misma posiocion de array
 
                             } else {
                                 System.out.println("DNI no encontrado en la base de " +   //si no está el DNIen el Json se genera alerta por defecto
