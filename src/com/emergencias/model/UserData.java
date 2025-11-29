@@ -10,187 +10,85 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class UserData {
 
-    //CLASE PARA OBTENER LOS DATOS DEL HERIDO CUANDO NO ES EL USUARIO A MANO
-    // CREADA INICIALMENTE ANTES DE IMPLEMENTAR PASO DESDE JSON. EN DESUSO
-    public String[] getInjuredData(){
-        String[] datosHerido=new String[8]; //nombre, apellidos, dni, teléfono, edad, nom contacto, tlf contacto, info_médica
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Ingrese el nombre del herido");
-        datosHerido[0]=sc.nextLine();
-        System.out.println("Ingrese los apellidos del herido");
-        datosHerido[1]=sc.nextLine();
-        System.out.println("Ingrese el teléfono del herido");
-        datosHerido[2]=sc.nextLine();
-        System.out.println("Introduzca edad");
-        datosHerido[3]=sc.nextLine();
-        System.out.println("Introduzca nombre del contacto de emergencia");
-        datosHerido[4]=sc.nextLine();
-        System.out.println("Introduzca teléfono del contacto de emergencia");
-        datosHerido[5]=sc.nextLine();
-        System.out.println("Introduzca información médica relevante del herido si hay");
-        datosHerido[6]=sc.nextLine();
-
-        return datosHerido;
-    }
-
-    //CLASE PARA OBTENER LOS DATOS DEL HERIDO CUANDO ES USUARIO A MANO (SOBRECARGADA). EN DESUSO
-    // CREADA INICIALMENTE ANTES DE IMPLEMENTAR PASO DESDE JSON. EN DESUSO
-    public String[] getInjuredData(String[] datosUsuario){
-        String[] datosHerido=new String[8]; //nombre, apellidos, dni, teléfono, edad, nom contacto, tlf contacto, info_médica
-        Scanner sc = new Scanner(System.in);
-
-        datosHerido[0]=datosUsuario[0];
-        datosHerido[1]=datosUsuario[1];
-        datosHerido[2]=datosUsuario[3];
-
-        System.out.println("Introduzca edad");
-        datosHerido[3]=sc.nextLine();
-        System.out.println("Introduzca nombre del contacto de emergencia");
-        datosHerido[4]=sc.nextLine();
-        System.out.println("Introduzca teléfono del contacto de emergencia");
-        datosHerido[5]=sc.nextLine();
-        System.out.println("Introduzca información médica relevante del herido si hay");
-        datosHerido[6]=sc.nextLine();
-
-        return datosHerido;
-    }
-
-    //CLASE PARA OBTENER LOS DATOS DEL USUARIO
-
-    public String[] getUserData() {
-        String[] datosUsuario = new String[3]; //nombre, apellidos, teléfono
+    public PacienteData getUserData() {
+        PacienteData pacienteData = new PacienteData();
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Introduzca sus datos para poder contactarle si es necesario:");
         System.out.println("Introduzca su nombre");
-        datosUsuario[0] = sc.nextLine();
+        pacienteData.setNombre(sc.nextLine());
         System.out.println("Introduzca sus apellidos");
-        datosUsuario[1] = sc.nextLine();
+        pacienteData.setApellidos(sc.nextLine());
         System.out.println("Introduzca su teléfono");
-        datosUsuario[2] = sc.nextLine();
-        return datosUsuario;
+        pacienteData.setTelefono(sc.nextLine());
+        return pacienteData;
     }
 
-    public String[] retrieveInjuredData(String dni) {
+    public PacienteData retrieveInjuredData(String dni) {
         final String PATIENTS_FILE_PATH = "./src/resources/pacientes.json";
         Gson gson = new Gson();
         List<PacienteData> listaPacientes;
 
-        // 1. LEER Y PARSEAR EL FICHERO JSON
         try (FileReader reader = new FileReader(PATIENTS_FILE_PATH)) {
-            // Definimos el tipo: una Lista de PacienteData. Es crucial para que Gson entienda el array JSON.
             Type listType = new TypeToken<ArrayList<PacienteData>>(){}.getType();
             listaPacientes = gson.fromJson(reader, listType);
         } catch (IOException e) {
             System.err.println("Error: No se pudo encontrar o leer el fichero 'pacientes.json'.");
-            return null; // Devuelve null si el fichero no existe
+            return null;
         } catch (JsonSyntaxException e) {
             System.err.println("Error: El formato del fichero 'pacientes.json' es incorrecto.");
-            return null; // Devuelve null si el JSON está mal formado
+            return null;
         }
 
-        // Si el fichero está vacío o mal formado, la lista podría ser nula
         if (listaPacientes == null) {
             return null;
         }
 
-        // 2. BUSCAR AL PACIENTE POR DNI
         for (PacienteData paciente : listaPacientes) {
-            // Comparamos el DNI del paciente actual con el DNI buscado (ignorando mayúsculas/minúsculas)
             if (paciente.getDni() != null && paciente.getDni().equalsIgnoreCase(dni)) {
-
-                // 3. SI SE ENCUENTRA, CONSTRUIR Y DEVOLVER EL ARRAY DE STRINGS
-                String[] datosHerido = new String[8];
-                datosHerido[0] = paciente.getNombre();
-                datosHerido[1] = paciente.getApellidos();
-                datosHerido[2] = paciente.getDni();
-                datosHerido[3] = paciente.getTelefono();
-                datosHerido[4] = String.valueOf(paciente.getEdad()); // Convertimos el int a String
-                datosHerido[5] = paciente.getNombreContacto();
-                datosHerido[6] = paciente.getTelefonoContacto();
-                datosHerido[7] = paciente.getInfoMedicaAsString();
-
-                return datosHerido; // Devolvemos los datos del paciente encontrado
+                return paciente;
             }
         }
 
-        // 4. SI NO SE ENCUENTRA, DEVOLVER NULL
         System.out.println("DNI no encontrado en la base de datos de pacientes.");
-        return null; // Devuelve null si el DNI no está en la lista
+        return null;
     }
 
-
-    //Crea una alerta genérica con herido desconocido
-
-    public String[] unknownInjuredData(){
-        String[] datosHerido=new String[8];
-
-        for (int i=0;i<8;i++){
-            datosHerido[i]="Desconocido";
-        }
+    public PacienteData unknownInjuredData(){
+        PacienteData pacienteData = new PacienteData();
+        pacienteData.setNombre("Desconocido");
+        pacienteData.setApellidos("Desconocido");
+        pacienteData.setDni("Desconocido");
+        pacienteData.setTelefono("Desconocido");
+        pacienteData.setEdad(0);
+        pacienteData.setPersonaContacto("Desconocido");
+        pacienteData.setTelefonoContacto("Desconocido");
+        pacienteData.setDatosMedicos(new ArrayList<>());
         System.out.println("Generada alerta por defecto sin paso de DNI.");
-
-        return datosHerido;
+        return pacienteData;
     }
 
-    public String[] unknownInjuredData(String[] datosRecibidos){
-        String[] datosHerido=new String[8];
-        datosHerido[0]=datosRecibidos[0];
-        datosHerido[1]=datosRecibidos[1];
-        datosHerido[3]=datosRecibidos[2];
-        datosHerido[2]="Desconocido";
-        for (int i=4;i<8;i++){
-            datosHerido[i]="Desconocido";
-        }
-
-
-        return datosHerido;
+    public PacienteData unknownInjuredData(PacienteData datosRecibidos){
+        PacienteData pacienteData = new PacienteData();
+        pacienteData.setNombre(datosRecibidos.getNombre());
+        pacienteData.setApellidos(datosRecibidos.getApellidos());
+        pacienteData.setTelefono(datosRecibidos.getTelefono());
+        pacienteData.setDni("Desconocido");
+        pacienteData.setEdad(0);
+        pacienteData.setPersonaContacto("Desconocido");
+        pacienteData.setTelefonoContacto("Desconocido");
+        pacienteData.setDatosMedicos(new ArrayList<>());
+        return pacienteData;
     }
 
-    public String[] unknownUserData(){
-        String[] datosUsuario=new String[3];
-        for (int i=0;i<3;i++){
-            datosUsuario[i]="Desconocido";
-        }
+    public PacienteData unknownUserData(){
+        PacienteData pacienteData = new PacienteData();
+        pacienteData.setNombre("Desconocido");
+        pacienteData.setApellidos("Desconocido");
+        pacienteData.setTelefono("Desconocido");
         System.out.println("Generada alerta por defecto sin datos de usuario.");
-
-        return datosUsuario;
+        return pacienteData;
     }
-
-    // CLASE MOLDE PARA GSON
-    // Representa la estructura de UN objeto paciente en el JSON.
-    private static class PacienteData {
-        private String nombre;
-        private String apellidos;
-        private String dni;
-        private String telefono;
-        private int edad;
-        private String personaContacto;
-        private String telefonoContacto;
-        private List<String> datosMedicos;
-
-
-        // Getters para acceder a los datos
-        public String getDni() { return dni; }
-        public String getNombre() { return nombre; }
-        public String getApellidos() { return apellidos; }
-        public String getTelefono() { return telefono; }
-        public int getEdad() { return edad; }
-        public String getNombreContacto() { return personaContacto; }
-        public String getTelefonoContacto() { return telefonoContacto; }
-        //public String getInfoMedica() { return datosMedicos; }
-        // Método para convertir la lista de datos médicos a un solo String
-        public String getInfoMedicaAsString() {
-            if (datosMedicos == null || datosMedicos.isEmpty()) {
-                return "Sin datos médicos de interés.";
-            }
-            return String.join(", ", datosMedicos);
-        }
-    }
-
 }

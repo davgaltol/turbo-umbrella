@@ -53,10 +53,14 @@ public class Location {
             } else {
                 System.out.println("Error: No se pudo obtener la ubicación. Código de estado: "
                         + response.statusCode());
+                System.out.println("Localización asiganda: Desconocida.");
+                location="Desconocida";
             }
 
         } catch (Exception e) {
             System.err.println("Ha ocurrido un error al contactar la API de geolocalización.");
+            System.err.println("Localización asiganda: Desconocida." + e.getMessage());
+            location="Desconocida";
             e.printStackTrace();
         }
         return location;
