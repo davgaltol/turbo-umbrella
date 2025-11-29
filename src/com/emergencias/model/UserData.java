@@ -13,6 +13,26 @@ import java.util.List;
 
 
 public class UserData {
+    private String nombre;
+    private String apellidos;
+    private String dni;
+    private String telefono;
+    private int edad;
+    private String personaContacto;
+    private String telefonoContacto;
+    private List<String> datosMedicos;
+
+
+    //CREAR CONSTRUCTOR ASIGNE POR DEFECTO
+    public UserData(){
+        String nombre="Desconocido";
+        String apellidos="Desconocido";
+        String dni="Desconocido";
+        String telefono="Desconocido";
+        String personaContacto="Desconocido";
+        String telefonoContacto="Desconocido";
+    }
+
 
     //CLASE PARA OBTENER LOS DATOS DEL HERIDO CUANDO NO ES EL USUARIO A MANO
     // CREADA INICIALMENTE ANTES DE IMPLEMENTAR PASO DESDE JSON. EN DESUSO
@@ -62,17 +82,17 @@ public class UserData {
 
     //CLASE PARA OBTENER LOS DATOS DEL USUARIO
 
-    public String[] getUserData() {
-        String[] datosUsuario = new String[3]; //nombre, apellidos, teléfono
+    public UserData getUserData() {
+        UserData datosUsuario = new UserData(); //nombre, apellidos, teléfono
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Introduzca sus datos para poder contactarle si es necesario:");
         System.out.println("Introduzca su nombre");
-        datosUsuario[0] = sc.nextLine();
+        datosUsuario.nombre = sc.nextLine();
         System.out.println("Introduzca sus apellidos");
-        datosUsuario[1] = sc.nextLine();
+        datosUsuario.apellidos = sc.nextLine();
         System.out.println("Introduzca su teléfono");
-        datosUsuario[2] = sc.nextLine();
+        datosUsuario.telefono = sc.nextLine();
         return datosUsuario;
     }
 

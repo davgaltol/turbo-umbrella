@@ -9,8 +9,8 @@ import java.time.format.DateTimeFormatter;
 public class EmergencyEvent {
 
     private String timestamp;
-    private String[] datosHerido;
-    private String[] datosUsuario;
+    //private UserData datosHerido;
+    //private UserData datosUsuario;
     private String ubicacion;
     private String gravedad;
 
@@ -18,9 +18,8 @@ public class EmergencyEvent {
         UserData user = new UserData();
         String input, ubi;
         Location location= new Location();
-        String[] datosHerido, datosUsuario;
-        datosUsuario=new String[3]; //nombre, apellidos, telefono
-        datosHerido=new String[8];  //nombre, apellidos, dni, teléfono, edad, nom contacto, tlf contacto, info médica
+        UserData datosUsuario=new UserData(); //nombre, apellidos, telefono
+        UserData datosHerido=new UserData();  //nombre, apellidos, dni, teléfono, edad, nom contacto, tlf contacto, info médica
         Scanner sc = new Scanner(System.in);
         try {
             if (gravedad.contains("leve")) {
