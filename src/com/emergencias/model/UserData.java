@@ -158,16 +158,11 @@ public class UserData {
         return datosHerido;
     }
 
-    public String[] unknownInjuredData(String[] datosRecibidos){
-        String[] datosHerido=new String[8];
-        datosHerido[0]=datosRecibidos[0];
-        datosHerido[1]=datosRecibidos[1];
-        datosHerido[3]=datosRecibidos[2];
-        datosHerido[2]="Desconocido";
-        for (int i=4;i<8;i++){
-            datosHerido[i]="Desconocido";
-        }
-
+    public UserData unknownInjuredData(UserData datosRecibidos){
+        UserData datosHerido=new UserData();
+        datosHerido.nombre=datosRecibidos.nombre;
+        datosHerido.apellidos=datosRecibidos.apellidos;
+        datosHerido.telefono=datosRecibidos.telefono;
 
         return datosHerido;
     }
@@ -182,7 +177,7 @@ public class UserData {
         return datosUsuario;
     }
 
-    // CLASE MOLDE PARA GSON
+    // CLASE MOLDE PARA GSON                                ----------------------CAMBIARLA POR USERDATA
     // Representa la estructura de UN objeto paciente en el JSON.
     private static class PacienteData {
         private String nombre;
@@ -211,6 +206,28 @@ public class UserData {
             }
             return String.join(", ", datosMedicos);
         }
+
     }
+    // Getters para acceder a los datos
+    public String getDni() { return dni; }
+    public String getNombre() { return nombre; }
+    public String getApellidos() { return apellidos; }
+    public String getTelefono() { return telefono; }
+    public int getEdad() { return edad; }
+    public String getNombreContacto() { return personaContacto; }
+    public String getTelefonoContacto() { return telefonoContacto; }
+    //public String getInfoMedica() { return datosMedicos; }
+    // Método para convertir la lista de datos médicos a un solo String
+    public String getInfoMedicaAsString() {
+        if (datosMedicos == null || datosMedicos.isEmpty()) {
+            return "Sin datos médicos de interés.";
+        }
+        return String.join(", ", datosMedicos);
+    }
+
+
+    // Setters para acceder a los datos
+    public void setDNI(String dni) { this.dni=dni; }
+
 
 }
