@@ -9,8 +9,8 @@ import java.time.format.DateTimeFormatter;
 public class EmergencyEvent {
 
     private String timestamp;
-    //private UserData datosHerido;
-    //private UserData datosUsuario;
+    private UserData datosHerido;
+    private UserData datosUsuario;
     private String ubicacion;
     private String gravedad;
 
@@ -124,8 +124,8 @@ public class EmergencyEvent {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                 this.timestamp = now.format(formatter);
 
-                //this.datosHerido = datosHerido;                   !!!!!!!!!!!!revisar!!!!!!!!!!!!!!!!
-                //this.datosUsuario = datosUsuario;
+                this.datosHerido = datosHerido;                  // !!!!!!!!!!!!revisar!!!!!!!!!!!!!!!!
+                this.datosUsuario = datosUsuario;
                 this.ubicacion=ubi;
                 this.gravedad=gravedad;
             }
