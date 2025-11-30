@@ -1,6 +1,6 @@
 [
   {
-    "timestamp": "2025-11-30 10:58:58",
+    "timestamp": "2025-11-30 11:24:34",
     "datosHerido": {
       "nombre": "Juan",
       "apellidos": "Pérez Gómez",
@@ -15,12 +15,9 @@
       ]
     },
     "datosUsuario": {
-      "nombre": "lkl",
-      "apellidos": "lkl",
-      "telefono": "456",
       "edad": 0
     },
     "ubicacion": "Elche, Spain. Coordenadas: 38.2642, -0.7001",
-    "gravedad": "Problema:\nCod02. Fallo respiratorio/ Vías obstruidas\n"
+    "gravedad": "Problema:\nCod01. Nivel de consciencia baja/inestable/inconsciente\n"
   }
 ]
