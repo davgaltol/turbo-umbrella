@@ -1,13 +1,6 @@
 package com.emergencias.model;
 
 import java.util.Scanner;
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.reflect.TypeToken;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,7 +10,7 @@ public class UserData {
     private String apellidos;
     private String dni;
     private String telefono;
-    private int edad;
+    private String edad;
     private String personaContacto;
     private String telefonoContacto;
     private List<String> datosMedicos;
@@ -29,6 +22,7 @@ public class UserData {
         String apellidos="Desconocido";
         String dni="Desconocido";
         String telefono="Desconocido";
+        String edad="Desconocido";
         String personaContacto="Desconocido";
         String telefonoContacto="Desconocido";
     }
@@ -129,7 +123,7 @@ public class UserData {
     public String getNombre() { return nombre; }
     public String getApellidos() { return apellidos; }
     public String getTelefono() { return telefono; }
-    public int getEdad() { return edad; }
+    public String getEdad() { return edad; }
     public String getNombreContacto() { return personaContacto; }
     public String getTelefonoContacto() { return telefonoContacto; }
     // Método para convertir la lista de datos médicos a un solo String
@@ -146,7 +140,7 @@ public class UserData {
     public void setNombre(String nombre) { this.nombre=nombre; }
     public void setApellidos(String apellidos) { this.apellidos=apellidos; }
     public void setTelefono(String telefono) { this.telefono=telefono; }
-    public void setEdad(int edad) { this.edad=edad; }
+    public void setEdad(String edad) { this.edad=edad; }
     public void setNombreContacto(String personaContacto) { this.personaContacto=personaContacto; }
     public void setTelefonoContacto(String telefonoContacto) { this.telefonoContacto=telefonoContacto; }
 

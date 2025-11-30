@@ -48,6 +48,7 @@ public class EmergencyEvent {
                             datosHerido=RetrieveData.retrieveInjuredData(input);         // si está en el json se recuperan datos del Json
                             if (datosHerido != null) {                     //verificamos si el dni está en el Json
                                 System.out.println("DNI encontrado en BBDD. Datos recuperados...");
+                                datosUsuario=datosHerido;
                             } else {
                                 System.out.println("DNI no encontrado en la base de " +   //si no está el DNIen el Json se genera alerta por defecto
                                         "datos. Se genera alerta por defecto.");             //con los datos parciales de herido (que es usuario)
