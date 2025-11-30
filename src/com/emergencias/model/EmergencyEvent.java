@@ -43,11 +43,18 @@ public class EmergencyEvent {
                     }
                     if (ValidaEntrada.validaEntSN(input)) {
                         System.out.println("Escriba su DNI con número y letra. Pulse cualquier otra tecla si no lo conoce.");
-                        input = sc.nextLine();
+
+/********************************************************************************/
+
+                        input ="11111111a";
+                        //input = sc.nextLine();
+
+
+
+/*******************************************************************************/
                         if (ValidaEntrada.validaEntDNI(input)) {                    //se valida DNI
                             input = input.toUpperCase();                            //guardamos el DNI en mayusculas
-                            datosHerido=RetrieveData.retrieveInjuredData(input);         // si está en el json se recuperan datos del Json
-                            if (datosHerido != null) {                     //verificamos si el dni está en el Json
+                            if (RetrieveData.retrieveInjuredData(input) != null) {                     //verificamos si el dni está en el Json
                                 System.out.println("DNI encontrado en BBDD. Datos recuperados...");
                             } else {
                                 System.out.println("DNI no encontrado en la base de " +   //si no está el DNIen el Json se genera alerta por defecto
@@ -82,11 +89,12 @@ public class EmergencyEvent {
                         if (ValidaEntrada.validaEntDNI(input)) {
                             System.out.println("DNI con formato correcto.");
                             input = input.toUpperCase();   //guardamos el DNI en mayusculas
-                                datosHerido = RetrieveData.retrieveInjuredData(input);  // Se recuperan datos del herido del json
-                            if (datosHerido != null) {
+                            // Se recuperan datos del herido del json
+                            if (RetrieveData.retrieveInjuredData(input) != null) {
                                 System.out.println("DNI encontrado en BBDD. Recuperando datos...");
                                 datosUsuario=datosUsuario.getUserData();   //Se toman los datos del usuario
-
+                                datosHerido.setNombre("Desconocido");
+                                datosHerido.setDNI(input);
                             }
                             else{
                                 System.out.println("Se genera alerta por defecto.");    //si no está el DNIen el Json se genera alerta por defecto
