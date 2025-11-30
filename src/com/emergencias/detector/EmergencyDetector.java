@@ -77,7 +77,7 @@ public class EmergencyDetector {
                     gravedad = gravedad + "Cod04. Golpe grave de intensidad " + input + "\n";
                 }
                 else{
-                    System.out.println("Número fuera de rango. El daño se considera leve");
+                    System.out.println("Dolor bajo o número fuera de rango. El daño se considera leve");
                 }
             }catch (NumberFormatException e) {
                 System.out.println("Error: Formato número erróneo. El daño se considera leve");

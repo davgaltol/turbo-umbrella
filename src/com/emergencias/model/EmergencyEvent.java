@@ -16,6 +16,7 @@ public class EmergencyEvent {
 
     public EmergencyEvent(String gravedad) {
         String input, ubi;
+        boolean cancelada=false;
         Location location= new Location();
         UserData datosUsuario=new UserData(); //nombre, apellidos, telefono
         UserData datosHerido=new UserData();  //nombre, apellidos, dni, teléfono, edad, nom contacto, tlf contacto, info médica
@@ -48,7 +49,6 @@ public class EmergencyEvent {
                             datosHerido=RetrieveData.retrieveInjuredData(input);         // si está en el json se recuperan datos del Json
                             if (datosHerido != null) {                     //verificamos si el dni está en el Json
                                 System.out.println("DNI encontrado en BBDD. Datos recuperados...");
-                                datosUsuario=datosHerido;
                             } else {
                                 System.out.println("DNI no encontrado en la base de " +   //si no está el DNIen el Json se genera alerta por defecto
                                         "datos. Se genera alerta por defecto.");             //con los datos parciales de herido (que es usuario)
@@ -69,6 +69,7 @@ public class EmergencyEvent {
 
                             } else {
                                 System.out.println("Se cancela aletra. Saliendo...");
+                                cancelada=true;
                             }
 
                         }
@@ -104,6 +105,7 @@ public class EmergencyEvent {
 
                             } else {
                                 System.out.println("Se cancela aletra. Saliendo...");
+                                cancelada=true;
                             }
 
                         }
@@ -115,14 +117,16 @@ public class EmergencyEvent {
 
                 }
 
-                LocalDateTime now = LocalDateTime.now();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                this.timestamp = now.format(formatter);
+                if (!cancelada) {
+                    LocalDateTime now = LocalDateTime.now();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    this.timestamp = now.format(formatter);
 
-                this.datosHerido = datosHerido;
-                this.datosUsuario = datosUsuario;
-                this.ubicacion=ubi;
-                this.gravedad=gravedad;
+                    this.datosHerido = datosHerido;
+                    this.datosUsuario = datosUsuario;
+                    this.ubicacion = ubi;
+                    this.gravedad = gravedad;
+                }
             }
         } catch (IllegalArgumentException e){
             System.out.println("Error: parámetro Gravedad inválido. " + e.getMessage());
