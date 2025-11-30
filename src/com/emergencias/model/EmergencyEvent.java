@@ -49,10 +49,6 @@ public class EmergencyEvent {
                             datosHerido.retrieveInjuredData(input);         // si está en el json se recuperan datos del Json
                             if (datosHerido != null) {                     //verificamos si el dni está en el Json
                                 System.out.println("DNI encontrado en BBDD. Datos recuperados...");
-                                //datosUsuario[0] = datosHerido[0];                        //se recuperan los datos de usuario de los de herido. son el mismo
-                                //datosUsuario[1] = datosHerido[1];
-                                //datosUsuario[2] = datosHerido[3];                        //ojo que no va en la misma posiocion de array
-
                             } else {
                                 System.out.println("DNI no encontrado en la base de " +   //si no está el DNIen el Json se genera alerta por defecto
                                         "datos. Se genera alerta por defecto.");             //con los datos parciales de herido (que es usuario)
@@ -103,7 +99,6 @@ public class EmergencyEvent {
                             System.out.println("DNI con formato incorrecto o desconocido. ¿Generar alerta por defecto?S/N");
                             input=sc.nextLine();
                             if (ValidaEntrada.validaEntSN(input)) {
-                                input = "Desconocido";
                                 datosUsuario= user.getUserData();   //Se toman los datos del usuario
                                 datosHerido = user.unknownInjuredData();    // Se generan datos del herido por defecto
 
@@ -124,7 +119,7 @@ public class EmergencyEvent {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                 this.timestamp = now.format(formatter);
 
-                this.datosHerido = datosHerido;                  // !!!!!!!!!!!!revisar!!!!!!!!!!!!!!!!
+                this.datosHerido = datosHerido;
                 this.datosUsuario = datosUsuario;
                 this.ubicacion=ubi;
                 this.gravedad=gravedad;
@@ -133,19 +128,6 @@ public class EmergencyEvent {
             System.out.println("Error: parámetro Gravedad inválido. " + e.getMessage());
         }
     }
-
-    //GETTERS. Hay métodos sin uso pero pueden usarse a futuro. Se dejan implementados.
-    /*
-    public String getTimestamp() {
-        return timestamp; }
-
-    public String[] getInjuredData() {
-        return this.datosHerido;
-    }
-    public String[] getUserData() {
-        return this.datosUsuario;
-    }
-    */
 
     public String getSeverity(){
         return this.gravedad;

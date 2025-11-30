@@ -33,53 +33,6 @@ public class UserData {
         String telefonoContacto="Desconocido";
     }
 
-
-    //CLASE PARA OBTENER LOS DATOS DEL HERIDO CUANDO NO ES EL USUARIO A MANO
-    // CREADA INICIALMENTE ANTES DE IMPLEMENTAR PASO DESDE JSON. EN DESUSO
-    public String[] getInjuredData(){
-        String[] datosHerido=new String[8]; //nombre, apellidos, dni, teléfono, edad, nom contacto, tlf contacto, info_médica
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Ingrese el nombre del herido");
-        datosHerido[0]=sc.nextLine();
-        System.out.println("Ingrese los apellidos del herido");
-        datosHerido[1]=sc.nextLine();
-        System.out.println("Ingrese el teléfono del herido");
-        datosHerido[2]=sc.nextLine();
-        System.out.println("Introduzca edad");
-        datosHerido[3]=sc.nextLine();
-        System.out.println("Introduzca nombre del contacto de emergencia");
-        datosHerido[4]=sc.nextLine();
-        System.out.println("Introduzca teléfono del contacto de emergencia");
-        datosHerido[5]=sc.nextLine();
-        System.out.println("Introduzca información médica relevante del herido si hay");
-        datosHerido[6]=sc.nextLine();
-
-        return datosHerido;
-    }
-
-    //CLASE PARA OBTENER LOS DATOS DEL HERIDO CUANDO ES USUARIO A MANO (SOBRECARGADA). EN DESUSO
-    // CREADA INICIALMENTE ANTES DE IMPLEMENTAR PASO DESDE JSON. EN DESUSO
-    public String[] getInjuredData(String[] datosUsuario){
-        String[] datosHerido=new String[8]; //nombre, apellidos, dni, teléfono, edad, nom contacto, tlf contacto, info_médica
-        Scanner sc = new Scanner(System.in);
-
-        datosHerido[0]=datosUsuario[0];
-        datosHerido[1]=datosUsuario[1];
-        datosHerido[2]=datosUsuario[3];
-
-        System.out.println("Introduzca edad");
-        datosHerido[3]=sc.nextLine();
-        System.out.println("Introduzca nombre del contacto de emergencia");
-        datosHerido[4]=sc.nextLine();
-        System.out.println("Introduzca teléfono del contacto de emergencia");
-        datosHerido[5]=sc.nextLine();
-        System.out.println("Introduzca información médica relevante del herido si hay");
-        datosHerido[6]=sc.nextLine();
-
-        return datosHerido;
-    }
-
     //CLASE PARA OBTENER LOS DATOS DEL USUARIO
 
     public UserData getUserData() {
@@ -146,15 +99,9 @@ public class UserData {
 
 
     //Crea una alerta genérica con herido desconocido
-
     public UserData unknownInjuredData(){
         UserData datosHerido=new UserData();    //se devuelve usuario construido por defecto (desconocido)
-/*
-        for (int i=0;i<8;i++){
-            datosHerido[i]="Desconocido";
-        }
 
-        */
         System.out.println("Generada alerta por defecto sin paso de DNI.");
 
         return datosHerido;
@@ -171,51 +118,13 @@ public class UserData {
 
     public UserData unknownUserData(){
         UserData datosUsuario=new UserData();
-        /*
-        for (int i=0;i<3;i++){
-            datosUsuario="Desconocido";
-        }
 
-        */
         System.out.println("Generada alerta por defecto sin datos de usuario.");
 
         return datosUsuario;
     }
 
-    // CLASE MOLDE PARA GSON                                ----------------------CAMBIARLA POR USERDATA
-    // Representa la estructura de UN objeto paciente en el JSON.
-    /*nos ahorramos la clase molde ya que userdata está declarada
-    private static class PacienteData {
-        private String nombre;
-        private String apellidos;
-        private String dni;
-        private String telefono;
-        private int edad;
-        private String personaContacto;
-        private String telefonoContacto;
-        private List<String> datosMedicos;
-
-
-        // Getters para acceder a los datos
-        public String getDni() { return dni; }
-        public String getNombre() { return nombre; }
-        public String getApellidos() { return apellidos; }
-        public String getTelefono() { return telefono; }
-        public int getEdad() { return edad; }
-        public String getNombreContacto() { return personaContacto; }
-        public String getTelefonoContacto() { return telefonoContacto; }
-        //public String getInfoMedica() { return datosMedicos; }
-        // Método para convertir la lista de datos médicos a un solo String
-        public String getInfoMedicaAsString() {
-            if (datosMedicos == null || datosMedicos.isEmpty()) {
-                return "Sin datos médicos de interés.";
-            }
-            return String.join(", ", datosMedicos);
-        }
-    }
-
-     */
-    // Getters para acceder a los datos
+    // Getters para acceder a los datos. Muchos no se usan. Creados a futuro
     public String getDni() { return dni; }
     public String getNombre() { return nombre; }
     public String getApellidos() { return apellidos; }
@@ -223,7 +132,6 @@ public class UserData {
     public int getEdad() { return edad; }
     public String getNombreContacto() { return personaContacto; }
     public String getTelefonoContacto() { return telefonoContacto; }
-    //public String getInfoMedica() { return datosMedicos; }
     // Método para convertir la lista de datos médicos a un solo String
     public String getInfoMedicaAsString() {
         if (datosMedicos == null || datosMedicos.isEmpty()) {
@@ -233,7 +141,7 @@ public class UserData {
     }
 
 
-    // Setters para acceder a los datos
+    // Setters para acceder a los datos. Muchos no se usan. Creados a futuro
     public void setDNI(String dni) { this.dni=dni; }
     public void setNombre(String nombre) { this.nombre=nombre; }
     public void setApellidos(String apellidos) { this.apellidos=apellidos; }
