@@ -88,14 +88,8 @@ public class EmergencyEvent {
 
                         System.out.println("Escriba el DNI del herido con número y letra. Pulse cualquier otra tecla si no lo conoce.");
 
-                        /********************************************************************************/
+                        input = sc.nextLine();
 
-                        input ="11111111a";
-                        //input = sc.nextLine();
-
-
-
-/*******************************************************************************/
                         if (ValidaEntrada.validaEntDNI(input)) {
                             System.out.println("DNI con formato correcto.");
                             input = input.toUpperCase();   //guardamos el DNI en mayusculas

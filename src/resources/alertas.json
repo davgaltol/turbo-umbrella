@@ -1,0 +1,38 @@
+[
+  {
+    "timestamp": "2025-11-30 13:15:46",
+    "datosHerido": {
+      "nombre": "Desconocido",
+      "dni": "11111111A"
+    },
+    "datosUsuario": {
+      "nombre": "a",
+      "apellidos": "a",
+      "telefono": "a"
+    },
+    "ubicacion": "Elche, Spain. Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Mucha"
+  },
+  {
+    "timestamp": "2025-11-30 13:16:35",
+    "datosHerido": {},
+    "datosUsuario": {
+      "nombre": "a",
+      "apellidos": "a",
+      "telefono": "a"
+    },
+    "ubicacion": "Elche, Spain. Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Mucha"
+  },
+  {
+    "timestamp": "2025-11-30 13:17:07",
+    "datosHerido": {},
+    "datosUsuario": {
+      "nombre": "s",
+      "apellidos": "s",
+      "telefono": "s"
+    },
+    "ubicacion": "Elche, Spain. Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Mucha"
+  }
+]
