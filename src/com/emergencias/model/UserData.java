@@ -96,15 +96,15 @@ public class UserData {
         return datosUsuario;
     }
 
-    public String[] retrieveInjuredData(String dni) {
+    public UserData retrieveInjuredData(String dni) {
         final String PATIENTS_FILE_PATH = "./src/resources/pacientes.json";
         Gson gson = new Gson();
-        List<PacienteData> listaPacientes;
+        List<UserData> listaPacientes;
 
         // 1. LEER Y PARSEAR EL FICHERO JSON
         try (FileReader reader = new FileReader(PATIENTS_FILE_PATH)) {
             // Definimos el tipo: una Lista de PacienteData. Es crucial para que Gson entienda el array JSON.
-            Type listType = new TypeToken<ArrayList<PacienteData>>(){}.getType();
+            Type listType = new TypeToken<ArrayList<UserData>>(){}.getType();
             listaPacientes = gson.fromJson(reader, listType);
         } catch (IOException e) {
             System.err.println("Error: No se pudo encontrar o leer el fichero 'pacientes.json'.");
@@ -120,10 +120,10 @@ public class UserData {
         }
 
         // 2. BUSCAR AL PACIENTE POR DNI
-        for (PacienteData paciente : listaPacientes) {
+        for (UserData paciente : listaPacientes) {
             // Comparamos el DNI del paciente actual con el DNI buscado (ignorando mayúsculas/minúsculas)
             if (paciente.getDni() != null && paciente.getDni().equalsIgnoreCase(dni)) {
-
+                /*
                 // 3. SI SE ENCUENTRA, CONSTRUIR Y DEVOLVER EL ARRAY DE STRINGS
                 String[] datosHerido = new String[8];
                 datosHerido[0] = paciente.getNombre();
@@ -134,8 +134,8 @@ public class UserData {
                 datosHerido[5] = paciente.getNombreContacto();
                 datosHerido[6] = paciente.getTelefonoContacto();
                 datosHerido[7] = paciente.getInfoMedicaAsString();
-
-                return datosHerido; // Devolvemos los datos del paciente encontrado
+                */
+                return paciente; // Devolvemos los datos del paciente encontrado
             }
         }
 
@@ -147,12 +147,14 @@ public class UserData {
 
     //Crea una alerta genérica con herido desconocido
 
-    public String[] unknownInjuredData(){
-        String[] datosHerido=new String[8];
-
+    public UserData unknownInjuredData(){
+        UserData datosHerido=new UserData();    //se devuelve usuario construido por defecto (desconocido)
+/*
         for (int i=0;i<8;i++){
             datosHerido[i]="Desconocido";
         }
+
+        */
         System.out.println("Generada alerta por defecto sin paso de DNI.");
 
         return datosHerido;
@@ -167,11 +169,14 @@ public class UserData {
         return datosHerido;
     }
 
-    public String[] unknownUserData(){
-        String[] datosUsuario=new String[3];
+    public UserData unknownUserData(){
+        UserData datosUsuario=new UserData();
+        /*
         for (int i=0;i<3;i++){
-            datosUsuario[i]="Desconocido";
+            datosUsuario="Desconocido";
         }
+
+        */
         System.out.println("Generada alerta por defecto sin datos de usuario.");
 
         return datosUsuario;
@@ -179,6 +184,7 @@ public class UserData {
 
     // CLASE MOLDE PARA GSON                                ----------------------CAMBIARLA POR USERDATA
     // Representa la estructura de UN objeto paciente en el JSON.
+    /*nos ahorramos la clase molde ya que userdata está declarada
     private static class PacienteData {
         private String nombre;
         private String apellidos;
@@ -206,8 +212,9 @@ public class UserData {
             }
             return String.join(", ", datosMedicos);
         }
-
     }
+
+     */
     // Getters para acceder a los datos
     public String getDni() { return dni; }
     public String getNombre() { return nombre; }
@@ -228,6 +235,12 @@ public class UserData {
 
     // Setters para acceder a los datos
     public void setDNI(String dni) { this.dni=dni; }
+    public void setNombre(String nombre) { this.nombre=nombre; }
+    public void setApellidos(String apellidos) { this.apellidos=apellidos; }
+    public void setTelefono(String telefono) { this.telefono=telefono; }
+    public void setEdad(int edad) { this.edad=edad; }
+    public void setNombreContacto(String personaContacto) { this.personaContacto=personaContacto; }
+    public void setTelefonoContacto(String telefonoContacto) { this.telefonoContacto=telefonoContacto; }
 
 
 }

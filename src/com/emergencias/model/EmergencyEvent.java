@@ -48,7 +48,7 @@ public class EmergencyEvent {
                             input = input.toUpperCase();                            //guardamos el DNI en mayusculas
                             datosHerido.retrieveInjuredData(input);         // si está en el json se recuperan datos del Json
                             if (datosHerido != null) {                     //verificamos si el dni está en el Json
-                                System.out.println("DNI encontrado en BBDD. Recuperando datos...");
+                                System.out.println("DNI encontrado en BBDD. Datos recuperados...");
                                 //datosUsuario[0] = datosHerido[0];                        //se recuperan los datos de usuario de los de herido. son el mismo
                                 //datosUsuario[1] = datosHerido[1];
                                 //datosUsuario[2] = datosHerido[3];                        //ojo que no va en la misma posiocion de array
@@ -124,8 +124,8 @@ public class EmergencyEvent {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                 this.timestamp = now.format(formatter);
 
-                this.datosHerido = datosHerido;
-                this.datosUsuario = datosUsuario;
+                //this.datosHerido = datosHerido;                   !!!!!!!!!!!!revisar!!!!!!!!!!!!!!!!
+                //this.datosUsuario = datosUsuario;
                 this.ubicacion=ubi;
                 this.gravedad=gravedad;
             }
@@ -135,7 +135,7 @@ public class EmergencyEvent {
     }
 
     //GETTERS. Hay métodos sin uso pero pueden usarse a futuro. Se dejan implementados.
-
+    /*
     public String getTimestamp() {
         return timestamp; }
 
@@ -145,6 +145,8 @@ public class EmergencyEvent {
     public String[] getUserData() {
         return this.datosUsuario;
     }
+    */
+
     public String getSeverity(){
         return this.gravedad;
     }
