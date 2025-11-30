@@ -49,7 +49,7 @@ public class UserData {
         return datosUsuario;
     }
 
-    public UserData retrieveInjuredData(String dni) {
+/*    public UserData retrieveInjuredData(String dni) {
         final String PATIENTS_FILE_PATH = "./src/resources/pacientes.json";
         Gson gson = new Gson();
         List<UserData> listaPacientes;
@@ -87,7 +87,7 @@ public class UserData {
                 datosHerido[5] = paciente.getNombreContacto();
                 datosHerido[6] = paciente.getTelefonoContacto();
                 datosHerido[7] = paciente.getInfoMedicaAsString();
-                */
+
                 return paciente; // Devolvemos los datos del paciente encontrado
             }
         }
@@ -96,7 +96,7 @@ public class UserData {
         System.out.println("DNI no encontrado en la base de datos de pacientes.");
         return null; // Devuelve null si el DNI no está en la lista
     }
-
+*/
 
     //Crea una alerta genérica con herido desconocido
     public UserData unknownInjuredData(){
