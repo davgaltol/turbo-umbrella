@@ -17,13 +17,8 @@ public class EmergencyDetector {
             System.out.println("***************************************************");
             System.out.println("Escriba la letra 'E' si hay una emergencia o 'Q' para salir");
 
-            /********************************************************************************/
+            input = sc.nextLine();
 
-            input="e";
-            //input = sc.nextLine();
-
-
-            /********************************************************************************/
             if (input.equalsIgnoreCase("Q")) {
                 System.out.println("Nos indica que no hay una emergencia. Saliendo...");
                 return null;
@@ -31,11 +26,7 @@ public class EmergencyDetector {
             if (input.equalsIgnoreCase("E")) {
                 System.out.println("Nos indica que hay una emergencia. Pasando a toma de datos...");
 
-       /********************************************************************************/
-                //gravedad=validateSeverity();
-                gravedad="Mucha";
-                
-       /********************************************************************************/
+                gravedad=validateSeverity();
 
                 return new EmergencyEvent(gravedad); //valorar si da tiempo que no pregunte si no hay consciencia si es o no el herido
 

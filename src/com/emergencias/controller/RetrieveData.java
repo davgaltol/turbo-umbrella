@@ -39,18 +39,6 @@ public class RetrieveData {
         for (UserData paciente : listaPacientes) {
             // Comparamos el DNI del paciente actual con el DNI buscado (ignorando mayúsculas/minúsculas)
             if (paciente.getDni() != null && paciente.getDni().equalsIgnoreCase(dni)) {
-                /*
-                // 3. SI SE ENCUENTRA, CONSTRUIR Y DEVOLVER EL ARRAY DE STRINGS
-                String[] datosHerido = new String[8];
-                datosHerido[0] = paciente.getNombre();
-                datosHerido[1] = paciente.getApellidos();
-                datosHerido[2] = paciente.getDni();
-                datosHerido[3] = paciente.getTelefono();
-                datosHerido[4] = String.valueOf(paciente.getEdad()); // Convertimos el int a String
-                datosHerido[5] = paciente.getNombreContacto();
-                datosHerido[6] = paciente.getTelefonoContacto();
-                datosHerido[7] = paciente.getInfoMedicaAsString();
-                */
                 return paciente; // Devolvemos los datos del paciente encontrado
             }
         }

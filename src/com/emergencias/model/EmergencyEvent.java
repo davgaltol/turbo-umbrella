@@ -33,13 +33,7 @@ public class EmergencyEvent {
                 System.out.println("Sus datos pueden ser importantes para los servicios médicos. ");
                 System.out.println("Desea que recopilemos unos datos antes del envío de la alerta?S/N");
 
-                /********************************************************************************/
-
-                input="s";
-                //input = sc.nextLine();
-
-                /********************************************************************************/
-
+                input = sc.nextLine();
 
                 if (ValidaEntrada.validaEntSN(input)) {                             //si es no urgencia extrema se pasa a formularios. Si no se manda ubicación y herido genérico
                     //Paso a recuperar o tomar datos de usuario
@@ -147,8 +141,5 @@ public class EmergencyEvent {
 
     public String getSeverity(){
         return this.gravedad;
-    }
-    public String getLocation(){
-        return this.ubicacion;
     }
 }

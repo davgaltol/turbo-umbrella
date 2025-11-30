@@ -34,5 +34,33 @@
     },
     "ubicacion": "Elche, Spain. Coordenadas: 38.2642, -0.7001",
     "gravedad": "Mucha"
+  },
+  {
+    "timestamp": "2025-11-30 13:24:18",
+    "datosHerido": {
+      "nombre": "Desconocido"
+    },
+    "datosUsuario": {
+      "nombre": "as",
+      "apellidos": "as",
+      "telefono": "1232"
+    },
+    "ubicacion": "Elche, Spain. Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nCod02. Fallo respiratorio/ Vías obstruidas\n"
+  },
+  {
+    "timestamp": "2025-11-30 13:24:56",
+    "datosHerido": {
+      "nombre": "das",
+      "apellidos": "das",
+      "telefono": "123"
+    },
+    "datosUsuario": {
+      "nombre": "das",
+      "apellidos": "das",
+      "telefono": "123"
+    },
+    "ubicacion": "Elche, Spain. Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Problema:\nCod02. Fallo respiratorio/ Vías obstruidas\n"
   }
 ]
