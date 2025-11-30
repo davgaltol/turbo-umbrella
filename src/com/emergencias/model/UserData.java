@@ -38,7 +38,6 @@ public class UserData {
         UserData datosHerido=new UserData();    //se devuelve usuario construido por defecto (desconocido)
 
         datosHerido.nombre="Desconocido";
-
         System.out.println("Generada alerta por defecto sin paso de DNI.");
 
         return datosHerido;
@@ -56,12 +55,6 @@ public class UserData {
     public UserData unknownUserData(){
         UserData datosUsuario=new UserData();
         datosUsuario.nombre="Desconocido";
-        datosUsuario.apellidos="Desconocido";
-        datosUsuario.dni="Desconocido";
-        datosUsuario.telefono="Desconocido";
-        datosUsuario.edad="Desconocido";
-        datosUsuario.personaContacto="Desconocido";
-        datosUsuario.telefonoContacto="Desconocido";
         System.out.println("Generada alerta por defecto sin datos de usuario.");
 
         return datosUsuario;
