@@ -3,7 +3,8 @@ import com.emergencias.controller.HeridaGrave;
 import com.emergencias.controller.HeridaLeve;
 import com.emergencias.controller.ValidaEntrada;
 import com.emergencias.model.EmergencyEvent;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 //DETECTOR DE EMERGENCIA. VALORA GRAVEDAD
@@ -42,7 +43,7 @@ public class EmergencyDetector {
         Scanner sc = new Scanner(System.in);
         String input;
         String gravedad = "Problema:\n";
-
+        List<Integer> codHerida = new ArrayList<>();
         HeridaGrave herida= new HeridaGrave();
         HeridaLeve heridaL= new HeridaLeve();
 
@@ -52,17 +53,17 @@ public class EmergencyDetector {
         System.out.println("¿Está inconsciente el herido? S/N");
         input = sc.nextLine();
         if (ValidaEntrada.validaEntSN(input)) {
-            herida.setCodHerida(1);
+            codHerida.add(1);
         }
         System.out.println("¿Tiene problemas para respirar o vías obstruidas? S/N");
         input = sc.nextLine();
         if (ValidaEntrada.validaEntSN(input)) {
-            herida.setCodHerida(2);
+            codHerida.add(2);
         }
         System.out.println("¿Sangra abundantemente? S/N");
         input = sc.nextLine();
         if (ValidaEntrada.validaEntSN(input)) {
-            herida.setCodHerida(3);
+            codHerida.add(3);
         }
         System.out.println("¿Ha sufrido un golpe? S/N");
         input = sc.nextLine();
@@ -72,7 +73,7 @@ public class EmergencyDetector {
         try {
             boolean numValido=ValidaEntrada.validaEntDolor(input);
             if ((Integer.parseInt(input) > 3)&&numValido) {
-                herida.setCodHerida(4);
+                codHerida.add(4);
             }
             else{
                 heridaL.setCodHerida(1);
@@ -81,6 +82,10 @@ public class EmergencyDetector {
             System.out.println("Error: Formato número erróneo.");
         }
 
+        //insertamos los codigos de herida en bucle
+            for (int i = 0; i < codHerida.size(); i++) {
+                herida.setCodHerida(codHerida.get(i));
+            }
         }
         gravedad="DIAGNÓSTICO: Lesión leve que no requiere asistencia inmediata. Acuda a su centro de salud.";
 
