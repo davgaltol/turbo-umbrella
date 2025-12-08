@@ -14,8 +14,9 @@ public class HeridaLeve extends Herida{
             case 2:{
                 this.codHerida = this.codHerida + "Número fuera de rango.\n";
             }
+            break;
             default:{
-                this.codHerida = "Error en inserción de datos de herida";
+                this.codHerida = "Err01: Error en inserción de datos de herida";
             }
         }
     }

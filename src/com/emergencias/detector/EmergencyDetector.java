@@ -43,6 +43,7 @@ public class EmergencyDetector {
         Scanner sc = new Scanner(System.in);
         String input, gravedad;
         List<Integer> codHerida = new ArrayList<>();
+        List<Integer> codHeridaL = new ArrayList<>();
         HeridaGrave herida= new HeridaGrave();
         HeridaLeve heridaL= new HeridaLeve();
         boolean grave=false;
@@ -80,8 +81,8 @@ public class EmergencyDetector {
                 grave=true;
             }
             else{
-                if(numValido) codHerida.add(1); //numero fuera de rango
-                else codHerida.add(2); //numero invalido
+                if(numValido) codHeridaL.add(1); //numero fuera de rango
+                else codHeridaL.add(2); //numero invalido
 
             }
         }catch (NumberFormatException e) {
@@ -99,8 +100,8 @@ public class EmergencyDetector {
             }
             gravedad=herida.getHerida();
         }else{
-            for (int i = 0; i < codHerida.size(); i++) {
-                heridaL.setCodHerida(codHerida.get(i));
+            for (int i = 0; i < codHeridaL.size(); i++) {
+                heridaL.setCodHerida(codHeridaL.get(i));
             }
             gravedad=heridaL.getHerida();
 
