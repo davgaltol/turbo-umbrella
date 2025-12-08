@@ -41,7 +41,7 @@ public class EmergencyDetector {
 //VALORACION DE GRAVEDAD DE EMERGENCIA
     private String validateSeverity() {
         Scanner sc = new Scanner(System.in);
-        String input;
+        String input, gravedad;
         List<Integer> codHerida = new ArrayList<>();
         HeridaGrave herida= new HeridaGrave();
         HeridaLeve heridaL= new HeridaLeve();
@@ -93,17 +93,22 @@ public class EmergencyDetector {
         //gravedad="DIAGNÓSTICO: Lesión leve que no requiere asistencia inmediata. Acuda a su centro de salud.";
 
         //insertamos los codigos de herida en bucle
-        if (grave==true) {
+        if (grave) {
             for (int i = 0; i < codHerida.size(); i++) {
                 herida.setCodHerida(codHerida.get(i));
             }
+            gravedad=herida.getHerida();
         }else{
             for (int i = 0; i < codHerida.size(); i++) {
                 heridaL.setCodHerida(codHerida.get(i));
             }
+            gravedad=heridaL.getHerida();
+
         };
-        System.out.println(herida.getHerida());
-        return herida.getHerida();
+
+            System.out.println(gravedad);
+
+        return gravedad;
 
     }
 

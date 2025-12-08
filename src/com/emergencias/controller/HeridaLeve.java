@@ -8,7 +8,7 @@ public class HeridaLeve extends Herida{
     public void setCodHerida(int cod) {
         switch (cod) {
             case 1:{
-                this.codHerida = this.codHerida + "Dolor bajo. El daño se considera leve\n";
+                this.codHerida = this.codHerida + "Herida por golpe de baja intensidad\n";
             }
             break;
             case 2:{
@@ -18,6 +18,9 @@ public class HeridaLeve extends Herida{
                 this.codHerida = "Error en inserción de datos de herida";
             }
         }
+    }
+    public String getHerida(){
+        return this.codHerida;
     }
 
 }
