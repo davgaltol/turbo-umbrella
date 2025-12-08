@@ -45,7 +45,7 @@ public class EmergencyDetector {
         List<Integer> codHerida = new ArrayList<>();
         HeridaGrave herida= new HeridaGrave();
         HeridaLeve heridaL= new HeridaLeve();
-        boolean leve=false;
+        boolean grave=false;
 
         System.out.println("***************************************************");
         System.out.println("********SISTEMA DE VERIFICACIÓN DE GRAVEDAD********");
@@ -54,16 +54,19 @@ public class EmergencyDetector {
         input = sc.nextLine();
         if (ValidaEntrada.validaEntSN(input)) {
             codHerida.add(1);
+            grave=true;
         }
         System.out.println("¿Tiene problemas para respirar o vías obstruidas? S/N");
         input = sc.nextLine();
         if (ValidaEntrada.validaEntSN(input)) {
             codHerida.add(2);
+            grave=true;
         }
         System.out.println("¿Sangra abundantemente? S/N");
         input = sc.nextLine();
         if (ValidaEntrada.validaEntSN(input)) {
             codHerida.add(3);
+            grave=true;
         }
         System.out.println("¿Ha sufrido un golpe? S/N");
         input = sc.nextLine();
@@ -74,11 +77,11 @@ public class EmergencyDetector {
             boolean numValido=ValidaEntrada.validaEntDolor(input);
             if ((Integer.parseInt(input) > 3)&&numValido) {
                 codHerida.add(4);
+                grave=true;
             }
             else{
-                leve=true;
                 if(numValido) codHerida.add(1); //numero fuera de rango
-                else codHerida.add(2); //numero inválido
+                else codHerida.add(2); //numero invalido
 
             }
         }catch (NumberFormatException e) {
@@ -90,13 +93,13 @@ public class EmergencyDetector {
         //gravedad="DIAGNÓSTICO: Lesión leve que no requiere asistencia inmediata. Acuda a su centro de salud.";
 
         //insertamos los codigos de herida en bucle
-        if (leve) {
+        if (grave==true) {
             for (int i = 0; i < codHerida.size(); i++) {
-                heridaL.setCodHerida(codHerida.get(i));
+                herida.setCodHerida(codHerida.get(i));
             }
         }else{
             for (int i = 0; i < codHerida.size(); i++) {
-                herida.setCodHerida(codHerida.get(i));
+                heridaL.setCodHerida(codHerida.get(i));
             }
         };
         System.out.println(herida.getHerida());
