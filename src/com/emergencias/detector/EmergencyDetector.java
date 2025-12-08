@@ -1,5 +1,6 @@
 package com.emergencias.detector;
-
+import com.emergencias.controller.HeridaGrave;
+import com.emergencias.controller.HeridaLeve;
 import com.emergencias.controller.ValidaEntrada;
 import com.emergencias.model.EmergencyEvent;
 
@@ -38,14 +39,12 @@ public class EmergencyDetector {
     }
 //VALORACION DE GRAVEDAD DE EMERGENCIA
     private String validateSeverity() {
-        boolean pCons = false;
-        boolean pResp = false;
-        boolean pSang = false;
-        boolean pGolp = false;
-
         Scanner sc = new Scanner(System.in);
         String input;
         String gravedad = "Problema:\n";
+
+        HeridaGrave herida= new HeridaGrave();
+        HeridaLeve heridaL= new HeridaLeve();
 
         System.out.println("***************************************************");
         System.out.println("********SISTEMA DE VERIFICACIÓN DE GRAVEDAD********");
@@ -53,45 +52,40 @@ public class EmergencyDetector {
         System.out.println("¿Está inconsciente el herido? S/N");
         input = sc.nextLine();
         if (ValidaEntrada.validaEntSN(input)) {
-            pCons = true;
-            gravedad=gravedad + "Cod01. Nivel de consciencia baja/inestable/inconsciente\n";
+            herida.setCodHerida(1);
         }
         System.out.println("¿Tiene problemas para respirar o vías obstruidas? S/N");
         input = sc.nextLine();
         if (ValidaEntrada.validaEntSN(input)) {
-            pResp = true;
-            gravedad= gravedad + "Cod02. Fallo respiratorio/ Vías obstruidas\n";
+            herida.setCodHerida(2);
         }
         System.out.println("¿Sangra abundantemente? S/N");
         input = sc.nextLine();
         if (ValidaEntrada.validaEntSN(input)) {
-            pSang = true;
-            gravedad= gravedad + "Cod03. Sangrado abundante\n";
+            herida.setCodHerida(3);
         }
         System.out.println("¿Ha sufrido un golpe? S/N");
         input = sc.nextLine();
         if (ValidaEntrada.validaEntSN(input)) {
-            System.out.println("Indique gravedad de 1 a 5");
-            input = sc.nextLine();
-            try {
-                boolean numValido=ValidaEntrada.validaEntDolor(input);
-                if ((Integer.parseInt(input) > 3)&&numValido) {
-                    pGolp = true;
-                    gravedad = gravedad + "Cod04. Golpe grave de intensidad " + input + "\n";
-                }
-                else{
-                    System.out.println("Dolor bajo o número fuera de rango. El daño se considera leve");
-                }
-            }catch (NumberFormatException e) {
-                System.out.println("Error: Formato número erróneo. El daño se considera leve");
-
+        System.out.println("Indique gravedad de 1 a 5");
+        input = sc.nextLine();
+        try {
+            boolean numValido=ValidaEntrada.validaEntDolor(input);
+            if ((Integer.parseInt(input) > 3)&&numValido) {
+                herida.setCodHerida(4);
             }
-        }
-        if (!pCons && !pResp && !pSang && !pGolp) {
-            gravedad="DIAGNÓSTICO: Lesión leve que no requiere asistencia inmediata. Acuda a su centro de salud.";
+            else{
+                heridaL.setCodHerida(1);
+            }
+        }catch (NumberFormatException e) {
+            System.out.println("Error: Formato número erróneo.");
         }
 
-        return gravedad;
+        }
+        gravedad="DIAGNÓSTICO: Lesión leve que no requiere asistencia inmediata. Acuda a su centro de salud.";
+
+
+        return herida.getHerida();
 
     }
 
