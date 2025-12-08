@@ -14,7 +14,7 @@ public class HeridaGrave extends Herida {
             }
             break;
             case 2:{
-                this.codHerida = this.codHerida + "Cod02. Fallo respiratorio/ Vías obstruidas\n";
+                this.codHerida = this.codHerida + "Cod02. Fallo respiratorio/Vías obstruidas\n";
             }
             break;
             case 3:{
@@ -22,11 +22,11 @@ public class HeridaGrave extends Herida {
             }
             break;
             case 4:{
-                this.codHerida = this.codHerida + "Cod04. Golpe grave de alta intensidad ";
+                this.codHerida = this.codHerida + "Cod04. Golpe grave de alta intensidad\n";
             }
             break;
             default:{
-                this.codHerida = "Error en inserción de datos de herida";
+                this.codHerida = "Error en inserción de datos de herida\n";
             }
         }
     }

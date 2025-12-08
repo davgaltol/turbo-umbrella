@@ -42,10 +42,10 @@ public class EmergencyDetector {
     private String validateSeverity() {
         Scanner sc = new Scanner(System.in);
         String input;
-        String gravedad = "Problema:\n";
         List<Integer> codHerida = new ArrayList<>();
         HeridaGrave herida= new HeridaGrave();
         HeridaLeve heridaL= new HeridaLeve();
+        boolean leve=false;
 
         System.out.println("***************************************************");
         System.out.println("********SISTEMA DE VERIFICACIÓN DE GRAVEDAD********");
@@ -76,20 +76,30 @@ public class EmergencyDetector {
                 codHerida.add(4);
             }
             else{
-                heridaL.setCodHerida(1);
+                leve=true;
+                if(numValido) codHerida.add(1); //numero fuera de rango
+                else codHerida.add(2); //numero inválido
+
             }
         }catch (NumberFormatException e) {
             System.out.println("Error: Formato número erróneo.");
         }
 
+
+        }
+        //gravedad="DIAGNÓSTICO: Lesión leve que no requiere asistencia inmediata. Acuda a su centro de salud.";
+
         //insertamos los codigos de herida en bucle
+        if (leve) {
+            for (int i = 0; i < codHerida.size(); i++) {
+                heridaL.setCodHerida(codHerida.get(i));
+            }
+        }else{
             for (int i = 0; i < codHerida.size(); i++) {
                 herida.setCodHerida(codHerida.get(i));
             }
-        }
-        gravedad="DIAGNÓSTICO: Lesión leve que no requiere asistencia inmediata. Acuda a su centro de salud.";
-
-
+        };
+        System.out.println(herida.getHerida());
         return herida.getHerida();
 
     }

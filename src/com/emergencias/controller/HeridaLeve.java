@@ -8,9 +8,12 @@ public class HeridaLeve extends Herida{
     public void setCodHerida(int cod) {
         switch (cod) {
             case 1:{
-                this.codHerida = this.codHerida + "\"Dolor bajo o número fuera de rango. El daño se considera leve\n";
+                this.codHerida = this.codHerida + "Dolor bajo. El daño se considera leve\n";
             }
             break;
+            case 2:{
+                this.codHerida = this.codHerida + "Número fuera de rango.\n";
+            }
             default:{
                 this.codHerida = "Error en inserción de datos de herida";
             }
