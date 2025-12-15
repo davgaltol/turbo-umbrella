@@ -1,6 +1,8 @@
 package tests;
 
+import com.emergencias.controller.RetrieveData;
 import com.emergencias.controller.ValidaEntrada;
+import com.emergencias.model.UserData;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -65,5 +67,49 @@ public class tests {
         assertFalse(ValidaEntrada.validaEntDNI("12345678a"), "Inválido: letra minúscula (según el regex actual)");
         assertFalse(ValidaEntrada.validaEntDNI(""), "Inválido: cadena vacía");
         assertFalse(ValidaEntrada.validaEntDNI(null), "Inválido: nulo");
+    }
+    // En Pruebas.java
+
+
+// ... (dentro de la clase Pruebas)
+
+    @Test
+    void testRetrieveData_CuandoDniExiste() {
+        // GIVEN: Un DNI que sabemos que existe en el fichero pacientes.json
+        String dniExistente = "11111111A";
+
+        // WHEN: Llamamos al método estático para recuperar los datos
+        UserData paciente = RetrieveData.retrieveInjuredData(dniExistente);
+
+        // THEN: Verificamos que se ha devuelto un objeto y que sus datos son correctos
+        assertNotNull(paciente, "El paciente no debería ser nulo para un DNI que existe.");
+        assertEquals("Juan", paciente.getNombre(), "El nombre del paciente no coincide.");
+        assertEquals("Pérez Gómez", paciente.getApellidos(), "Los apellidos del paciente no coinciden.");
+        assertEquals(dniExistente, paciente.getDni(), "El DNI del paciente no coincide.");
+    }
+
+    @Test
+    void testRetrieveData_CuandoDniNoExiste() {
+        // GIVEN: Un DNI que sabemos que NO existe en el fichero pacientes.json
+        String dniInexistente = "00000000Z";
+
+        // WHEN: Llamamos al método estático
+        UserData paciente = RetrieveData.retrieveInjuredData(dniInexistente);
+
+        // THEN: Verificamos que el resultado es nulo
+        assertNull(paciente, "El resultado debería ser nulo para un DNI que no existe.");
+    }
+
+    @Test
+    void testRetrieveData_CuandoDniEsInvalido() {
+        // GIVEN: Diferentes tipos de DNI inválidos
+        String dniNulo = null;
+        String dniVacio = "";
+        String dniConEspacios = "   ";
+
+        // WHEN & THEN: Verificamos que para todas las entradas inválidas, el resultado es nulo
+        assertNull(RetrieveData.retrieveInjuredData(dniNulo), "El resultado debería ser nulo para un DNI nulo.");
+        assertNull(RetrieveData.retrieveInjuredData(dniVacio), "El resultado debería ser nulo para un DNI vacío.");
+        assertNull(RetrieveData.retrieveInjuredData(dniConEspacios), "El resultado debería ser nulo para un DNI con solo espacios.");
     }
 }
