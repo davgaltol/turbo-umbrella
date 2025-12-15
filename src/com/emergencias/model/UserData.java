@@ -55,7 +55,7 @@ public class UserData {
     public UserData unknownUserData(){
         UserData datosUsuario=new UserData();
         datosUsuario.nombre="Desconocido";
-        System.out.println("Generada alerta por defecto sin datos de usuario.");
+        System.out.println("Generada alerta por defecto sin datos de usuario/usuaria.");
 
         return datosUsuario;
     }

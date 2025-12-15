@@ -40,7 +40,7 @@ public class EmergencyEvent {
                     if (gravedad.contains("Cod01")){
                         input="n";                                      //si está inconsciente no tiene sentido preguntar si es el herido
                     }else {
-                        System.out.println("¿Es usted el herido?S/N");
+                        System.out.println("¿Es usted el herido/herida?S/N");
                         input = sc.nextLine();
                     }
                     if (ValidaEntrada.validaEntSN(input)) {
