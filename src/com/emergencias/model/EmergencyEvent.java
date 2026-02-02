@@ -27,7 +27,9 @@ public class EmergencyEvent {
                 System.out.println(gravedad);
             } else {
                 //Paso a obtener ubicación
-                ubi = location.getLocationFromAPI();
+
+                ubi=location.getLocationFromAPI(); //buscamos y mostramos nuestra ubicación actual formateada y la asignamos a variable para añadirla a datos en alertas.json
+
 
                 //Paso a recopilar datos
                 System.out.println("Sus datos pueden ser importantes para los servicios médicos. ");
