@@ -5,6 +5,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
+import java.util.List;
+
+import com.emergencias.model.centros.Feature;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.emergencias.model.LocationData;
@@ -63,6 +66,9 @@ public class Location {
             location="Desconocida";
             e.printStackTrace();
         }
+
+
+
         return location;
 
     }
@@ -81,8 +87,10 @@ public class Location {
 
             // 4. ¡LISTO! Ahora puedes usar el objeto y sus métodos
             String ubicacionFormateada = datosDeUbicacion.getFormattedLocation();
-            System.out.println("Ubicación encontrada: " + ubicacionFormateada);
-
+            System.out.println("Ubicación local encontrada: " + ubicacionFormateada);
+            /*********************obtener centro de salud más cercano**********/
+            centroCercano(ubi, location);
+            /*****************************************************************/
             return ubicacionFormateada;
         } catch (JsonSyntaxException e) {
             // Este bloque se ejecuta si el JSON está mal formado
@@ -96,4 +104,34 @@ public class Location {
 
 
     }
+
+    public void centroCercano(String ubi, Location location){
+
+    //Introducimos el código para que muestre el centro de salud más cercano a nuestra posición
+        // 1. Obtener tu ubicación
+        /*String ubi;
+        Location location = new Location();
+
+
+        ubi=location.findLocation();*/ //ubicacion sin formato para
+
+        Gson gson = new Gson();
+
+        LocationData miUbicacion=gson.fromJson(ubi, LocationData.class); // (Obtenida de tu Location.findLocation)
+
+        // 2. Cargar centros
+        HealthCenterReader reader = new HealthCenterReader();
+        List<Feature> centros = reader.loadHealthCenters();
+
+        // 3. Buscar el más cercano
+        HealthCenterLocator locator = new HealthCenterLocator();
+        Feature centroCercano = locator.findNearestCenter(miUbicacion, centros);
+
+        if (centroCercano != null) {
+            System.out.println("Centro más cercano: " + centroCercano.getProperties().getNombre());
+            System.out.println("Dirección: " + centroCercano.getProperties().getDireccionCompleta());
+        }
+
+    }
+
 }
