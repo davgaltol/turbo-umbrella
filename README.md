@@ -1,88 +1,102 @@
-DOCUMENTACIÓN – SISTEMA DE EMERGENCIAS
-Funcionalidad
+# 🚑 Sistema de Emergencias
 
-Detección automática de emergencias con cuenta atrás y registro manual de incidencias.
+## 📌 Descripción general
 
-Descripción general
+Aplicación desarrollada en **Java** que permite la gestión y registro de emergencias médicas.
 
-El sistema de emergencias permite al usuario:
+El sistema permite:
 
-Registrar emergencias de forma manual.
+- Registrar emergencias manualmente.
+- Detectar situaciones de riesgo automáticamente mediante un detector de caídas.
+- Localizar centros de salud cercanos a partir de la ubicación obtenida por IP.
+- Guardar el historial de emergencias en formato JSON.
 
-Detectar situaciones de riesgo automáticamente mediante un detector de caídas (FallDetector) que se ejecuta en segundo plano.
+El proyecto utiliza control de versiones con Git siguiendo una estrategia basada en ramas (`main`, `developer`, `feature_*`).
 
-La aplicación está desarrollada en Java y utiliza control de versiones con Git, siguiendo una metodología basada en ramas (main, developer, feature_*).
+---
 
-Arquitectura básica del sistema
-Clases principales
-Clase	Función
-Main	Controla el flujo principal del programa y el menú de usuario.
-EmergencyManager	Centraliza la lógica de creación y almacenamiento de emergencias.
-FallDetector	Hilo independiente que simula la detección automática de caídas.
-EmergencyRecord	Modelo de datos que representa una emergencia.
-EmergencyHistoryManager	Gestiona la persistencia del historial en formato JSON.
-UserAccount / UserData	Gestionan la información del usuario autenticado.
-Location	Obtiene la ubicación de usuario mediante API y localiza centros de salud cercanos.
-HealthCenterReader	Carga los centros de salud desde el archivo JSON/GeoJSON.
-Persistencia de datos
+## 🏗 Arquitectura del sistema
 
-El historial de emergencias se almacena en formato JSON.
+### Clases principales
 
-Se utiliza la clase EmergencyHistoryManager para guardar y recuperar los registros del historial.
+| Clase | Función |
+|-------|----------|
+| `Main` | Controla el flujo principal y menú de usuario |
+| `EmergencyManager` | Gestiona creación y almacenamiento de emergencias |
+| `FallDetector` | Hilo independiente que simula detección automática |
+| `EmergencyRecord` | Modelo de datos de emergencia |
+| `EmergencyHistoryManager` | Persistencia del historial en JSON |
+| `UserAccount` / `UserData` | Gestión de datos del usuario |
+| `Location` | Obtiene ubicación por IP y localiza centro cercano |
+| `HealthCenterReader` | Carga centros de salud desde GeoJSON |
 
-Los centros de salud se cargan desde el archivo src/resources/ca_centros_salud_20260105.geojson usando HealthCenterReader.
+---
 
-La ubicación del usuario se obtiene mediante la API ip-api.com y se procesa con Gson para localizar el centro de salud más cercano.
+## 💾 Persistencia de datos
 
-Detección automática de emergencias
+- El historial se almacena en `alertas.json`.
+- Los centros de salud se cargan desde:
 
-La clase FallDetector se ejecuta en segundo plano como hilo independiente.
 
-Cada cierto intervalo simula una posible caída.
+src/resources/ca_centros_salud_20260105.geojson
 
-Si se detecta una caída:
 
-Se muestra un aviso en consola.
+- Se utiliza la librería **Gson** para procesar JSON.
+- La ubicación se obtiene mediante la API pública `http://ip-api.com`.
 
-Se inicia una cuenta atrás de 10 segundos.
+---
 
-Si no hay intervención, la emergencia se envía automáticamente y se registra en el historial.
+## ⚙️ Detección automática de emergencias
 
-Cuenta atrás de confirmación
+La clase `FallDetector` se ejecuta como hilo independiente:
 
-Permite al usuario reaccionar antes de que la alerta sea definitiva.
+1. Simula detección de caída.
+2. Inicia cuenta atrás de 10 segundos.
+3. Si no hay cancelación, registra la emergencia automáticamente.
 
-Emergencias registradas automáticamente se marcan con el tipo: "Emergencia detectada automáticamente".
+Las emergencias automáticas se etiquetan como:
 
-Consideraciones técnicas y limitaciones
 
-Hilos independientes y entrada por consola (Scanner) pueden provocar comportamientos no deterministas en la visualización de la cuenta atrás.
+Emergencia detectada automáticamente
 
-La lógica automática está separada del flujo interactivo del menú para garantizar estabilidad.
 
-El sistema es educativo y simula concurrencia y persistencia de forma sencilla y comprensible.
+---
 
-Control de versiones (Git)
+## 🔎 Cuenta atrás de confirmación
 
-Se sigue una metodología basada en ramas:
+Permite al usuario cancelar el envío antes de que la alerta sea definitiva.
 
+---
+
+## ⚠️ Consideraciones técnicas
+
+- Uso de `Thread` para concurrencia básica.
+- Posible comportamiento no determinista en consola debido a uso simultáneo de `Scanner` y hilos.
+- Proyecto con finalidad educativa.
+- Uso de herencia y polimorfismo en la jerarquía `Herida`, `HeridaLeve`, `HeridaGrave`.
+
+---
+
+## 🧪 Compilación y ejecución manual
+
+### Requisitos
+
+- JDK 17 o superior
+- Librería `gson-2.10.1.jar` dentro de la carpeta `lib`
+
+### Compilar
+
+En PowerShell:
+
+```powershell
+$sources = Get-ChildItem -Recurse -Filter *.java | ForEach-Object { $_.FullName }
+javac -cp "lib\gson-2.10.1.jar;bin" -d bin $sources
+Ejecutar
+java -cp "bin;lib\gson-2.10.1.jar" com.emergencias.main.Main
+🌿 Control de versiones
 Rama	Uso
-main	Versión estable del proyecto.
-developer	Rama de integración de nuevas funcionalidades.
-feature_*	Implementaciones concretas de funcionalidades o mejoras (ej. feature_documentacion-json).
+main	Versión estable
+developer	Integración de nuevas funcionalidades
+feature_*	Desarrollo aislado de mejoras
 
-Solo se integran en developer las funcionalidades consideradas estables.
-
-Conclusión
-
-El proyecto demuestra:
-
-Programación orientada a objetos.
-
-Uso de hilos (Thread) para tareas concurrentes.
-
-Persistencia de datos en JSON.
-
-Control de versiones profesional con Git y desarrollo incremental mediante ramas de funcionalidades.
-
-El sistema constituye una base sólida y funcional para una aplicación de gestión de emergencias, con margen para futuras ampliaciones o mejoras.
+Solo se integran en developer funcionalidades estables mediante Pull Request.
