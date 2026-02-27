@@ -25,11 +25,14 @@ public class HealthCenterReader {
             GeoJsonData data = gson.fromJson(reader, GeoJsonData.class);
             if (data != null && data.getFeatures() != null) {
                 return data.getFeatures();
+            } else {
+                System.err.println("Archivo leído pero no contiene datos válidos.");
             }
         } catch (Exception e) {
             System.err.println("Error al leer el archivo de centros de salud: " + e.getMessage());
             e.printStackTrace();
         }
-        return new ArrayList<>();
+
+        return Collections.emptyList();
     }
 }

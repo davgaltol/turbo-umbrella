@@ -1,0 +1,15 @@
+[
+  {
+    "timestamp": "2026-02-22 16:21:06",
+    "datosHerido": {
+      "nombre": "Desconocido"
+    },
+    "datosUsuario": {
+      "nombre": "kkk",
+      "apellidos": "ggg",
+      "telefono": "665545"
+    },
+    "ubicacion": "Alicante, Spain. Coordenadas: 38.3434, -0.4758",
+    "gravedad": "Se detecta problema grave:\nCod01. Nivel de consciencia baja/inestable/inconsciente\nCod02. Fallo respiratorio/Vías obstruidas\nCod03. Sangrado abundante\nCod04. Golpe grave de alta intensidad\n"
+  }
+]
