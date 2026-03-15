@@ -1,0 +1,35 @@
+[
+  {
+    "timestamp": "2026-03-15 12:30:07",
+    "datosHerido": {
+      "nombre": "Desconocido"
+    },
+    "datosUsuario": {
+      "nombre": "Desconocido"
+    },
+    "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
+    "gravedad": "Se detecta problema grave:\nCod01. Nivel de consciencia baja/inestable/inconsciente\n"
+  },
+  {
+    "timestamp": "2026-03-15 12:31:12",
+    "datosHerido": {
+      "nombre": "Desconocido"
+    },
+    "datosUsuario": {
+      "nombre": "Desconocido"
+    },
+    "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
+    "gravedad": "Se detecta problema grave:\nCod01. Nivel de consciencia baja/inestable/inconsciente\n"
+  },
+  {
+    "timestamp": "2026-03-15 12:36:28",
+    "datosHerido": {
+      "nombre": "Desconocido"
+    },
+    "datosUsuario": {
+      "nombre": "Desconocido"
+    },
+    "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
+    "gravedad": "Se detecta problema grave:\nCod01. Nivel de consciencia baja/inestable/inconsciente\nCod03. Sangrado abundante\n"
+  }
+]
