@@ -31,5 +31,44 @@
     },
     "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
     "gravedad": "Se detecta problema grave:\nCod01. Nivel de consciencia baja/inestable/inconsciente\nCod03. Sangrado abundante\n"
+  },
+  {
+    "timestamp": "2026-03-15 12:48:27",
+    "datosHerido": {
+      "nombre": "Desconocido"
+    },
+    "datosUsuario": {
+      "nombre": "Desconocido"
+    },
+    "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
+    "gravedad": "Se detecta problema grave:\nCod01. Nivel de consciencia baja/inestable/inconsciente\n"
+  },
+  {
+    "timestamp": "2026-03-15 12:55:28",
+    "datosHerido": {
+      "nombre": "juan garcia",
+      "apellidos": "garcia",
+      "dni": "12345678A",
+      "telefono": "123456789"
+    },
+    "datosUsuario": {
+      "nombre": "juan garcia",
+      "apellidos": "garcia",
+      "dni": "12345678A",
+      "telefono": "123456789"
+    },
+    "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
+    "gravedad": "Se detecta problema grave:\nCod02. Fallo respiratorio/Vías obstruidas\nCod04. Golpe grave de alta intensidad\n"
+  },
+  {
+    "timestamp": "2026-03-15 13:02:16",
+    "datosHerido": {
+      "nombre": "Desconocido"
+    },
+    "datosUsuario": {
+      "nombre": "Desconocido"
+    },
+    "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
+    "gravedad": "Se detecta problema grave:\nCod01. Nivel de consciencia baja/inestable/inconsciente\nCod02. Fallo respiratorio/Vías obstruidas\nCod03. Sangrado abundante\n"
   }
 ]

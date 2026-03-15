@@ -25,7 +25,7 @@ public class Indicaciones {
 
         boolean seDieronIndicaciones = false;
 
-        if (gravedadCompleta.contains("Cod01")) {
+        if (gravedadCompleta.contains("Cod01")) { // Nivel de consciencia bajo/inestable/inconsciente
             System.out.println("\nINDICACIÓN PARA 'PERSONA INCONSCIENTE':");
             System.out.println("1. Verifique si respira. Acerque su oído a su boca y nariz para sentir la respiración.");
             System.out.println("2. Si respira, colóquela de lado (posición lateral de seguridad) para mantener la vía aérea abierta.");
@@ -34,7 +34,15 @@ public class Indicaciones {
             seDieronIndicaciones = true;
         }
 
-        if (gravedadCompleta.contains("Cod02")) {
+        if (gravedadCompleta.contains("Cod02")) { // Fallo respiratorio/Vías obstruidas
+            System.out.println("\nINDICACIÓN PARA 'FALLO RESPIRATORIO / ATRAGANTAMIENTO':");
+            System.out.println("1. Anime a la persona a toser con todas sus fuerzas.");
+            System.out.println("2. Si no puede toser, póngase detrás y dé 5 golpes secos en la espalda, entre los omóplatos.");
+            System.out.println("3. Si sigue sin funcionar, realice la Maniobra de Heimlich (compresiones abdominales).");
+            seDieronIndicaciones = true;
+        }
+
+        if (gravedadCompleta.contains("Cod03")) { // Sangrado abundante
             System.out.println("\nINDICACIÓN PARA 'HEMORRAGIA FUERTE':");
             System.out.println("1. Aplique presión directa y firme sobre la herida usando un paño limpio o gasa.");
             System.out.println("2. Si es posible, eleve la extremidad afectada por encima del nivel del corazón.");
@@ -42,27 +50,14 @@ public class Indicaciones {
             seDieronIndicaciones = true;
         }
 
-        if (gravedadCompleta.contains("Cod03")) {
-            System.out.println("\nINDICACIÓN PARA 'QUEMADURA GRAVE':");
-            System.out.println("1. Enfríe la quemadura con agua corriente fría (no helada) durante 10-15 minutos.");
-            System.out.println("2. No aplique hielo, cremas, pomadas o remedios caseros.");
-            System.out.println("3. Cubra la zona suavemente con un paño limpio y seco que no suelte pelusa.");
-            seDieronIndicaciones = true;
-        }
-
-        if (gravedadCompleta.contains("Cod04")) {
-            System.out.println("\nINDICACIÓN PARA 'POSIBLE FRACTURA':");
-            System.out.println("1. No mueva a la persona ni la parte del cuerpo que sospecha que está rota, a menos que corra peligro.");
-            System.out.println("2. Inmovilice la zona en la posición en que la encontró. No intente enderezarla.");
-            System.out.println("3. Puede aplicar frío local (envuelto en un paño) para reducir el dolor y la hinchazón.");
-            seDieronIndicaciones = true;
-        }
-
-        if (gravedadCompleta.contains("Cod05")) {
-            System.out.println("\nINDICACIÓN PARA 'ATRAGANTAMIENTO SEVERO':");
-            System.out.println("1. Anime a la persona a toser con todas sus fuerzas.");
-            System.out.println("2. Si no puede toser, póngase detrás y dé 5 golpes secos en la espalda, entre los omóplatos.");
-            System.out.println("3. Si sigue sin funcionar, realice la Maniobra de Heimlich (compresiones abdominales).");
+        if (gravedadCompleta.contains("Cod04")) { // Golpe grave de alta intensidad
+            System.out.println("\nINDICACIÓN PARA 'GOLPE GRAVE / POSIBLE FRACTURA O QUEMADURA':");
+            System.out.println("-> Para POSIBLE FRACTURA:");
+            System.out.println("   1. No mueva a la persona ni la parte del cuerpo afectada, a menos que corra peligro.");
+            System.out.println("   2. Inmovilice la zona en la posición en que la encontró. No intente enderezarla.");
+            System.out.println("-> Para QUEMADURA GRAVE:");
+            System.out.println("   1. Enfríe la quemadura con agua corriente fría (no helada) durante 10-15 minutos.");
+            System.out.println("   2. No aplique hielo, cremas o pomadas. Cubra con un paño limpio y seco.");
             seDieronIndicaciones = true;
         }
 
