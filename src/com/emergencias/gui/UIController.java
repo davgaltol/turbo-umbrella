@@ -6,11 +6,13 @@ import com.emergencias.model.UserData;
 import com.emergencias.model.centros.Feature;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 import java.net.URLEncoder;
@@ -190,10 +192,29 @@ public class UIController {
             String origin = userLocation.getLatitude() + "," + userLocation.getLongitude();
             String destination = URLEncoder.encode(nearestCenter.getProperties().getDireccionCompleta(), StandardCharsets.UTF_8.toString());
             String mapUrl = String.format(Locale.US,
-                "https://www.google.com/maps/dir/?api=1&origin=%s&destination=%s&travelmode=driving&g_ep=1",
+                "https://www.google.com/maps/dir/?api=1&origin=%s&destination=%s&travelmode=driving",
                 origin, destination
             );
-            mapWebView.getEngine().load(mapUrl);
+
+            WebEngine engine = mapWebView.getEngine();
+            
+            // AÑADIMOS EL LISTENER PARA AUTO-ACEPTAR COOKIES
+            engine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
+                if (newState == Worker.State.SUCCEEDED) {
+                    // El script busca un botón cuyo 'aria-label' sea "Accept all" o el equivalente en español y lo pulsa.
+                    String script = "var buttons = document.querySelectorAll('button'); " +
+                                    "for (var i = 0; i < buttons.length; i++) { " +
+                                    "  if (buttons[i].getAttribute('aria-label') === 'Accept all' || buttons[i].innerText.includes('Aceptar todo')) { " +
+                                    "    buttons[i].click(); " +
+                                    "    break; " +
+                                    "  } " +
+                                    "}";
+                    engine.executeScript(script);
+                }
+            });
+
+            engine.load(mapUrl);
+
         } catch (Exception e) {
             logArea.appendText("\nError al generar la URL del mapa: " + e.getMessage());
         }
