@@ -4,60 +4,60 @@ import com.emergencias.alert.AlertSender;
 import com.emergencias.alert.CoverageFinder;
 import com.emergencias.alert.IAlertSender;
 import com.emergencias.model.EmergencyEvent;
+import com.emergencias.model.UserData;
 
-/**
- * Gestor principal de la lógica de negocio.
- * Ahora está diseñado para ser llamado tanto desde una consola como desde una GUI.
- */
+import java.util.function.Consumer;
+
 public class EmergencyManager {
 
-    /**
-     * Método principal para procesar una emergencia.
-     * Este método contiene la lógica central y devuelve un String con el resultado.
-     *
-     * @param gravedad El string que describe la gravedad de la herida.
-     * @param simularFaltaDeCobertura True si se debe simular la búsqueda de cobertura.
-     * @return Un String con el resultado del procesamiento y las indicaciones.
-     */
-    public String procesarEmergencia(String gravedad, boolean simularFaltaDeCobertura) {
-        // La lógica de crear el evento ya no depende de la consola.
-        // La GUI nos pasa directamente el string de gravedad.
-        EmergencyEvent event = new EmergencyEvent(gravedad);
-        
-        // Comprobamos si el evento es válido (no es leve, no fue cancelado, etc.)
-        // NOTA: La lógica de creación de EmergencyEvent parece que ya no necesita
-        // la interacción por consola, lo cual es perfecto para la GUI.
-        // Si el constructor de EmergencyEvent devolviera null o un estado inválido,
-        // lo manejaríamos aquí. Por ahora, asumimos que si la gravedad no es leve, es procesable.
-        if (event.getSeverity() == null || event.getSeverity().contains("leve")) {
-            return "El evento no requiere una alerta de emergencia.";
-        }
+    public void procesarEmergencia(
+            String gravedad,
+            UserData datosLlamanteExternos, // Puede ser null si el llamante es el herido
+            String dniHerido,
+            boolean simularCobertura,
+            Consumer<String> outputConsumer
+    ) {
+        // --- 1. OBTENER UBICACIÓN Y CENTRO CERCANO ---
+        outputConsumer.accept("Obteniendo ubicación...");
+        Location location = new Location();
+        String ubi = location.getLocationFromAPI();
+        outputConsumer.accept("Ubicación encontrada: " + ubi + "\n");
 
-        IAlertSender sender;
-        if (simularFaltaDeCobertura) {
-            sender = new CoverageFinder();
+        // --- 2. GESTIONAR DATOS DE USUARIO Y HERIDO ---
+        UserData datosHerido;
+        UserData datosLlamante;
+
+        outputConsumer.accept("Buscando DNI del herido (" + dniHerido + ") en la base de datos...");
+        datosHerido = RetrieveData.retrieveInjuredData(dniHerido);
+
+        if (datosHerido == null) {
+            outputConsumer.accept("DNI del herido no encontrado. Se creará un registro parcial.");
+            datosHerido = new UserData();
+            datosHerido.setDNI(dniHerido); // Guardamos al menos el DNI
         } else {
-            sender = new AlertSender();
+            outputConsumer.accept("DNI encontrado. Datos del herido recuperados.");
         }
 
-        // Enviamos la alerta (de forma síncrona o asíncrona)
+        // Ahora, definimos los datos del llamante
+        if (datosLlamanteExternos == null) { // Marcador para "el llamante es el herido"
+            outputConsumer.accept("El llamante es el herido. Copiando datos.");
+            datosLlamante = new UserData(datosHerido);
+        } else {
+            outputConsumer.accept("El llamante es un informante. Usando datos proporcionados.");
+            datosLlamante = datosLlamanteExternos;
+        }
+
+        // --- 3. CREAR EL EVENTO DE EMERGENCIA ---
+        outputConsumer.accept("\nCreando evento de emergencia...");
+        EmergencyEvent event = new EmergencyEvent(gravedad, ubi, datosHerido, datosLlamante);
+
+        // --- 4. ENVIAR ALERTA ---
+        IAlertSender sender = simularCobertura ? new CoverageFinder() : new AlertSender();
         sender.sendAlert(event);
+        outputConsumer.accept("Alerta enviada (o en proceso de envío si no hay cobertura).\n");
 
-        // Obtenemos las indicaciones como un String
-        String indicaciones = Indicaciones.getIndicaciones(event.getSeverity());
-
-        // Devolvemos el resultado para que la GUI lo muestre.
-        return "Alerta en proceso de envío.\n" + indicaciones;
-    }
-
-    /**
-     * Punto de entrada para la ejecución original por consola.
-     * Este método ahora es un simple envoltorio.
-     * YA NO SERÁ EL PUNTO DE ENTRADA PRINCIPAL SI USAS LA GUI.
-     */
-    public void startSystem() {
-        System.out.println("Este es el modo consola. Para la interfaz gráfica, ejecute 'com.emergencias.gui.MainGui.java'");
-        // Aquí se podría replicar la lógica de preguntas por consola si se quisiera mantener
-        // la funcionalidad dual, pero para la integración con la GUI, no es necesario.
+        // --- 5. DAR INDICACIONES ---
+        String indicaciones = Indicaciones.getIndicaciones(gravedad);
+        outputConsumer.accept(indicaciones);
     }
 }

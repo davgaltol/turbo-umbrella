@@ -47,6 +47,13 @@ public class Indicaciones {
             sb.append("-> Para QUEMADURA GRAVE: Enfríe con agua 10-15 min. No aplique cremas.\n");
             seDieronIndicaciones = true;
         }
+        if (gravedadCompleta.toLowerCase().contains("leve")) {
+            sb.append("\nINDICACIÓN PARA 'HERIDA LEVE':\n");
+            sb.append("1. Limpie la herida con agua y jabón neutro.\n");
+            sb.append("2. Aplique un antiséptico local.\n");
+            sb.append("3. Cubra con un apósito limpio si es necesario.\n");
+            seDieronIndicaciones = true;
+        }
 
         if (!seDieronIndicaciones) {
             sb.append("\nNo hay indicaciones específicas. Vigile al herido.\n");
