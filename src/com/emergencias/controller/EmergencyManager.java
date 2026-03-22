@@ -3,53 +3,61 @@ package com.emergencias.controller;
 import com.emergencias.alert.AlertSender;
 import com.emergencias.alert.CoverageFinder;
 import com.emergencias.alert.IAlertSender;
-import com.emergencias.detector.EmergencyDetector;
 import com.emergencias.model.EmergencyEvent;
 
-import java.util.Scanner;
-
+/**
+ * Gestor principal de la lógica de negocio.
+ * Ahora está diseñado para ser llamado tanto desde una consola como desde una GUI.
+ */
 public class EmergencyManager {
 
-    public void startSystem() {
-        EmergencyDetector detector = new EmergencyDetector();
-        IAlertSender sender; // La declaramos sin inicializarla
-
-        // 1. Detectar el evento de emergencia
-        System.out.println("Iniciando sistema de detección de emergencias...");
-        EmergencyEvent event = detector.detectEvent();
-
-        // 2. Si el evento es válido, el flujo principal continúa
-        if (event != null && event.getSeverity() != null && !event.getSeverity().contains("leve")) {
-
-            // --- SELECCIÓN DE COMPORTAMIENTO EN TIEMPO DE EJECUCIÓN ---
-            System.out.println("\n----------------------------------------------------");
-            System.out.print("¿Desea simular falta de cobertura? (S/N): ");
-            Scanner sc = new Scanner(System.in);
-            String input = sc.nextLine();
-            System.out.println("----------------------------------------------------");
-
-            if (input.equalsIgnoreCase("S")) {
-                // Si el usuario quiere simular, usamos CoverageFinder
-                sender = new CoverageFinder();
-                System.out.println("Modo simulación activado: Se buscará cobertura en segundo plano.");
-            } else {
-                // Si no, usamos el envío directo
-                sender = new AlertSender();
-                System.out.println("Modo normal activado: La alerta se enviará directamente.");
-            }
-            // ----------------------------------------------------------------
-
-            // 3. Enviar la alerta (de forma real o simulada, según la implementación de 'sender')
-            // El resto del código no cambia, gracias a la interfaz.
-            sender.sendAlert(event);
-
-            // 4. Proporcionar indicaciones de primeros auxilios INMEDIATAMENTE.
-            System.out.println("\nEl programa principal continúa mientras se gestiona el envío de la alerta...");
-            Indicaciones.darIndicaciones(event.getSeverity());
-
-        } else {
-            // Manejar el caso de que no haya emergencia, sea leve, o el usuario cancele.
-            System.out.println("\nEl sistema ha finalizado. No se ha generado ninguna alerta de emergencia grave.");
+    /**
+     * Método principal para procesar una emergencia.
+     * Este método contiene la lógica central y devuelve un String con el resultado.
+     *
+     * @param gravedad El string que describe la gravedad de la herida.
+     * @param simularFaltaDeCobertura True si se debe simular la búsqueda de cobertura.
+     * @return Un String con el resultado del procesamiento y las indicaciones.
+     */
+    public String procesarEmergencia(String gravedad, boolean simularFaltaDeCobertura) {
+        // La lógica de crear el evento ya no depende de la consola.
+        // La GUI nos pasa directamente el string de gravedad.
+        EmergencyEvent event = new EmergencyEvent(gravedad);
+        
+        // Comprobamos si el evento es válido (no es leve, no fue cancelado, etc.)
+        // NOTA: La lógica de creación de EmergencyEvent parece que ya no necesita
+        // la interacción por consola, lo cual es perfecto para la GUI.
+        // Si el constructor de EmergencyEvent devolviera null o un estado inválido,
+        // lo manejaríamos aquí. Por ahora, asumimos que si la gravedad no es leve, es procesable.
+        if (event.getSeverity() == null || event.getSeverity().contains("leve")) {
+            return "El evento no requiere una alerta de emergencia.";
         }
+
+        IAlertSender sender;
+        if (simularFaltaDeCobertura) {
+            sender = new CoverageFinder();
+        } else {
+            sender = new AlertSender();
+        }
+
+        // Enviamos la alerta (de forma síncrona o asíncrona)
+        sender.sendAlert(event);
+
+        // Obtenemos las indicaciones como un String
+        String indicaciones = Indicaciones.getIndicaciones(event.getSeverity());
+
+        // Devolvemos el resultado para que la GUI lo muestre.
+        return "Alerta en proceso de envío.\n" + indicaciones;
+    }
+
+    /**
+     * Punto de entrada para la ejecución original por consola.
+     * Este método ahora es un simple envoltorio.
+     * YA NO SERÁ EL PUNTO DE ENTRADA PRINCIPAL SI USAS LA GUI.
+     */
+    public void startSystem() {
+        System.out.println("Este es el modo consola. Para la interfaz gráfica, ejecute 'com.emergencias.gui.MainGui.java'");
+        // Aquí se podría replicar la lógica de preguntas por consola si se quisiera mantener
+        // la funcionalidad dual, pero para la integración con la GUI, no es necesario.
     }
 }
