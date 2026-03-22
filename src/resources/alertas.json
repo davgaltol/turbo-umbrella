@@ -70,5 +70,77 @@
     },
     "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
     "gravedad": "Se detecta problema grave:\nCod03. Sangrado abundante\n"
+  },
+  {
+    "timestamp": "2026-03-22 15:23:04",
+    "datosHerido": {
+      "nombre": "Carlos",
+      "apellidos": "García Fernández",
+      "dni": "33333333C",
+      "telefono": "644555666",
+      "edad": "53",
+      "personaContacto": "Laura Ruiz (Hija)",
+      "telefonoContacto": "655666777",
+      "datosMedicos": []
+    },
+    "datosUsuario": {
+      "nombre": "David Galante",
+      "telefono": "654625487"
+    },
+    "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
+    "gravedad": "Se detecta problema grave:\nCod01. Nivel de consciencia baja/inestable/inconsciente\nCod04. Golpe grave de alta intensidad\n"
+  },
+  {
+    "timestamp": "2026-03-22 15:29:39",
+    "datosHerido": {
+      "nombre": "Juan",
+      "apellidos": "Pérez Gómez",
+      "dni": "11111111A",
+      "telefono": "600111222",
+      "edad": "45",
+      "personaContacto": "María López (Esposa)",
+      "telefonoContacto": "611222333",
+      "datosMedicos": [
+        "Alergia al polen",
+        "Hipertensión"
+      ]
+    },
+    "datosUsuario": {
+      "nombre": "Juan",
+      "apellidos": "Pérez Gómez",
+      "dni": "11111111A",
+      "telefono": "600111222",
+      "edad": "45",
+      "personaContacto": "María López (Esposa)",
+      "telefonoContacto": "611222333",
+      "datosMedicos": [
+        "Alergia al polen",
+        "Hipertensión"
+      ]
+    },
+    "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
+    "gravedad": "Se detecta problema grave:\nCod02. Fallo respiratorio/Vías obstruidas\n"
+  },
+  {
+    "timestamp": "2026-03-22 15:34:33",
+    "datosHerido": {
+      "nombre": "Lucía",
+      "apellidos": "Rodríguez Jiménez",
+      "dni": "44444444D",
+      "telefono": "666777888",
+      "edad": "34",
+      "personaContacto": "David Alonso (Marido)",
+      "telefonoContacto": "677888999",
+      "datosMedicos": [
+        "Alergia a los frutos secos",
+        "Diabetes Tipo 1"
+      ]
+    },
+    "datosUsuario": {
+      "nombre": "kevin spacey",
+      "telefono": "646464646"
+    },
+    "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
+    "gravedad": "Se detecta problema grave:\nCod03. Sangrado abundante\n"
   }
 ]

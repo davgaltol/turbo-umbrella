@@ -8,7 +8,10 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
@@ -18,6 +21,9 @@
     <Tab text="Generar Alerta">
       <content>
         <VBox alignment="CENTER_LEFT" spacing="10.0">
+          <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+          </padding>
           <children>
             <Label text="1. Seleccione tipo de urgencia:">
               <font>
@@ -76,16 +82,73 @@
                 <Insets top="20.0" />
               </VBox.margin>
             </Button>
-            <Label text="Resultados:">
-              <font>
-                <Font name="System Bold" size="14.0" />
-              </font>
-            </Label>
-            <TextArea fx:id="resultadoArea" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
           </children>
+        </VBox>
+      </content>
+    </Tab>
+    <Tab fx:id="resultsTab" disable="true" text="Resultados de la Alerta">
+      <content>
+        <VBox spacing="10.0">
           <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
           </padding>
+          <children>
+            <Label text="Resumen de la Alerta Generada">
+              <font>
+                <Font name="System Bold" size="16.0" />
+              </font>
+            </Label>
+            <GridPane hgap="10.0" vgap="5.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+              <children>
+                <Label text="Estado DNI:" />
+                <Label fx:id="dniStatusLabel" text="-" GridPane.columnIndex="1" />
+                <Label text="Datos del Herido:" GridPane.rowIndex="1">
+                  <font>
+                    <Font name="System Bold" size="12.0" />
+                  </font>
+                </Label>
+                <TextArea fx:id="injuredDataArea" editable="false" prefHeight="100.0" style="-fx-background-color: transparent; -fx-border-color: lightgrey; -fx-border-width: 0 0 1 0;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label text="Datos del Informante:" GridPane.rowIndex="2">
+                  <font>
+                    <Font name="System Bold" size="12.0" />
+                  </font>
+                </Label>
+                <TextArea fx:id="callerDataArea" editable="false" prefHeight="60.0" style="-fx-background-color: transparent; -fx-border-color: lightgrey; -fx-border-width: 0 0 1 0;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label text="Ubicación:" GridPane.rowIndex="3">
+                  <font>
+                    <Font name="System Bold" size="12.0" />
+                  </font>
+                </Label>
+                <Label fx:id="locationLabel" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label text="Centro de Salud:" GridPane.rowIndex="4">
+                  <font>
+                    <Font name="System Bold" size="12.0" />
+                  </font>
+                </Label>
+                <Label fx:id="centerLabel" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+              </children>
+            </GridPane>
+            <Label text="Registro de Eventos e Indicaciones:">
+              <font>
+                <Font name="System Bold" size="14.0" />
+              </font>
+              <VBox.margin>
+                <Insets top="10.0" />
+              </VBox.margin>
+            </Label>
+            <TextArea fx:id="logArea" editable="false" prefHeight="150.0" wrapText="true" />
+          </children>
         </VBox>
       </content>
     </Tab>
