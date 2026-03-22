@@ -59,7 +59,7 @@ public class ConsoleRunner {
 
         UserData datosLlamante = new UserData();
         if (esElHerido) {
-            datosLlamante = null; // Marcador para que EmergencyManager sepa que son la misma persona
+            datosLlamante = null;
         } else {
             System.out.print("Introduzca su nombre como informante: ");
             datosLlamante.setNombre(sc.nextLine());
@@ -75,7 +75,15 @@ public class ConsoleRunner {
         boolean simular = sc.nextLine().equalsIgnoreCase("S");
 
         // 4. Definir el consumidor de salida para la consola
-        Consumer<String> consoleOutput = System.out::println;
+        Consumer<Object> consoleOutput = (objetoRecibido) -> {
+            if (objetoRecibido instanceof UserData) {
+                System.out.println("----------------------------------------");
+                System.out.println(objetoRecibido.toString());
+                System.out.println("----------------------------------------");
+            } else {
+                System.out.println(objetoRecibido.toString());
+            }
+        };
 
         // 5. Llamar a la lógica de negocio
         System.out.println("\nProcesando emergencia grave...");

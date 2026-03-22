@@ -12,10 +12,10 @@ public class EmergencyManager {
 
     public void procesarEmergencia(
             String gravedad,
-            UserData datosLlamanteExternos, // Puede ser null si el llamante es el herido
+            UserData datosLlamanteExternos,
             String dniHerido,
             boolean simularCobertura,
-            Consumer<String> outputConsumer
+            Consumer<Object> outputConsumer // Cambiado de Consumer<String> a Consumer<Object>
     ) {
         // --- 1. OBTENER UBICACIÓN Y CENTRO CERCANO ---
         outputConsumer.accept("Obteniendo ubicación...");
@@ -30,16 +30,17 @@ public class EmergencyManager {
         outputConsumer.accept("Buscando DNI del herido (" + dniHerido + ") en la base de datos...");
         datosHerido = RetrieveData.retrieveInjuredData(dniHerido);
 
-        if (datosHerido == null) {
+        if (datosHerido != null) {
+            outputConsumer.accept("DNI encontrado. Datos del herido recuperados.");
+            outputConsumer.accept(datosHerido); // ¡AQUÍ ENVIAMOS EL OBJETO DE DATOS!
+        } else {
             outputConsumer.accept("DNI del herido no encontrado. Se creará un registro parcial.");
             datosHerido = new UserData();
-            datosHerido.setDNI(dniHerido); // Guardamos al menos el DNI
-        } else {
-            outputConsumer.accept("DNI encontrado. Datos del herido recuperados.");
+            datosHerido.setDNI(dniHerido);
         }
 
         // Ahora, definimos los datos del llamante
-        if (datosLlamanteExternos == null) { // Marcador para "el llamante es el herido"
+        if (datosLlamanteExternos == null) {
             outputConsumer.accept("El llamante es el herido. Copiando datos.");
             datosLlamante = new UserData(datosHerido);
         } else {

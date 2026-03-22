@@ -56,12 +56,10 @@ public class UIController {
         
         String gravedadCheck = construirGravedad();
         if (gravedadCheck.isEmpty()) {
-            resultadoArea.setText("Por favor, seleccione al menos un tipo de herida.");
+            resultadoArea.setText("Por favor, seleccione al menos un tipo de urgencia.");
             return;
         }
         
-        // --- SOLUCIÓN AL ERROR "effectively final" ---
-        // 1. Preparamos las variables
         UserData datosLlamanteTemp;
         if (esHeridoCheck.isSelected()) {
             datosLlamanteTemp = null;
@@ -71,12 +69,10 @@ public class UIController {
             datosLlamanteTemp.setTelefono(callerPhoneField.getText());
         }
 
-        // 2. Creamos copias 'final' de todas las variables que usará el hilo
         final String gravedad = gravedadCheck;
         final UserData datosLlamante = datosLlamanteTemp;
         final String dniHerido = dniField.getText().toUpperCase();
         final boolean simular = simulacionCheck.isSelected();
-        // -----------------------------------------
 
         resultadoArea.setText("Procesando emergencia...\n");
         alertaButton.setDisable(true);
@@ -84,13 +80,22 @@ public class UIController {
         Task<Void> emergencyTask = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                // 3. Usamos las variables 'final' dentro de la tarea
                 manager.procesarEmergencia(
                         gravedad,
                         datosLlamante,
                         dniHerido,
                         simular,
-                        (mensaje) -> Platform.runLater(() -> resultadoArea.appendText(mensaje + "\n"))
+                        (objetoRecibido) -> Platform.runLater(() -> {
+                            if (objetoRecibido instanceof UserData) {
+                                // Si es un objeto UserData, lo mostramos formateado
+                                resultadoArea.appendText("----------------------------------------\n");
+                                resultadoArea.appendText(((UserData) objetoRecibido).toString() + "\n");
+                                resultadoArea.appendText("----------------------------------------\n");
+                            } else {
+                                // Si es cualquier otra cosa (un String), lo mostramos tal cual
+                                resultadoArea.appendText(objetoRecibido.toString() + "\n");
+                            }
+                        })
                 );
                 return null;
             }
