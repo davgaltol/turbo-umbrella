@@ -59,5 +59,16 @@
     },
     "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
     "gravedad": "Se detecta problema grave:\nCod02. Fallo respiratorio/Vías obstruidas\nCod04. Golpe grave de alta intensidad\n"
+  },
+  {
+    "timestamp": "2026-03-22 15:15:15",
+    "datosHerido": {
+      "dni": ""
+    },
+    "datosUsuario": {
+      "dni": ""
+    },
+    "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
+    "gravedad": "Se detecta problema grave:\nCod03. Sangrado abundante\n"
   }
 ]

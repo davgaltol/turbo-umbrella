@@ -1,20 +1,25 @@
 package com.emergencias.gui;
 
 import com.emergencias.controller.EmergencyManager;
+import com.emergencias.model.LocationData;
 import com.emergencias.model.UserData;
+import com.emergencias.model.centros.Feature;
+import com.emergencias.util.CoordinateConverter;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebView;
+
+import java.util.Locale;
 
 public class UIController {
 
+    @FXML private TabPane mainTabPane;
+    @FXML private Tab mapTab;
+    @FXML private WebView mapWebView;
     @FXML private CheckBox cod01Check;
     @FXML private CheckBox cod02Check;
     @FXML private CheckBox cod03Check;
@@ -30,10 +35,13 @@ public class UIController {
     @FXML private TextArea resultadoArea;
 
     private EmergencyManager manager = new EmergencyManager();
+    private LocationData userLocation;
+    private Feature nearestCenter;
 
     @FXML
     public void initialize() {
         handleEsHeridoCheck(null);
+        mapTab.setDisable(true); // La pestaña del mapa empieza desactivada
     }
 
     @FXML
@@ -53,10 +61,13 @@ public class UIController {
     @FXML
     private void handleGenerarAlerta(ActionEvent event) {
         resultadoArea.clear();
+        mapTab.setDisable(true); // Reseteamos la pestaña del mapa en cada alerta
+        userLocation = null;
+        nearestCenter = null;
         
         String gravedadCheck = construirGravedad();
         if (gravedadCheck.isEmpty()) {
-            resultadoArea.setText("Por favor, seleccione al menos un tipo de urgencia.");
+            resultadoArea.setText("Por favor, seleccione al menos un tipo de herida.");
             return;
         }
         
@@ -85,23 +96,20 @@ public class UIController {
                         datosLlamante,
                         dniHerido,
                         simular,
-                        (objetoRecibido) -> Platform.runLater(() -> {
-                            if (objetoRecibido instanceof UserData) {
-                                // Si es un objeto UserData, lo mostramos formateado
-                                resultadoArea.appendText("----------------------------------------\n");
-                                resultadoArea.appendText(((UserData) objetoRecibido).toString() + "\n");
-                                resultadoArea.appendText("----------------------------------------\n");
-                            } else {
-                                // Si es cualquier otra cosa (un String), lo mostramos tal cual
-                                resultadoArea.appendText(objetoRecibido.toString() + "\n");
-                            }
-                        })
+                        (objetoRecibido) -> Platform.runLater(() -> processManagerOutput(objetoRecibido))
                 );
                 return null;
             }
         };
 
-        emergencyTask.setOnSucceeded(e -> alertaButton.setDisable(false));
+        emergencyTask.setOnSucceeded(e -> {
+            alertaButton.setDisable(false);
+            if (userLocation != null && nearestCenter != null) {
+                loadMap();
+                mapTab.setDisable(false);
+                mainTabPane.getSelectionModel().select(mapTab); // Cambiamos a la pestaña del mapa
+            }
+        });
         emergencyTask.setOnFailed(e -> {
             Platform.runLater(() -> {
                 resultadoArea.appendText("\nERROR INESPERADO: " + e.getSource().getException().getMessage());
@@ -111,6 +119,41 @@ public class UIController {
         });
 
         new Thread(emergencyTask).start();
+    }
+
+    private void processManagerOutput(Object objetoRecibido) {
+        if (objetoRecibido instanceof UserData) {
+            resultadoArea.appendText("----------------------------------------\n");
+            resultadoArea.appendText(objetoRecibido.toString() + "\n");
+            resultadoArea.appendText("----------------------------------------\n");
+        } else if (objetoRecibido instanceof LocationData) {
+            this.userLocation = (LocationData) objetoRecibido;
+            resultadoArea.appendText("Datos de ubicación del usuario recibidos.\n");
+        } else if (objetoRecibido instanceof Feature) {
+            this.nearestCenter = (Feature) objetoRecibido;
+            resultadoArea.appendText("Datos del centro de salud recibidos.\n");
+        } else {
+            resultadoArea.appendText(objetoRecibido.toString() + "\n");
+        }
+    }
+
+    private void loadMap() {
+        double userLat = userLocation.getLatitude();
+        double userLon = userLocation.getLongitude();
+
+        double[] centerLatLon = CoordinateConverter.utmToLatLon(
+            nearestCenter.getGeometry().getUtmX(),
+            nearestCenter.getGeometry().getUtmY()
+        );
+        double centerLat = centerLatLon[0];
+        double centerLon = centerLatLon[1];
+
+        String mapUrl = String.format(Locale.US,
+            "https://www.google.com/maps/dir/?api=1&origin=%f,%f&destination=%f,%f&travelmode=driving",
+            userLat, userLon, centerLat, centerLon
+        );
+
+        mapWebView.getEngine().load(mapUrl);
     }
 
     private String construirGravedad() {

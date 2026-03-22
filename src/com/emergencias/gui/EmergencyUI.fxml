@@ -4,85 +4,104 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
-<VBox alignment="CENTER_LEFT" prefHeight="550.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.emergencias.gui.UIController">
-   <children>
-      <Label text="1. Seleccione tipo de urgencia:">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <CheckBox fx:id="cod01Check" mnemonicParsing="false" text="Cod01 - Inconsciencia" />
-      <CheckBox fx:id="cod02Check" mnemonicParsing="false" text="Cod02 - Fallo Respiratorio" />
-      <CheckBox fx:id="cod03Check" mnemonicParsing="false" text="Cod03 - Sangrado Abundante" />
-      <CheckBox fx:id="cod04Check" mnemonicParsing="false" text="Cod04 - Golpe Grave" />
-
-      <Label text="2. Identificación:">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-         <VBox.margin>
-            <Insets top="15.0" />
-         </VBox.margin>
-      </Label>
-      <CheckBox fx:id="esHeridoCheck" mnemonicParsing="false" onAction="#handleEsHeridoCheck" selected="true" text="Yo soy el herido/a" />
-
-      <VBox fx:id="callerInfoBox" managed="false" spacing="10.0" visible="false">
-         <children>
-            <Label text="Sus datos como informante:" />
+<TabPane fx:id="mainTabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.emergencias.gui.UIController">
+  <tabs>
+    <Tab text="Generar Alerta">
+      <content>
+        <VBox alignment="CENTER_LEFT" spacing="10.0">
+          <children>
+            <Label text="1. Seleccione tipo de urgencia:">
+              <font>
+                <Font name="System Bold" size="14.0" />
+              </font>
+            </Label>
+            <CheckBox fx:id="cod01Check" mnemonicParsing="false" text="Cod01 - Inconsciencia" />
+            <CheckBox fx:id="cod02Check" mnemonicParsing="false" text="Cod02 - Fallo Respiratorio" />
+            <CheckBox fx:id="cod03Check" mnemonicParsing="false" text="Cod03 - Sangrado Abundante" />
+            <CheckBox fx:id="cod04Check" mnemonicParsing="false" text="Cod04 - Golpe Grave" />
+            <Label text="2. Identificación:">
+              <font>
+                <Font name="System Bold" size="14.0" />
+              </font>
+              <VBox.margin>
+                <Insets top="15.0" />
+              </VBox.margin>
+            </Label>
+            <CheckBox fx:id="esHeridoCheck" mnemonicParsing="false" onAction="#handleEsHeridoCheck" selected="true" text="Yo soy el herido/a" />
+            <VBox fx:id="callerInfoBox" managed="false" spacing="10.0" visible="false">
+              <children>
+                <Label text="Sus datos como informante:" />
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                  <children>
+                    <Label text="Su Nombre:" />
+                    <TextField fx:id="callerNameField" promptText="Ej: Ana García" />
+                    <Label text="Su Teléfono:" />
+                    <TextField fx:id="callerPhoneField" promptText="Ej: 600123456" />
+                  </children>
+                </HBox>
+              </children>
+              <VBox.margin>
+                <Insets top="10.0" />
+              </VBox.margin>
+            </VBox>
             <HBox alignment="CENTER_LEFT" spacing="10.0">
-               <children>
-                  <Label text="Su Nombre:" />
-                  <TextField fx:id="callerNameField" promptText="Ej: Ana García" />
-                  <Label text="Su Teléfono:" />
-                  <TextField fx:id="callerPhoneField" promptText="Ej: 600123456" />
-               </children>
+              <children>
+                <Label fx:id="dniLabel" text="Mi DNI:" />
+                <TextField fx:id="dniField" promptText="12345678A" />
+              </children>
             </HBox>
-         </children>
-         <VBox.margin>
-            <Insets top="10.0" />
-         </VBox.margin>
-      </VBox>
-
-      <HBox alignment="CENTER_LEFT" spacing="10.0">
-         <children>
-            <Label fx:id="dniLabel" text="Mi DNI:" />
-            <TextField fx:id="dniField" promptText="12345678A" />
-         </children>
-      </HBox>
-
-      <Label text="3. Opciones de envío:">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-         <VBox.margin>
-            <Insets top="15.0" />
-         </VBox.margin>
-      </Label>
-      <CheckBox fx:id="simulacionCheck" mnemonicParsing="false" text="Simular falta de cobertura" />
-
-      <Button fx:id="alertaButton" mnemonicParsing="false" onAction="#handleGenerarAlerta" prefHeight="35.0" prefWidth="604.0" text="GENERAR ALERTA">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-         <VBox.margin>
-            <Insets top="20.0" />
-         </VBox.margin>
-      </Button>
-
-      <Label text="Resultados:">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <TextArea fx:id="resultadoArea" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
-   </children>
-   <padding>
-      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-   </padding>
-</VBox>
+            <Label text="3. Opciones de envío:">
+              <font>
+                <Font name="System Bold" size="14.0" />
+              </font>
+              <VBox.margin>
+                <Insets top="15.0" />
+              </VBox.margin>
+            </Label>
+            <CheckBox fx:id="simulacionCheck" mnemonicParsing="false" text="Simular falta de cobertura" />
+            <Button fx:id="alertaButton" mnemonicParsing="false" onAction="#handleGenerarAlerta" prefHeight="35.0" prefWidth="604.0" text="GENERAR ALERTA">
+              <font>
+                <Font name="System Bold" size="16.0" />
+              </font>
+              <VBox.margin>
+                <Insets top="20.0" />
+              </VBox.margin>
+            </Button>
+            <Label text="Resultados:">
+              <font>
+                <Font name="System Bold" size="14.0" />
+              </font>
+            </Label>
+            <TextArea fx:id="resultadoArea" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
+          </children>
+          <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+          </padding>
+        </VBox>
+      </content>
+    </Tab>
+    <Tab fx:id="mapTab" disable="true" text="Mapa al Centro de Salud">
+      <content>
+        <VBox prefHeight="200.0" prefWidth="100.0">
+          <children>
+            <Label text="Ruta desde su ubicación al centro de salud más cercano. Puede interactuar con el mapa (zoom, arrastrar).">
+              <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+              </padding>
+            </Label>
+            <WebView fx:id="mapWebView" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />
+          </children>
+        </VBox>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>
