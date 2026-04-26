@@ -44,8 +44,8 @@ public class UIController {
     @FXML private Label dniStatusLabel;
     @FXML private TextArea injuredDataArea;
     @FXML private TextArea callerDataArea;
-    @FXML private Label locationLabel;
-    @FXML private Label centerLabel;
+    @FXML private TextArea locationArea;
+    @FXML private TextArea centerArea;
     @FXML private TextArea logArea;
 
     // Pestaña 3: Mapa
@@ -154,10 +154,10 @@ public class UIController {
             }
         } else if (objetoRecibido instanceof LocationData) {
             this.userLocation = (LocationData) objetoRecibido;
-            locationLabel.setText(userLocation.getFormattedLocation());
+            locationArea.setText(userLocation.getFormattedLocation());
         } else if (objetoRecibido instanceof Feature) {
             this.nearestCenter = (Feature) objetoRecibido;
-            centerLabel.setText(nearestCenter.getProperties().getNombre() + "\n" + nearestCenter.getProperties().getDireccionCompleta());
+            centerArea.setText(nearestCenter.getProperties().getNombre() + "\n" + nearestCenter.getProperties().getDireccionCompleta());
         } else if (objetoRecibido instanceof String) {
             String mensaje = (String) objetoRecibido;
             if (mensaje.contains("DNI del herido no encontrado")) {
@@ -182,8 +182,8 @@ public class UIController {
         dniStatusLabel.setTextFill(Color.BLACK);
         injuredDataArea.clear();
         callerDataArea.clear();
-        locationLabel.setText("-");
-        centerLabel.setText("-");
+        locationArea.clear();
+        centerArea.clear();
         logArea.clear();
     }
 
@@ -198,10 +198,8 @@ public class UIController {
 
             WebEngine engine = mapWebView.getEngine();
             
-            // AÑADIMOS EL LISTENER PARA AUTO-ACEPTAR COOKIES
             engine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
                 if (newState == Worker.State.SUCCEEDED) {
-                    // El script busca un botón cuyo 'aria-label' sea "Accept all" o el equivalente en español y lo pulsa.
                     String script = "var buttons = document.querySelectorAll('button'); " +
                                     "for (var i = 0; i < buttons.length; i++) { " +
                                     "  if (buttons[i].getAttribute('aria-label') === 'Accept all' || buttons[i].innerText.includes('Aceptar todo')) { " +

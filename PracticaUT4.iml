@@ -61,6 +61,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="JavaFX" level="project" />
+    <orderEntry type="library" exported="" name="JavaFX" level="project" />
   </component>
 </module>

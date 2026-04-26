@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1bed19c1-e50a-46c3-af6b-f153a679babd" name="Changes" comment="Se crea validaEntDNI y se empieza a reestructurar para json" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="depurarUD" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;davgaltol&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/davgaltol/turbo-umbrella.git&quot;,
+    &quot;accountId&quot;: &quot;518562e5-b5f1-4ff8-a0e7-fe7fa2ff35f8&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="34sNrIWHLXblJhaiZBOUujuLFlq" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Debug&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;JUnit.com.test.java in PracticaUT4.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.test in PracticaUT4.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.tests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.tests.testRetrieveData_CuandoDniEsInvalido.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.tests.testRetrieveData_CuandoDniExiste.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.tests.testRetrieveData_CuandoDniNoExiste.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.tests.testValidaEntSN_ConEntradaInvalida.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/David Galante/OneDrive - Conselleria d'Educació/Programación/UT4/PracticaUT4&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/galan/OneDrive - Conselleria d'Educació/Programación/UT4/PracticaUT4/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.emergencias.main.Main" />
+      <module name="PracticaUT4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.emergencias.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tests.testRetrieveData_CuandoDniEsInvalido" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PracticaUT4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.tests" />
+      <option name="METHOD_NAME" value="testRetrieveData_CuandoDniEsInvalido" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tests.testRetrieveData_CuandoDniExiste" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PracticaUT4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.tests" />
+      <option name="METHOD_NAME" value="testRetrieveData_CuandoDniExiste" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tests.testRetrieveData_CuandoDniNoExiste" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PracticaUT4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.tests" />
+      <option name="METHOD_NAME" value="testRetrieveData_CuandoDniNoExiste" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tests.testValidaEntSN_ConEntradaInvalida" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PracticaUT4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.tests" />
+      <option name="METHOD_NAME" value="testValidaEntSN_ConEntradaInvalida" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.tests.testRetrieveData_CuandoDniEsInvalido" />
+        <item itemvalue="JUnit.tests.testRetrieveData_CuandoDniExiste" />
+        <item itemvalue="JUnit.tests.testRetrieveData_CuandoDniNoExiste" />
+        <item itemvalue="JUnit.tests.testValidaEntSN_ConEntradaInvalida" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1bed19c1-e50a-46c3-af6b-f153a679babd" name="Changes" comment="" />
+      <created>1761998517978</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1761998517978</updated>
+      <workItem from="1761998519308" duration="451000" />
+      <workItem from="1761999679699" duration="1374000" />
+      <workItem from="1762005886257" duration="11000" />
+      <workItem from="1762007081350" duration="1090000" />
+      <workItem from="1762071373736" duration="5840000" />
+      <workItem from="1762081339048" duration="1322000" />
+      <workItem from="1762082719546" duration="233000" />
+      <workItem from="1762083017919" duration="8499000" />
+      <workItem from="1762091942075" duration="5488000" />
+      <workItem from="1762178655482" duration="1531000" />
+      <workItem from="1762183149549" duration="3717000" />
+      <workItem from="1762362791412" duration="2066000" />
+      <workItem from="1762366047447" duration="17640000" />
+      <workItem from="1762442367354" duration="320000" />
+      <workItem from="1762442742861" duration="57000" />
+      <workItem from="1762442859456" duration="4707000" />
+      <workItem from="1762587749362" duration="18587000" />
+      <workItem from="1762622330192" duration="199000" />
+      <workItem from="1762624711871" duration="5509000" />
+      <workItem from="1762682269240" duration="308000" />
+      <workItem from="1762682788149" duration="22000" />
+      <workItem from="1762683293777" duration="304000" />
+      <workItem from="1763052662586" duration="577000" />
+      <workItem from="1763391407622" duration="10000" />
+      <workItem from="1763391996719" duration="3140000" />
+      <workItem from="1763398705905" duration="77000" />
+      <workItem from="1763572171065" duration="158000" />
+      <workItem from="1763997164338" duration="912000" />
+      <workItem from="1763998582954" duration="1772000" />
+      <workItem from="1764402119571" duration="6118000" />
+      <workItem from="1764494395145" duration="12651000" />
+      <workItem from="1764602209629" duration="2223000" />
+      <workItem from="1764765528299" duration="755000" />
+      <workItem from="1765188244062" duration="17559000" />
+      <workItem from="1765476319055" duration="19000" />
+      <workItem from="1765614040897" duration="804000" />
+      <workItem from="1765807850211" duration="29000" />
+      <workItem from="1765811432554" duration="4048000" />
+      <workItem from="1765823591001" duration="1077000" />
+      <workItem from="1765824716819" duration="85000" />
+      <workItem from="1770047919525" duration="156000" />
+      <workItem from="1770048176856" duration="428000" />
+      <workItem from="1770055370588" duration="5631000" />
+      <workItem from="1777223327961" duration="46000" />
+    </task>
+    <task id="LOCAL-00001" summary="Se crea validaEntDNI y se empieza a reestructurar para json">
+      <option name="closed" value="true" />
+      <created>1762369031663</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762369031663</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="developer" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Se crea validaEntDNI y se empieza a reestructurar para json" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se crea validaEntDNI y se empieza a reestructurar para json" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="5" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/emergencias/controller/Location.java</url>
+          <line>134</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/emergencias/controller/Location.java</url>
+          <line>93</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="datosHerido" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

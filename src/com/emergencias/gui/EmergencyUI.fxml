@@ -105,10 +105,10 @@
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
               </rowConstraints>
               <children>
                 <Label text="Estado DNI:" />
@@ -118,25 +118,25 @@
                     <Font name="System Bold" size="12.0" />
                   </font>
                 </Label>
-                <TextArea fx:id="injuredDataArea" editable="false" prefHeight="100.0" style="-fx-background-color: transparent; -fx-border-color: lightgrey; -fx-border-width: 0 0 1 0;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextArea fx:id="injuredDataArea" editable="false" prefHeight="100.0" style="-fx-background-color: transparent; -fx-border-width: 0;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label text="Datos del Informante:" GridPane.rowIndex="2">
                   <font>
                     <Font name="System Bold" size="12.0" />
                   </font>
                 </Label>
-                <TextArea fx:id="callerDataArea" editable="false" prefHeight="60.0" style="-fx-background-color: transparent; -fx-border-color: lightgrey; -fx-border-width: 0 0 1 0;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextArea fx:id="callerDataArea" editable="false" prefHeight="60.0" style="-fx-background-color: transparent; -fx-border-width: 0;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Label text="Ubicación:" GridPane.rowIndex="3">
                   <font>
                     <Font name="System Bold" size="12.0" />
                   </font>
                 </Label>
-                <Label fx:id="locationLabel" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextArea fx:id="locationArea" editable="false" prefHeight="40.0" style="-fx-background-color: transparent; -fx-border-width: 0;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <Label text="Centro de Salud:" GridPane.rowIndex="4">
                   <font>
                     <Font name="System Bold" size="12.0" />
                   </font>
                 </Label>
-                <Label fx:id="centerLabel" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <TextArea fx:id="centerArea" editable="false" prefHeight="40.0" style="-fx-background-color: transparent; -fx-border-width: 0;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
               </children>
             </GridPane>
             <Label text="Registro de Eventos e Indicaciones:">

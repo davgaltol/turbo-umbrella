@@ -142,5 +142,113 @@
     },
     "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
     "gravedad": "Se detecta problema grave:\nCod03. Sangrado abundante\n"
+  },
+  {
+    "timestamp": "2026-03-22 15:37:46",
+    "datosHerido": {
+      "dni": ""
+    },
+    "datosUsuario": {
+      "dni": ""
+    },
+    "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
+    "gravedad": "Se detecta problema grave:\nCod02. Fallo respiratorio/Vías obstruidas\n"
+  },
+  {
+    "timestamp": "2026-03-29 12:20:41",
+    "datosHerido": {
+      "nombre": "Juan",
+      "apellidos": "Pérez Gómez",
+      "dni": "11111111A",
+      "telefono": "600111222",
+      "edad": "45",
+      "personaContacto": "María López (Esposa)",
+      "telefonoContacto": "611222333",
+      "datosMedicos": [
+        "Alergia al polen",
+        "Hipertensión"
+      ]
+    },
+    "datosUsuario": {
+      "nombre": "Juan",
+      "apellidos": "Pérez Gómez",
+      "dni": "11111111A",
+      "telefono": "600111222",
+      "edad": "45",
+      "personaContacto": "María López (Esposa)",
+      "telefonoContacto": "611222333",
+      "datosMedicos": [
+        "Alergia al polen",
+        "Hipertensión"
+      ]
+    },
+    "ubicacion": "Alicante, Spain. Coordenadas: 38.3452, -0.48149",
+    "gravedad": "Se detecta problema grave:\nCod02. Fallo respiratorio/Vías obstruidas\nCod04. Golpe grave de alta intensidad\n"
+  },
+  {
+    "timestamp": "2026-04-26 19:38:44",
+    "datosHerido": {
+      "dni": ""
+    },
+    "datosUsuario": {
+      "nombre": "",
+      "telefono": ""
+    },
+    "ubicacion": "Elche, Spain. Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Se detecta problema grave:\nCod03. Sangrado abundante\n"
+  },
+  {
+    "timestamp": "2026-04-26 19:45:40",
+    "datosHerido": {
+      "dni": "2345698A"
+    },
+    "datosUsuario": {
+      "dni": "2345698A"
+    },
+    "ubicacion": "Elche, Spain. Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Se detecta problema grave:\nCod02. Fallo respiratorio/Vías obstruidas\n"
+  },
+  {
+    "timestamp": "2026-04-26 19:47:46",
+    "datosHerido": {
+      "dni": "12345678A"
+    },
+    "datosUsuario": {
+      "nombre": "juanito perea",
+      "telefono": "658764878"
+    },
+    "ubicacion": "Elche, Spain. Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Se detecta problema grave:\nCod02. Fallo respiratorio/Vías obstruidas\nCod04. Golpe grave de alta intensidad\n"
+  },
+  {
+    "timestamp": "2026-04-26 19:48:42",
+    "datosHerido": {
+      "nombre": "Juan",
+      "apellidos": "Pérez Gómez",
+      "dni": "11111111A",
+      "telefono": "600111222",
+      "edad": "45",
+      "personaContacto": "María López (Esposa)",
+      "telefonoContacto": "611222333",
+      "datosMedicos": [
+        "Alergia al polen",
+        "Hipertensión"
+      ]
+    },
+    "datosUsuario": {
+      "nombre": "Juan",
+      "apellidos": "Pérez Gómez",
+      "dni": "11111111A",
+      "telefono": "600111222",
+      "edad": "45",
+      "personaContacto": "María López (Esposa)",
+      "telefonoContacto": "611222333",
+      "datosMedicos": [
+        "Alergia al polen",
+        "Hipertensión"
+      ]
+    },
+    "ubicacion": "Elche, Spain. Coordenadas: 38.2642, -0.7001",
+    "gravedad": "Se detecta problema grave:\nCod03. Sangrado abundante\n"
   }
 ]
